@@ -6,12 +6,16 @@ theme:
   name: material
   language: hu
 
+  palette:
+    scheme: slate
+
   features:
     - navigation.sections
     - navigation.expand
     - navigation.top
     - search.suggest
     - search.highlight
+    - content.code.copy
 
 plugins:
   - search
@@ -22,3 +26,6 @@ markdown_extensions:
   - attr_list
   - toc:
       permalink: true
+
+extra_css:
+  - stylesheets/extra.css

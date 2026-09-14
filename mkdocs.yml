@@ -1,5 +1,6 @@
 site_name: Gnosis Online
 site_description: Gnosis Online lore and game documentation
+site_url: https://lyon1255.github.io/gnosis-online-docs/
 
 theme:
   name: material

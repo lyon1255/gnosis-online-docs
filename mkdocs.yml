@@ -8,11 +8,15 @@ theme:
 
   palette:
     scheme: slate
+    primary: black
+    accent: deep purple
 
   features:
     - navigation.sections
     - navigation.expand
+    - navigation.path
     - navigation.top
+    - toc.follow
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -22,10 +26,24 @@ plugins:
 
 markdown_extensions:
   - admonition
-  - tables
   - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+
   - toc:
+      title: Tartalomjegyzék
       permalink: true
+      permalink_title: Közvetlen hivatkozás erre a fejezetre
+      toc_depth: 3
+
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra_css:
   - stylesheets/extra.css

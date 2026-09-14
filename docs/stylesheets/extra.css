@@ -272,21 +272,79 @@ body {
 
 
 /* ---------------------------------------------------------
-   BLOCKQUOTES
+   GNOSIS QUOTES
+   Purple → White gradient
    --------------------------------------------------------- */
 
 .md-typeset blockquote {
-  color: #c6c6ce;
+  position: relative;
 
-  background: rgba(255, 255, 255, 0.025);
+  margin: 1.8rem 0;
+  padding: 1rem 1.4rem;
+
+  background: linear-gradient(
+    90deg,
+    rgba(147, 104, 255, 0.10),
+    rgba(147, 104, 255, 0.035) 55%,
+    transparent 100%
+  );
 
   border-left: 3px solid var(--gnosis-purple);
-
-  padding: 0.75rem 1.2rem;
-
-  margin: 1.5rem 0;
+  border-radius: 0 6px 6px 0;
 
   font-style: italic;
+
+  box-shadow:
+    inset 12px 0 30px rgba(147, 104, 255, 0.025);
+}
+
+
+/* Az idézet szövege */
+.md-typeset blockquote p {
+  margin: 0.35rem 0;
+
+  background: linear-gradient(
+    90deg,
+    #9368ff 0%,
+    #b79cff 30%,
+    #ddd4ff 60%,
+    #ffffff 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  color: #ffffff;
+
+  font-weight: 500;
+}
+
+
+/* Finom fény a bal oldali vonalon */
+.md-typeset blockquote::before {
+  content: "";
+
+  position: absolute;
+
+  left: -3px;
+  top: 0;
+
+  width: 3px;
+  height: 100%;
+
+  background: linear-gradient(
+    180deg,
+    #9368ff,
+    #c6afff,
+    #ffffff
+  );
+
+  border-radius: 3px;
+
+  box-shadow:
+    0 0 10px rgba(147, 104, 255, 0.45);
 }
 
 

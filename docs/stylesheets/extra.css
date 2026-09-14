@@ -1,82 +1,551 @@
+/* =========================================================
+   GNOSIS ONLINE
+   Dark Documentation Theme
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   GLOBAL COLOR VARIABLES
+   --------------------------------------------------------- */
+
+:root {
+  --gnosis-black: #050505;
+  --gnosis-black-soft: #090909;
+  --gnosis-surface: #0d0d0f;
+  --gnosis-surface-light: #141419;
+
+  --gnosis-white: #f2f2f2;
+  --gnosis-text: #d7d7dc;
+  --gnosis-muted: #8d8d98;
+
+  --gnosis-border: #24242c;
+  --gnosis-border-light: #33333d;
+
+  --gnosis-purple: #9368ff;
+  --gnosis-purple-soft: rgba(147, 104, 255, 0.12);
+
+  --gnosis-blue: #6ba8ff;
+  --gnosis-blue-soft: rgba(107, 168, 255, 0.10);
+}
+
+
+/* ---------------------------------------------------------
+   MATERIAL DARK THEME OVERRIDES
+   --------------------------------------------------------- */
+
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color: #0a0a0a;
-  --md-default-bg-color--light: #121212;
-  --md-default-bg-color--lighter: #1a1a1a;
-  --md-default-bg-color--lightest: #222222;
+  --md-default-bg-color: var(--gnosis-black);
+  --md-default-bg-color--light: var(--gnosis-black-soft);
+  --md-default-bg-color--lighter: var(--gnosis-surface);
+  --md-default-bg-color--lightest: var(--gnosis-surface-light);
 
-  --md-default-fg-color: #f5f5f5;
-  --md-default-fg-color--light: rgba(245, 245, 245, 0.75);
-  --md-default-fg-color--lighter: rgba(245, 245, 245, 0.45);
-  --md-default-fg-color--lightest: rgba(245, 245, 245, 0.16);
+  --md-default-fg-color: var(--gnosis-white);
+  --md-default-fg-color--light: var(--gnosis-text);
+  --md-default-fg-color--lighter: var(--gnosis-muted);
 
-  --md-code-bg-color: #111111;
-  --md-code-fg-color: #f5f5f5;
+  --md-primary-fg-color: #000000;
+  --md-primary-fg-color--light: #090909;
+  --md-primary-fg-color--dark: #000000;
 
-  --md-footer-bg-color: #000000;
-  --md-footer-bg-color--dark: #000000;
+  --md-accent-fg-color: var(--gnosis-purple);
+
+  --md-code-bg-color: #0c0c0f;
+  --md-code-fg-color: #eeeeee;
+
+  --md-typeset-a-color: var(--gnosis-blue);
 }
 
-/* Felső sáv */
-.md-header,
+
+/* ---------------------------------------------------------
+   PAGE
+   --------------------------------------------------------- */
+
+html {
+  background: var(--gnosis-black);
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 70% 0%,
+      rgba(87, 62, 160, 0.07),
+      transparent 30rem
+    ),
+    var(--gnosis-black);
+
+  color: var(--gnosis-text);
+}
+
+
+/* ---------------------------------------------------------
+   HEADER
+   --------------------------------------------------------- */
+
+.md-header {
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 1px solid var(--gnosis-border);
+  box-shadow: none;
+}
+
+.md-header__title {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
 .md-tabs {
-  background-color: #000000 !important;
+  background: #000000;
+  border-bottom: 1px solid var(--gnosis-border);
 }
 
-/* Oldalsó menü és fő tartalom finomítása */
-.md-sidebar,
-.md-content,
-.md-main {
-  background-color: #0a0a0a;
+
+/* ---------------------------------------------------------
+   CONTENT WIDTH
+   --------------------------------------------------------- */
+
+.md-grid {
+  max-width: 1500px;
 }
 
-/* Címsorok */
-.md-typeset h1,
-.md-typeset h2,
-.md-typeset h3,
-.md-typeset h4 {
+.md-content {
+  background: transparent;
+}
+
+.md-content__inner {
+  margin-bottom: 4rem;
+}
+
+
+/* ---------------------------------------------------------
+   BASE TEXT
+   --------------------------------------------------------- */
+
+.md-typeset {
+  color: var(--gnosis-text);
+  font-size: 0.86rem;
+  line-height: 1.8;
+}
+
+.md-typeset p {
+  margin-top: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+
+/* ---------------------------------------------------------
+   PAGE TITLE - H1
+   --------------------------------------------------------- */
+
+.md-typeset h1 {
+  color: #ffffff;
+
+  font-size: 2.25rem;
+  font-weight: 800;
+
+  letter-spacing: -0.025em;
+
+  margin-bottom: 2rem;
+
+  padding-bottom: 1rem;
+
+  border-bottom: 1px solid var(--gnosis-border-light);
+
+  position: relative;
+}
+
+.md-typeset h1::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -1px;
+
+  width: 90px;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    var(--gnosis-purple),
+    var(--gnosis-blue)
+  );
+}
+
+
+/* ---------------------------------------------------------
+   CHAPTER HEADINGS - H2
+   --------------------------------------------------------- */
+
+.md-typeset h2 {
+  color: #ffffff;
+
+  font-size: 1.5rem;
+  font-weight: 750;
+
+  margin-top: 3.6rem;
+  margin-bottom: 1.4rem;
+
+  padding: 0.8rem 1rem;
+
+  border-left: 3px solid var(--gnosis-purple);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.035);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+
+  background: linear-gradient(
+    90deg,
+    rgba(147, 104, 255, 0.10),
+    rgba(147, 104, 255, 0.025) 50%,
+    transparent 100%
+  );
+
+  border-radius: 0 4px 4px 0;
+
+  letter-spacing: -0.01em;
+}
+
+
+/* ---------------------------------------------------------
+   SUBCHAPTER HEADINGS - H3
+   --------------------------------------------------------- */
+
+.md-typeset h3 {
+  color: #f5f5f7;
+
+  font-size: 1.15rem;
+  font-weight: 700;
+
+  margin-top: 2.4rem;
+
+  padding-bottom: 0.4rem;
+
+  border-bottom: 1px solid var(--gnosis-border);
+}
+
+
+/* ---------------------------------------------------------
+   SMALL HEADINGS
+   --------------------------------------------------------- */
+
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  color: #eeeeee;
+  font-weight: 700;
+}
+
+
+/* ---------------------------------------------------------
+   HEADING ANCHORS
+   --------------------------------------------------------- */
+
+.md-typeset .headerlink {
+  color: var(--gnosis-purple);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.md-typeset h1:hover .headerlink,
+.md-typeset h2:hover .headerlink,
+.md-typeset h3:hover .headerlink {
+  opacity: 0.6;
+}
+
+
+/* ---------------------------------------------------------
+   LINKS
+   --------------------------------------------------------- */
+
+.md-typeset a {
+  color: var(--gnosis-blue);
+  text-decoration: none;
+
+  transition:
+    color 0.15s ease,
+    text-shadow 0.15s ease;
+}
+
+.md-typeset a:hover {
+  color: #a8caff;
+  text-shadow: 0 0 12px rgba(107, 168, 255, 0.25);
+}
+
+
+/* ---------------------------------------------------------
+   BLOCKQUOTES
+   --------------------------------------------------------- */
+
+.md-typeset blockquote {
+  color: #c6c6ce;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border-left: 3px solid var(--gnosis-purple);
+
+  padding: 0.75rem 1.2rem;
+
+  margin: 1.5rem 0;
+
+  font-style: italic;
+}
+
+
+/* ---------------------------------------------------------
+   HORIZONTAL RULE
+   --------------------------------------------------------- */
+
+.md-typeset hr {
+  border-bottom: 1px solid var(--gnosis-border);
+  margin: 3rem 0;
+}
+
+
+/* ---------------------------------------------------------
+   INLINE CODE
+   --------------------------------------------------------- */
+
+.md-typeset code {
+  background: #101014;
+  color: #e6e6eb;
+
+  border: 1px solid #202028;
+
+  border-radius: 4px;
+
+  padding: 0.1rem 0.35rem;
+}
+
+
+/* ---------------------------------------------------------
+   CODE BLOCK
+   --------------------------------------------------------- */
+
+.md-typeset pre > code {
+  border: none;
+  background: #0c0c0f;
+}
+
+.highlight {
+  border: 1px solid var(--gnosis-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   TABLES
+   --------------------------------------------------------- */
+
+.md-typeset table:not([class]) {
+  background: var(--gnosis-surface);
+  border: 1px solid var(--gnosis-border);
+}
+
+.md-typeset table:not([class]) th {
+  color: #ffffff;
+  background: #141419;
+
+  border-bottom: 1px solid var(--gnosis-border-light);
+}
+
+.md-typeset table:not([class]) td {
+  color: var(--gnosis-text);
+
+  border-top: 1px solid #1c1c22;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: rgba(147, 104, 255, 0.035);
+}
+
+
+/* ---------------------------------------------------------
+   LEFT NAVIGATION
+   --------------------------------------------------------- */
+
+.md-sidebar--primary {
+  border-right: 1px solid rgba(255, 255, 255, 0.035);
+}
+
+.md-nav__title {
   color: #ffffff;
   font-weight: 700;
 }
 
-/* Linkek */
-.md-typeset a,
-.md-nav__link:hover,
+.md-nav__link {
+  color: #a6a6af;
+
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.md-nav__link:hover {
+  color: #ffffff;
+}
+
 .md-nav__link--active {
+  color: var(--gnosis-purple) !important;
+  font-weight: 650;
+}
+
+
+/* ---------------------------------------------------------
+   RIGHT SIDE TABLE OF CONTENTS
+   --------------------------------------------------------- */
+
+.md-sidebar--secondary {
+  border-left: 1px solid rgba(255, 255, 255, 0.035);
+}
+
+.md-sidebar--secondary .md-nav__title {
+  color: #ffffff;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+
+  margin-bottom: 0.7rem;
+}
+
+.md-sidebar--secondary .md-nav__link {
+  color: #777782;
+
+  font-size: 0.73rem;
+
+  border-left: 1px solid transparent;
+
+  padding-left: 0.65rem;
+}
+
+.md-sidebar--secondary .md-nav__link:hover {
+  color: #eeeeee;
+}
+
+.md-sidebar--secondary .md-nav__link--active {
+  color: #ffffff !important;
+
+  border-left: 2px solid var(--gnosis-purple);
+
+  background: linear-gradient(
+    90deg,
+    rgba(147, 104, 255, 0.08),
+    transparent
+  );
+}
+
+
+/* ---------------------------------------------------------
+   SEARCH
+   --------------------------------------------------------- */
+
+.md-search__form {
+  background: #0d0d10;
+  border: 1px solid var(--gnosis-border);
+}
+
+.md-search__input {
   color: #ffffff;
 }
 
-/* Kódrészek, idézetek */
-.md-typeset code {
-  background-color: #111111;
-  color: #f5f5f5;
+.md-search-result__item {
+  background: #0c0c0f;
 }
 
-.md-typeset blockquote {
-  border-left: 3px solid #666666;
-  color: #dddddd;
+
+/* ---------------------------------------------------------
+   ADMONITIONS
+   --------------------------------------------------------- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  background: var(--gnosis-surface);
+
+  border: 1px solid var(--gnosis-border);
+
+  box-shadow: none;
 }
 
-/* Tartalom szélessége */
-.md-grid {
-  max-width: 1400px;
-}
 
-/* Fő szöveg jobb olvashatósága */
-.md-typeset {
-  font-size: 0.82rem;
-  line-height: 1.75;
-}
+/* ---------------------------------------------------------
+   SELECTION
+   --------------------------------------------------------- */
 
-/* Táblázatok */
-.md-typeset table:not([class]) {
-  background-color: #111111;
-}
-
-.md-typeset table:not([class]) th {
-  background-color: #1a1a1a;
+::selection {
+  background: rgba(147, 104, 255, 0.35);
   color: #ffffff;
 }
 
-.md-typeset table:not([class]) td {
-  color: #f0f0f0;
+
+/* ---------------------------------------------------------
+   SCROLLBAR
+   --------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #24242c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #353541;
+}
+
+
+/* ---------------------------------------------------------
+   FOOTER
+   --------------------------------------------------------- */
+
+.md-footer {
+  background: #030303;
+
+  border-top: 1px solid var(--gnosis-border);
+}
+
+.md-footer-meta {
+  background: #000000;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media screen and (max-width: 76.234375em) {
+
+  .md-typeset h1 {
+    font-size: 1.9rem;
+  }
+
+  .md-typeset h2 {
+    font-size: 1.35rem;
+  }
+
+}
+
+@media screen and (max-width: 44.984375em) {
+
+  .md-typeset {
+    font-size: 0.82rem;
+  }
+
+  .md-typeset h1 {
+    font-size: 1.65rem;
+  }
+
+  .md-typeset h2 {
+    margin-top: 2.6rem;
+    padding-left: 0.8rem;
+  }
+
 }

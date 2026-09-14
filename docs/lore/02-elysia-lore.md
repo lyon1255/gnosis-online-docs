@@ -1,682 +1,635 @@
 ---
-title: Elysia
+title: Main Questline I – A régi utak
 ---
 
-# Elysia
+# Main Questline I – A régi utak
 
-## Tutorial – Az első átkelés
+A Main Questline közvetlenül a tutorial után kezdődik.
 
-A tutorial Brink Valleyben kezdődik, és Loeran’s Restben ér véget.
+A játékos már:
 
-A célja:
+- átkelt a Kapun;
+- megérkezett Loeran’s Restbe;
+- ismeri az alapvető harcrendszert;
+- találkozott Saelin Rethtel;
+- megkapta a Kalandor-jelvényt.
 
-- Brink Valley bemutatása;
-- mozgás és navigáció megtanítása;
-- quest rendszer bemutatása;
-- inventory és equipment bemutatása;
-- alapvető harcrendszer megtanítása;
-- gyógyítás megtanítása;
-- loot rendszer bemutatása;
-- visszavonulás fontosságának megtanítása;
-- a Kapu és Elysia bemutatása;
-- Loeran’s Rest megnyitása;
-- a játék fő Main Questline-jának előkészítése.
+Innentől Elysia válik a történet elsődleges helyszínévé.
 
-A tutorial alatt:
+A küldetések nem tartalmaznak XP-, pénz- vagy tárgyjutalmakat ebben a dokumentumban.
 
-- **XP nem jár;**
-- minden kaszt ugyanazokat a Main Questeket kapja;
-- a kezdőfegyver és néhány ability kasztfüggő lehet;
-- a lore és a quest objective-ek minden kasztnál azonosak.
+Csak:
+
+- quest text;
+- NPC-szöveg;
+- objective-ek;
+- környezeti események;
+- történeti információk.
 
 ---
 
-# MQ-T01 – A név a Főkönyvben
+## MQ-01 – A város széle
 
-**Quest Giver:** Ledger Registry Clerk  
-**Helyszín:** Brink Valley  
-**XP:** 0
+**Quest Giver:** Elira Venn  
+**Helyszín:** Loeran’s Rest – Kalandorügyi Hivatal
 
-## Quest Text
+### Quest Text
 
-Minden Kalandor ugyanott kezdi.
+Loeran’s Rest nem egyszerre épül.
 
-A Főkönyvben.
+A Kapu körüli utcák biztonságosak. Az őrség járőrözik, a kereskedők ismerik egymást, éjszaka lámpák égnek az utcákon.
 
-A Ledger nyilvántartása szerint egy Kalandor addig nem vállalhat hivatalos megbízást, amíg a nevét, szakmáját és felszerelési jogosultságát nem rögzítették.
+Keletebbre azonban az új város lassan elfogy.
 
-A bejegyzés egyszerű.
+Ott kezdődik a régi Point One.
 
-A következményei kevésbé.
+Elira Venn a város keleti útjainak felügyeletéért felel.
 
-**{player_name}**, jelentkezz a Ledger nyilvántartásánál, majd keresd fel Saelin Rethet, a Kalandorügyi Felügyelőt.
+Az elmúlt három napban két szállítmány késett.
 
-## Objectives
+Egy visszatért.
 
-- Regisztrálj a Ledgernél.
-- Keresd meg Saelin Reth irodáját.
+A másik nem.
 
-## Tutorial Mechanics
+### Elira Venn
 
-A quest során a játékos megtanulja:
-
-- mozgás;
-- kamera;
-- sprint;
-- NPC interaction;
-- quest tracking;
-- minimap / quest marker használata.
-
-## Környezeti bemutatás
-
-A Saelinhoz vezető út közben a játékos elhalad Brink Valley fontosabb részei mellett:
-
-- lakónegyed;
-- piac;
-- műhelyek;
-- termőföldek;
-- malom;
-- erdő;
-- főtér;
-- lebegő Kristály;
-- Kapu felé vezető út.
-
-Ezek nem külön quest objective-ek.
-
-A játékos egyszerűen látja őket.
-
-## Registration
-
-A Ledger automatikusan rögzíti:
-
-- `{player_name}`
-- `{race}`
-- `{class_name}`
-
-A játékos ezután megkapja az első quest itemet.
-
-## Reward
-
-### Ideiglenes Kalandorengedély
-
-**Quest Item**
-
-> Egyetlen hivatalos átkelésre jogosít.
+> A jelvény azt jelenti, hogy kiengedhetünk a falakon túl.
 >
-> Visszatérés esetén megújítható.
-
-**XP:** 0
-
----
-
-# MQ-T02 – Mielőtt kimész
-
-**Quest Giver:** Saelin Reth  
-**Helyszín:** Kalandorügyi Hivatal  
-**XP:** 0
-
-## Quest Text
-
-A Ledger szerint készen állsz arra, hogy Kalandor legyél.
-
-Saelin Reth szerint ehhez még hiányzik néhány dolog.
-
-Egy fegyver.
-
-Néhány alapvető felszerelés.
-
-És annak ismerete, hogyan kell használni őket.
-
-Vedd át a kezdőfelszerelésed a Kalandorügyi Hivatal raktárából.
-
-## Objectives
-
-- Vedd át a Kalandor Kezdőfelszerelést.
-- Nyisd meg az Inventoryt.
-- Szereld fel az elsődleges fegyvered.
-- Szerelj fel egy páncéldarabot.
-- Helyezz egy Field Bandage-et a gyorshasználati sávra.
-
-## Tutorial Mechanics
-
-A játékos megtanulja:
-
-- Inventory;
-- Equipment;
-- item rarity / item information;
-- consumable kezelés;
-- quickslot használat.
-
----
-
-# Kalandor Kezdőfelszerelés
-
-A csomag tartalma kasztfüggő.
-
-## Minden kaszt megkapja
-
-- 1 × kezdőfegyver
-- 1 × kezdő páncéldarab
-- 3 × Field Bandage
-- 2 × Ration
-
-## Példák
-
-### Warrior
-
-**Field Sword**
-
-### Ranger
-
-**Field Bow**
-
-### Mage
-
-**Apprentice Focus**
-
-### Más kasztok
-
-A saját kezdőfegyverüket kapják.
-
-A quest minden esetben ugyanaz.
-
-## Reward
-
-**XP:** 0
-
-### Unlock
-
-- Inventory
-- Equipment
-- Consumable Quickslots
-
----
-
-# MQ-T03 – A halott hősök
-
-**Quest Giver:** Saelin Reth  
-**Helyszín:** Kalandorok gyakorlótere  
-**XP:** 0
-
-## Quest Text
-
-A fegyver birtoklása még nem jelenti azt, hogy valaki tudja is használni.
-
-A Kalandorok legtöbb feladata kis létszámú csapatokra vár. Odakint nincs mindig katona, őr vagy parancsnok, aki eldönti helyetted, mikor kell támadni.
-
-És mikor kell visszavonulni.
-
-Teljesítsd az alapvető harci gyakorlatot.
-
-## Objectives
-
-- Találj el egy gyakorlóbábut.
-- Használd az első harci képességed.
-- Kerülj el egy támadást.
-- Használj védekező képességet vagy megfelelő harci reakciót.
-- Használj egy Field Bandage-et.
-- Szakadj el az ellenféltől.
-- Hagyd el a kijelölt harci területet.
-
----
-
-## Combat Tutorial
-
-A konkrét ability kasztonként eltérhet.
-
-Az objective-ek azonban ugyanazok.
-
-### Basic Attack
-
-A játékos megtanulja az alap támadást.
-
-### Ability
-
-A játékos használja az első class abilityt.
-
-### Defense
-
-A játékos megtanulja a kasztjának megfelelő túlélési mechanikát.
-
-Ez lehet például:
-
-- dodge;
-- block;
-- parry;
-- barrier;
-- interrupt;
-- mobility skill.
-
-### Healing
-
-A játékos kontrollált sebzést kap.
-
-Ezután Field Bandage-et kell használnia.
-
-### Disengage
-
-A gyakorlat utolsó része nem az ellenfél legyőzéséről szól.
-
-A játékosnak ki kell jutnia a harci területről.
-
-A cél ezzel megtanítani:
-
-**nem minden harcot kell befejezni.**
-
----
-
-## Lore Hint
-
-A quest completion textje Saelin egyik legismertebb tanítását tartalmazza:
-
-> A halott hősök nem védik meg a völgyet.
-
-Ez az első alkalom, hogy a játékos találkozik Saelin öt leckéjének egyikével.
-
-## Reward
-
-**XP:** 0
-
-### Items
-
-- 2 × Field Bandage
-
-### Unlock
-
-- Combat Basics
-- Defensive Action
-- Healing
-- Disengage
-
----
-
-# MQ-T04 – A Doboz
-
-**Quest Giver:** Saelin Reth  
-**Helyszín:** Brink Valley – Kapuőrség  
-**XP:** 0
-
-## Quest Text
-
-A gyakorlótéren minden támadás előre kiszámítható.
-
-Elysiában nem.
-
-Mielőtt átlépnéd a Kaput, jelentkezz a Kapuőrségnél, és ismerd meg azt a helyet, amely Brink Valleyt elválasztja a túloldaltól.
-
-A Kapu körül álló kőszerkezetet mindenki csak Doboznak nevezi.
-
-Nem dísznek épült.
-
-## Objectives
-
-- Menj a Kapuhoz.
-- Jelentkezz a Kapuőrségnél.
-- Vizsgáld meg a Doboz bejáratát.
-- Győzd le a Kapun átjutott Rewritten lényt.
-- Lootold a tetemet.
-- Vizsgáld meg a megszerzett mintát.
-
----
-
-# A Doboz
-
-A játékos közelről látja:
-
-- a Kaput;
-- a halványkék felületet;
-- a Doboz szűkülő kőfalait;
-- a ledobható rácsokat;
-- a lándzsaállásokat;
-- az állandó őrséget;
-- az évek során végzett javítások nyomait.
-
-A területen munkások, kereskedők, földművesek és őrök is mozognak.
-
-A Kapu már hétköznapi része Brink Valley életének.
-
-A Doboz emlékeztet rá, hogy miért nem teljesen hétköznapi.
-
----
-
-# Első valódi harc
-
-Egy Elysiából visszatérő szállítmánnyal együtt egy kisebb Rewritten lény jut át a Kapun.
-
-## Enemy
-
-### Rewritten Hound
-
-**Szerep:** Tutorial Enemy
-
-Az ellenfél:
-
-- kevés életerővel rendelkezik;
-- jól olvasható támadásokat használ;
-- egy erősebb, látványosan telegraphed támadással rendelkezik;
-- lehetőséget ad dodge vagy defense használatára.
-
-## Objective
-
-**Győzd le a Rewritten Houndot.**
-
-Ez a játékos első valódi ellenfele.
-
----
-
-# Loot Tutorial
-
-A lény legyőzése után:
-
-## Objective
-
-**Lootold a Rewritten Houndot.**
-
-A játékos megszerzi:
-
-### Rewritten Tissue Sample
-
-**Quest Item**
-
-> Lila fény dereng a szövet repedéseiben.
+> Nem azt, hogy tudod, mi vár ott.
 >
-> Érintésre hideg.
-
----
-
-# Prológus Hint
-
-A Doboz környezetében régi sérülések és javítások láthatók.
-
-Néhány régebbi kőbe nevek és dátumok vannak karcolva.
-
-A játékos opcionálisan megvizsgálhat egy régi kőtáblát.
-
-### Inspect Text
-
-> A Kapu egykor közvetlenül Brink Valley lakott területére nyílt.
+> Keletre indul egy régi út. Valaha Point One egyik főutcája volt.
 >
-> A Doboz csak később épült köré.
+> Menj végig rajta az első útjelzőig.
+>
+> Ha találsz valamit, amit nem értesz, ne találd ki.
+>
+> Gyere vissza, és mondd el.
 
-További magyarázat nincs.
+### Objectives
 
-A prológust ismerő játékos tudja, mi történt.
-
-Más játékos számára ez csak egy korai történelmi rejtély.
-
----
-
-## Reward
-
-**XP:** 0
-
-### Quest Item
-
-- Rewritten Tissue Sample
-
-### Unlock
-
-- Looting
-- Enemy Drops
-- Inspectable Lore Objects
+- Hagyd el Loeran’s Rest keleti kapuját.
+- Kövesd a régi Point One utat.
+- Érd el az Első Útjelzőt.
+- Vizsgáld meg az út környékét.
+- Térj vissza Elira Vennhez.
 
 ---
 
-# MQ-T05 – Mindig legyen visszaút
+## MQ-02 – Tizenkét év pora
 
-**Quest Giver:** Saelin Reth  
-**Helyszín:** Brink Valley – Kapu  
-**XP:** 0
+**Quest Giver:** Elira Venn  
+**Helyszín:** Régi Point One
 
-## Quest Text
+### Quest Text
 
-Elysia útjai változnak.
+Az Első Útjelzőnél talált nyomok nem tartoznak kereskedőkhöz.
 
-Egy tegnap biztonságos ösvényt ma elzárhat egy Rewritten falka.
+Az út ugyanaz, amelyet a régi Point One lakói használtak a kiürítés előtt.
 
-Egy patak megáradhat.
+A város azonban nem állt meg ott, ahol Loeran’s Rest ma véget ér.
 
-Egy híd megsérülhet.
+Régi házak, műhelyek és raktárak húzódnak tovább kelet felé.
 
-Egy korábban megtisztított terület újra benépesülhet.
+A Ledger három olyan épületet tart számon, amelyek szerkezetileg még használhatók lehetnek.
 
-Saelin első szabályai között szerepel, hogy egy Kalandor soha ne csak azt tudja, merre indul.
+Senki nem ellenőrizte őket hónapok óta.
 
-Azt is tudnia kell, merre tér vissza.
+### Elira Venn
 
-## Objectives
+> A rom szó félrevezető.
+>
+> Van, ami tényleg összeomlott.
+>
+> Van, amit csak bezártak tizenkét éve, és soha senki nem nyitott ki újra.
+>
+> Három épületet jelöltem a térképeden.
+>
+> Nézd meg őket.
+>
+> Ne hozz el semmit.
+>
+> Először tudni akarjuk, mi maradt meg.
 
-- Nyisd meg a térképet.
-- Jelöld meg a Brink Valley Kaput.
-- Állítsd be visszatérési pontként.
-- Lépj át a Kapun.
+### Objectives
+
+- Vizsgáld meg az elhagyott kovácsműhelyt.
+- Vizsgáld meg a régi raktárépületet.
+- Vizsgáld meg az egykori lakóházat.
+- Pusztítsd el a romok között megtelepedett Rewritten lényeket.
+- Térj vissza Elira Vennhez.
+
+### Environmental Storytelling
+
+A játékos az épületekben nem kincseket talál.
+
+Hanem élet nyomait.
+
+A kovácsműhelyben még ott vannak a falba vert szerszámtartók.
+
+A raktár falán régi Ledger-jelölések láthatók.
+
+A lakóház egyik szobájának falán gyerek magasságát jelölték éveken keresztül.
+
+Az utolsó vonás tizenkét éves.
+
+Az ajtó mellett egy halvány felirat:
+
+> Visszajövünk.
 
 ---
 
-## Tutorial Mechanics
+## MQ-03 – A régi malmok
 
-A játékos megtanulja:
+**Quest Giver:** Elira Venn  
+**Helyszín:** Point One külső malmai
 
-- World Map megnyitása;
-- location marker;
-- waypoint;
-- return point;
-- map objective követés.
+### Quest Text
 
-## Lore Hint
+Az egyik megtalált Ledger-jelzés egy régi szállítási útvonalra mutat.
 
-A quest completion textje:
+A Point One külső malmaihoz vezet.
 
+A malmok egykor az első település élelmezésének fontos részei voltak.
+
+A kiürítés óta többször próbálták visszafoglalni őket.
+
+Egyiket sem tartották meg sokáig.
+
+Most újra mozgást jelentettek a környékről.
+
+### Elira Venn
+
+> A malmok rossz helyen állnak.
+>
+> Régen ez előny volt. Közel a vízhez, közel a földekhez.
+>
+> Most túl messze vannak ahhoz, hogy minden este őrséget küldjünk oda.
+>
+> Menj ki.
+>
+> Tisztítsd meg a környéket.
+>
+> És nézd meg, miért jönnek vissza oda újra és újra.
+
+### Objectives
+
+- Érd el a Külső Malmokat.
+- Pusztíts el 6 Rewritten lényt.
+- Vizsgáld meg az első malom épületét.
+- Vizsgáld meg a folyóparti nyomokat.
+- Vizsgáld meg a régi őrhelyet.
+
+---
+
+## MQ-04 – Nem innen jöttek
+
+**Quest Giver:** Automatikusan indul  
+**Helyszín:** Külső Malmok
+
+### Quest Text
+
+A Rewritten lények fészket alakítottak ki a malmok körül.
+
+A nyomok azonban nem innen indulnak.
+
+Mind ugyanabba az irányba vezetnek.
+
+Keletre.
+
+A folyóparton több különböző állat nyoma keveredik.
+
+Farkas.
+
+Őz.
+
+Valami nehezebb.
+
+Mind nyugat felé haladt.
+
+Mintha ugyanaz elől menekülnének.
+
+### Objectives
+
+- Kövesd a kelet felől érkező nyomokat.
+- Vizsgáld meg a három nyomcsoportot.
+- Pusztítsd el a Rewritten falkavezért.
+- Vizsgáld meg a falkavezér testét.
+- Keresd meg a legközelebbi régi útjelzőt.
+
+### Inspect – Falkavezér
+
+> Az állat teste erősebben torzult, mint a malmok körül élő többi lényé.
+>
+> A bőre alatt futó repedések mélyén lila fény mozog.
+>
+> A manaválasz még halála után is szabálytalan.
+
+---
+
+## MQ-05 – Mérd meg, mielőtt nevet adsz neki
+
+**Quest Giver:** Pell Ormin  
+**Helyszín:** Régi útjelző
+
+A régi útjelzőnél egy Gnome felmérő dolgozik.
+
+Műszereket állított fel az út mellett.
+
+Nem lepődik meg a játékos érkezésén.
+
+Inkább azon, hogy egyedül jött.
+
+### Pell Ormin
+
+> Elira küldött?
+>
+> Jó.
+>
+> Akkor legalább nem nekem kell visszamennem.
+>
+> A nyugati mérő tegnap még normális volt.
+>
+> Ez itt nem.
+>
+> Mielőtt azt mondjuk, hogy baj van, mérjük meg.
+>
+> A „baj” nem mértékegység.
+
+### Quest Text
+
+Pell három régi mérési pontot akar újra ellenőrizni.
+
+A pontokat még a Point One kiürítése előtti expedíciók jelölték ki.
+
+Ha a Field Saturation megváltozott, a régi útvonalak biztonsági besorolása is érvényét vesztheti.
+
+### Objectives
+
+- Aktiváld az Első Mérőpontot.
+- Aktiváld a Második Mérőpontot.
+- Aktiváld a Harmadik Mérőpontot.
+- Védd meg Pellt a mérés ideje alatt.
+- Térj vissza Pellhez.
+
+### Pell Ormin
+
+A harmadik mérés után:
+
+> Nem jó.
+>
+> Nem azért, mert magas.
+>
+> Azért, mert tegnap alacsonyabb volt.
+>
+> A Field nem szokott egyik napról a másikra így változni.
+>
+> Valami történt keletebbre.
+
+---
+
+## MQ-06 – Az út, amely tegnap biztonságos volt
+
+**Quest Giver:** Pell Ormin  
+**Helyszín:** Point One keleti útja
+
+### Quest Text
+
+A régi térképek szerint a következő útszakasz biztonságos.
+
+Pell friss mérései szerint már nem biztos, hogy az.
+
+A következő ellenőrzőpont egy elhagyott farm mellett található.
+
+A farm tizenkét éve szerepel a Ledger visszafoglalási listáján.
+
+Még senki nem költözött vissza.
+
+### Pell Ormin
+
+> Van egy mondás a Kalandorok között.
+>
+> Gondolom, Saelin már elmondta.
+>
 > Egy útvonal nem biztonságos.
 >
 > Legfeljebb tegnap az volt.
+>
+> Most kiderítjük, hogy ez ma micsoda.
+
+### Objectives
+
+- Kövesd az utat az elhagyott farmig.
+- Pusztítsd el az utat elzáró Rewritten lényeket.
+- Vizsgáld meg a farm udvarát.
+- Vizsgáld meg a régi Ledger-táblát.
+- Keresd meg a keleti kijáratot.
 
 ---
 
-# Átkelés Elysiába
-
-A játékos átlép a Kapun.
-
-A tutorial ritmusa itt rövid időre lelassul.
-
-Nincs azonnali harc.
-
-Nincs ellenség.
-
-Nincs riadó.
-
-A játékos először egyszerűen meglátja Elysiát.
-
----
-
-# MQ-T06 – Loeran’s Rest
+## MQ-07 – A ház, ahová vissza kellett volna jönni
 
 **Quest Giver:** Automatikusan indul  
-**Helyszín:** Elysia  
-**XP:** 0
+**Helyszín:** Elhagyott farm
 
-## Quest Text
+### Quest Text
 
-A Kapu túloldalán nem vadon vár.
+A farmot nem támadás pusztította el.
 
-Hanem egy város.
+Nem égett le.
 
-Kisebb Brink Valleynél.
+Nem omlott össze.
 
-Fiatalabb.
+Egyszerűen elhagyták.
 
-És sokkal közelebb ahhoz a világhoz, amelytől mindenki még mindig tart.
+Az asztal még mindig a konyhában áll.
 
-A régi térképeken a hely neve Point One.
+Az istálló ajtaja nyitva.
 
-Ma már szinte senki nem hívja így.
+A kút működik.
 
-A város neve:
+A falon egy régi Ledger-engedély függ.
 
-**Loeran’s Rest.**
+A család jogosult volt visszatérni a kiürítés után.
 
-Keresd meg a főteret, és jelentkezz a helyi Kalandorügyi Hivatalnál.
+Soha nem tették.
 
-## Objectives
+### Objectives
 
-- Fedezd fel Loeran’s Restet.
-- Aktiváld Loeran’s Rest waypointját.
-- Keresd meg Loeran fáját.
-- Vizsgáld meg a fa mellett álló kőtáblát.
-- Jelentkezz a Kalandorügyi Hivatal helyi képviselőjénél.
+- Vizsgáld meg a farmházat.
+- Vizsgáld meg az istállót.
+- Vizsgáld meg a kutat.
+- Olvasd el a Ledger-engedélyt.
+- Keresd meg a ház mögötti régi út nyomát.
+
+### Inspect – Ledger-engedély
+
+> Visszatelepülési engedély.
+>
+> Jóváhagyva.
+>
+> Földhasználati jog fenntartva.
+>
+> Tulajdonos: Halen Marr és családja.
+>
+> Állapot:
+>
+> Nem jelentkezett.
+
+A dokumentum dátuma tizenkét éves.
 
 ---
 
-# Loeran’s Rest bemutatása
+## MQ-08 – A fal rossz oldalán
 
-A Kapu környékén találhatóak a település legújabb épületei.
+**Quest Giver:** Dorrik Keln  
+**Helyszín:** Régi keleti palánk
 
-- őrházak;
-- raktárak;
-- fogadók;
-- műhelyek;
-- kereskedők;
-- kisebb piac;
-- lakóházak;
-- malom.
+A farm mögötti út egy régi Dwarf védműhöz vezet.
 
-Minél távolabb halad a játékos a Kaputól, annál régebbi épületekkel találkozik.
+A palánk egy része még áll.
 
-Az új város fokozatosan beleolvad a régi Point One maradványaiba.
+Egy Dwarf mérnök és néhány munkás próbálja helyreállítani.
 
-Távolabb láthatóak:
+### Dorrik Keln
 
-- régi falak;
-- elhagyott házak;
-- benőtt utcák;
-- lezárt utak;
-- régi farmok;
-- elhagyott őrhelyek.
+> Ezt a falat már egyszer megépítettük.
+>
+> Akkor is működött.
+>
+> Tizennégy napig.
+>
+> Azután valaki végre észrevette, hogy mi az egyetlen dolog, amit egy fal biztosan megállít.
+>
+> Minket.
+>
+> Most nem lezárni akarjuk az utat.
+>
+> Csak időt akarunk nyerni.
 
-Ezek későbbi Main Questek és exploration content helyszínei lehetnek.
+### Quest Text
+
+A munkások jelzőállást építenek a régi palánk helyén.
+
+A zaj azonban Rewritten lényeket vonz a környékre.
+
+### Objectives
+
+- Védd meg az első munkacsoportot.
+- Pusztítsd el a támadó Rewritten lényeket.
+- Védd meg a második munkacsoportot.
+- Aktiváld a jelzőtornyot.
+- Beszélj Dorrik Kelnnel.
+
+### Dorrik Keln
+
+> Kész.
+>
+> Nem fogja megállítani őket.
+>
+> Nem is ez a dolga.
+>
+> Ha valami jön keletről, most már látni fogjuk.
+>
+> Néha ennyi a különbség egy fal és egy sír között.
 
 ---
 
-# Loeran fája
+## MQ-09 – Nyugat felé
 
-Loeran’s Rest főterének közepén egy nagy fa áll.
+**Quest Giver:** Dorrik Keln  
+**Helyszín:** Keleti palánk
 
-Az új város lényegében köré épült.
+### Quest Text
 
-A fa mellett alacsony kőtábla található.
+A jelzőtorony első feladata hamarabb érkezik, mint bárki várta.
 
-Nem szobor.
+Mozgás látható az erdő szélén.
 
-Nem emlékmű.
+Nem támadás.
 
-Inkább sírjel.
+Vándorlás.
 
-## Objective
+Rewritten állatok kisebb csoportjai haladnak nyugat felé.
 
-**Vizsgáld meg Loeran kőtábláját.**
+Pont úgy, ahogy a régi jelentések szerint Point One első nagy riadója előtt.
 
-### Inspect Text
+### Dorrik Keln
 
-> A kőn nincs név.
+> Ne azt nézd, mennyi van belőlük.
 >
-> A helyiek szerint nem is kell rá.
+> Azt nézd, merre mennek.
 >
-> Aki először jár a fánál, háromszor mondja ki:
+> Ezek nem vadásznak.
 >
-> **Loeran.**
+> Valami elől jönnek.
 >
-> **Loeran.**
+> És én szeretném tudni, mi az, mielőtt ők ideérnek.
+
+### Objectives
+
+- Érd el a megfigyelőpontot.
+- Figyeld meg a Rewritten csordát.
+- Pusztítsd el a csordától leszakadt támadó lényeket.
+- Vizsgáld meg a keleti horizontot.
+- Térj vissza Dorrikhoz.
+
+### Environmental Event
+
+A játékos a megfigyelőpontról először látja igazán Elysia keleti részét.
+
+Távol:
+
+- elhagyott földek;
+- régi őrtornyok;
+- keskeny hágók;
+- lila fényű területek;
+- egy régi jelzőtorony fekete maradványa.
+
+Dorrik a távoli toronyra mutat.
+
+### Dorrik Keln
+
+> Az ott a Harmadik Cölöp.
 >
-> **Loeran.**
+> Onnan indult az első figyelmeztetés.
+>
+> Azt hittem, még évekig nem lesz okunk visszamenni arra.
 
-Ezután megjelenik egy második inspect lehetőség.
+Rövid szünet.
 
-### Inspect
-
-> „Ha itt élünk majd, adjatok nekem egy fát.”
-
-További magyarázat nincs.
-
-A teljes történetet a játékos később ismerheti meg.
+> Tévedtem.
 
 ---
 
-# Tutorial lezárása
+## MQ-10 – A rossz hír értéke
 
-A játékos jelentkezik Loeran’s Rest Kalandorügyi Hivatalánál.
+**Quest Giver:** Dorrik Keln  
+**Helyszín:** Keleti palánk → Loeran’s Rest
 
-Az Ideiglenes Kalandorengedély eltávolításra kerül.
+### Quest Text
 
-Helyette megkapja az állandó Kalandor-jelvényt.
+A mérések megváltoztak.
+
+A Rewritten lények nyugat felé mozognak.
+
+A régi útvonalak biztonsági besorolása már nem megbízható.
+
+Ez nem győzelem.
+
+Nem is vereség.
+
+Ez információ.
+
+Saelin tanítása szerint néha ez a legfontosabb dolog, amit egy Kalandor hazavihet.
+
+### Objectives
+
+- Térj vissza Loeran’s Restbe.
+- Add át Pell Ormin mérési jelentését.
+- Jelentsd a Rewritten vándorlást Elira Vennnek.
+- Keresd fel Loeran fáját.
+- Várd meg a Kalandorügyi Hivatal válaszát.
 
 ---
 
-# Tutorial végső jutalom
+## Loeran fája
 
-**XP:** 0
+A játékos visszatér a főtérre.
 
-## Item
+A nap közben lejjebb ment.
 
-### Kalandor-jelvény
+A fa alatt ugyanúgy emberek ülnek.
 
-**Bind on Pickup**
+Kereskedők pakolnak.
 
-**Quest Item / Key Item**
+Gyerekek futnak át a téren.
 
-> A Ledger által kiállított igazolás.
+A város nem tudja, mit látott odakint a játékos.
+
+Még.
+
+A kőtábla továbbra is a gyökerek mellett áll.
+
+### Opcionális Inspect
+
+> Loeran.
 >
-> Viselője hivatalos Kalandor-megbízásokat vállalhat Brink Valley és Elysia területén.
-
-A hátoldalon kézzel karcolt szöveg található:
-
-> Gyere is vissza.
+> Loeran.
+>
+> Loeran.
 
 ---
 
-# Tutorial Completion
+## MQ-11 – Keletre
 
-## Unlocks
+**Quest Giver:** Elira Venn  
+**Helyszín:** Loeran’s Rest
 
-A tutorial teljesítésével megnyílik:
+### Quest Text
 
-- XP szerzés;
-- Main Questline;
-- Adventurer Contracts;
-- normál enemy loot;
-- Loeran’s Rest kereskedői;
-- profession szolgáltatások;
-- Elysia felfedezhető területei;
-- későbbi fast travel pontok;
-- Main Quest jutalmak.
+A Ledger összevetette Pell méréseit az elmúlt tizenkét év jelentéseivel.
+
+A változás nem helyi.
+
+A keleti út mentén több mérőpont egyszerre mutat emelkedést.
+
+A Rewritten lények pedig ugyanabba az irányba mozognak, amelyből az első Point One elleni hullám érkezett.
+
+Kelet felől nyugat felé.
+
+A következő használható megfigyelőállás:
+
+**A Harmadik Cölöp.**
+
+### Elira Venn
+
+> Tizenkét éve azért élünk itt, mert megtanultuk, mikor kell visszamenni.
+>
+> Most meg kell tanulnunk azt is, mikor kell előremenni.
+>
+> A Harmadik Cölöp régi útja rajta van a térképen.
+>
+> Ettől még ne bízz benne.
+>
+> Menj el odáig.
+>
+> Nézd meg, mi maradt belőle.
+>
+> És ha valami olyat látsz, amit nem értesz...
+>
+> ne próbálj hős lenni.
+>
+> Gyere vissza.
+
+### Objective
+
+**Indulj el a Harmadik Cölöp felé.**
 
 ---
 
-# Tutorial állapot a végén
+# Az első Main Questline vége
 
-A játékos már ismeri:
+Az első történeti ív végére a játékos megérti, hogy:
 
-- Brink Valleyt;
-- a Ledgert;
-- Saelin Rethet;
-- a Kaput;
-- a Dobozt;
-- a Rewritten lényeket;
-- Loeran’s Restet;
-- Loeran fáját;
-- Elysia alapvető veszélyeit.
+- Loeran’s Rest nem egyszerű város, hanem visszahódított terület;
+- Point One romjai nem díszletek, hanem a korábbi kudarc maradványai;
+- Elysia régi települései még mindig visszafoglalhatók;
+- a Rewritten lények nem véletlenszerű szörnyek;
+- a Rewrite Field keleten erősebb;
+- valami megváltozott;
+- a Rewritten lények ismét nyugat felé mozognak;
+- a Harmadik Cölöp fontos történelmi helyszín;
+- a keleti út vezet a valódi történet felé.
 
-De még rengeteg dolgot nem tud.
+A játékos ekkor még nem tudja:
 
-Nem tudja pontosan, mi történt Loerannel.
+- mi okozza a Field Saturation változását;
+- mi történik a második Kapunál;
+- változott-e az Őr viselkedése;
+- mi van a második Kapu mögött;
+- miért reagál Elysia a Rewrite Fieldre;
+- miért épült egyáltalán ez a világ.
 
-Nem tudja, mit őriz a Lezárt Jegyzék.
+Csak azt tudja:
 
-Nem tudja, miért létezik Elysia.
-
-Nem tudja, honnan származik a Rewrite Field.
-
-Nem tudja, mi van a második Kapu mögött.
-
-És nem tudja, mit őriz valójában az Őr.
-
-Innen indul az első valódi Main Quest.
+**valami keleten újra mozgásba lendült.**

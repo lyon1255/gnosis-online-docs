@@ -1,3 +1,5 @@
+# Gnosis Online — Prologue
+
 ## I. Az utolsó békés nap
 
 Ez a világ nem haldoklott.

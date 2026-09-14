@@ -1,22 +1,21 @@
-# Gnosis Online - A világ lore-ja
+# Gnosis Online — A világ lore-ja
 
-## Első könyv - Előzmény
+**Első könyv — Előzmény**  
+*Verzió: 0.12*
 
-Verzió: 0.12
+---
 
-# I. Az utolsó békés nap
+## I. Az utolsó békés nap
 
 Ez a világ nem haldoklott.
 
-
 Utólag mégis jeleket emlegettek. Korábban vonuló madarakat, keserű vizű kutakat, egy vak asszonyt Ardenmoorban, aki hetekkel előbb megmondta.
-
 
 Semmi ilyesmi nem történt.
 
 Aethelgard erős volt, tele élettel, és pontosan azzal volt elfoglalva, amivel minden élő világ szokott: önmagával.
 
-## A négy nép
+### A négy nép
 
 Négyen lakták.
 
@@ -26,11 +25,9 @@ Az emberek felejtenek.
 
 Nem ostobaságból. Egyszerűen nincs annyi idejük, hogy megtartsák mindazt, amit láttak. Egy ember unokája már nem pontosan tudja, min ment keresztül a nagyapja, a dédunoka pedig sokszor már a nevét sem. Az elfek ezért nézték le őket. A Dwarfok ezért nem bíztak a szavukban.
 
-
 Az emberek hivatalokra bízták azt, amit nem tudtak emlékezetben tartani. A másik három népnek is voltak ősi intézményei: nemzedékeken át öröklődő elfligetek, hatszáz éves Dwarf céhek, katalógusszám szerint működő Gnome levéltárak. Ezekben mesterről tanítványra szállt a tudás, és mindig maradt valaki, aki emlékezett.
 
 Az emberi hivatalban a következő írnoknak elég volt elolvasnia a könyvet. Akkor is folytathatta a munkát, ha nem ismerte az elődjét, és nem volt jelen a bejegyzett döntéseknél.
-
 
 Az elfek a Thaelwoodban éltek, az Öreg-erdőben, amelyet rajtuk kívül senki nem térképezett fel. Nem hódítottak. Nem terjeszkedtek. A hivatalos álláspontjuk az volt, hogy a világ ügyei nem tartoznak rájuk, és ezt olyan következetesen képviselték, hogy közben észre sem vették, mikor lett belőle sértés.
 
@@ -50,7 +47,7 @@ A Gnome-ok pedig ott voltak mindenütt, ahol akadt valami megérthető. Kolóni�
 
 Ez volt az utóbbi hiba.
 
-## A világ rendje
+### A világ rendje
 
 Aethelgardon a mágia nem volt sem ritka, sem szent. Nem választotta el élesen a királyt a paraszttól, a katonát a molnártól, az orvost a kovácstól. Minden élőlényben ott volt, kiben több, kiben kevesebb, és ha elhasználták, lassan visszatöltődött, ahogy a kifáradt izom pihen ki.
 
@@ -66,7 +63,7 @@ Az élettelen tárgyakba zárt mana nem maradt meg örökké. Egy amulett, pálc
 
 Ez a szabály annyira magától értetődő volt, hogy senki nem nevezte törvénynek.
 
-## Ollen Vale
+### Ollen Vale
 
 A háború oka nem a mágia volt. Nem ősi gyűlölet, nem vérbosszú, nem prófécia.
 
@@ -96,13 +93,11 @@ Az elfek szemszögéből viszont Ollen Vale nem üres volt.
 
 Tele volt.
 
-
 Nyolcvanhat liget állt benne. Kilencezer-négyszáz elf feküdt a fái alatt, névvel, történettel, visszajárással. Az emberek a megművelhető földet számolták, az elfek azokat a helyeket, amelyekhez vissza kellett térniük.
 
 A harmincezer adaghoz fákat kellett volna kivágni és földet feltörni. A ligetek megtartása viszont egyetlen zsák gabonát sem juttatott az északi raktárakba. A hadsereg már gyülekezett, miközben még nem volt megállapodás arról, hol húzódhatna a szántók határa.
 
-
-## A háború, amely már majdnem elkezdődött
+### A háború, amely már majdnem elkezdődött
 
 A Redgrass Plainen Aldric Vane marsall hadserege tizenegy napja állt. Ötvenhárom éves volt, és pontosan tudta, hogy ez a háború megnyerhető. Ez volt a legnagyobb baj vele. Egy elveszíthető háborútól könnyű visszalépni. Egy nyerhetőtől nem.
 
@@ -112,11 +107,9 @@ Vane tudta.
 
 A rossaneli kormányzó is tudta, hogy tavaly télen kilencszáz embert temetett el, köztük négyszázhúsz gyereket.
 
-
 Ilvenna a nyugati sarkantyút mutatta a térképen. Vane előtt ott feküdt a rossaneli halottakról érkezett jelentés. A hadparancs azon az éjszakán pecsét nélkül maradt.
 
 Másnap megérkeztek a lila égről szóló hírek. Vane ezután a menekítésre fordította a hadseregét. Az elmaradt támadásból nem derült ki, hogyan döntött volna, ha marad ideje háborút indítani.
-
 
 Ugyanezen a napon a Kadd Range-ben Borrim Kadd tárómester végigfuttatta hüvelykujját a keleti falon, és azt mondta:
 
@@ -140,8 +133,7 @@ Másnap már egészen mással kellett foglalkoznia.
 
 ---
 
-
-# II. The Rewrite
+## II. The Rewrite
 
 Negyed tizenegy volt.
 
@@ -169,15 +161,13 @@ A Gnome-ok nevezték el először The Rewrite-nak.
 
 A többi nép sokáig egyszerűen ködnek hívta. A név mégis megmaradt, mert túl pontos volt ahhoz, hogy bárki szeresse.
 
-## Amit The Rewrite tett
+### Amit The Rewrite tett
 
 The Rewrite nyolc nap múlva ért az első nagyvárosok közelébe.
-
 
 Naponta három mérföldet haladt, éjjel, nappal, esőben és szélben. Gyalog is el lehetett távolodni tőle, de amíg a menekülők pihentek, a köd tovább közeledett. Hegyek, folyók és a tenger sem állították meg.
 
 Egy jó hírnök lóháton napi tizenöt-húsz mérföldet tett meg. A hírek így megelőzték a ködöt, és a távolabbi településeken még maradt idő szekereket rakodni, embereket összegyűjteni.
-
 
 Ez adta meg mindenkinek azt a hetven napot, amely alatt egyáltalán történhetett bármi.
 
@@ -195,7 +185,7 @@ Ez volt a jó kimenetel.
 
 Mert nem mindenki fulladt meg.
 
-## Dorren Hale szabályai
+### Dorren Hale szabályai
 
 Dorren Hale tizenkét fős kutatócsoportot vezetett nyugatra. Minden ismert óvintézkedést megtettek. Mértek. Mintát vettek. Állatokat engedtek be, és hoztak ki. Semmit nem találtak, amitől egy ember okosabbnak érezhette volna magát.
 
@@ -214,7 +204,6 @@ A jobb szeme három órával később nyílt ki másodszor.
 Nem a szemhéja.
 
 A szeme.
-
 
 Hale tizenkilenc órán át diktált, amíg még beszélni tudott. A végén már nem emberi hangon, de a keze még felismerhető betűket írt.
 
@@ -237,8 +226,7 @@ A második szabályt senki nem akarta elhinni.
 
 Tizennégy nap múlva mindenki elhitte.
 
-
-## Négy város, négy válasz
+### Négy város, négy válasz
 
 Amikor a hírek elérték őket, a négy nép nem ugyanabban a teremben állt.
 
@@ -256,7 +244,7 @@ Fenwick Ollam ekkor küldte szét a legfurcsább gnome üzenetet, amelyet valaha
 
 > Nem tanácsot kérünk. Tanácsot hívunk.
 
-## A Tanács összehívása
+### A Tanács összehívása
 
 A találkozót nem palotában tartották, mert egyetlen palotának sem hittek többé. Nem is Dwarf-városban, mert Hurn Kadd tudta, hogy ha oda hívja a többieket, mindenki menedékkérésnek vagy csapdának fogja érteni.
 
@@ -266,11 +254,9 @@ Ezért volt alkalmas.
 
 A Tanács három napig vitázott. Az emberek utakat és szekereket követeltek. Az elfek időt kértek a ligetek kiürítésére. A Dwarfok kapacitásról beszéltek, és minden mondatuk úgy hangzott, mintha nemet mondanának. A Gnome-ok térképeket tettek az asztalra, aztán újabb térképeket, aztán olyan számításokat, amelyektől senki nem lett nyugodtabb.
 
-
 A harmadik éjszakán Hessa Vren kulcsra zárta az ajtót.
 
 > A menekülési utak megvannak a térképen. A végükön nincs elég hely. Egyik népnek sem. Mielőtt újra szétosztjuk a szekereket, nézzük meg azt az adatot is, amelyet eddig nem tettünk az asztalra.
-
 
 Hurn Kadd akkor nézett először Fenwick Ollamra úgy, mint aki inkább gyűlölné, ha volna rá ideje.
 
@@ -278,7 +264,7 @@ Fenwick nem szólalt meg.
 
 Odren Pell, a Lezárt Jegyzéki Levéltáros állt fel helyette, és letett az asztalra egy vasperemes tokot.
 
-## A Lezárt Jegyzék bűne
+### A Lezárt Jegyzék bűne
 
 A Gnome-ok és a Dwarfok százharminckilenc évig titkoltak valamit.
 
@@ -304,7 +290,6 @@ Az igazi ok azonban a tokban lévő dokumentum volt.
 
 Nem térkép, nem jóslat, nem ima. Műszaki jegyzék, hiányosan, idegen jelölésekkel, de elég érthető részekkel ahhoz, hogy mindenki megértse: a Kristály köré burkot lehet emelni. Nem világot megmentő csodát. Nem végtelen menedéket. Hanem egy határolt teret, amelyen The Rewrite talán nem jut át.
 
-
 A későbbi vitákban háromféleképpen próbálták megérteni a Kristályt.
 
 Voltak, akik kulcsnak nevezték, mert megnyitott egy védelmi állapotot.
@@ -316,21 +301,13 @@ Voltak, akik adósságnak nevezték, mert minden nagy használata után maradt v
 > Nem nekünk készült.  
 > Csak hozzáfértünk.
 
-
 A menekülőknek ezt az ismeretlen rendszert kellett használatba venniük, mielőtt megérthették volna.
 
-
-
-
-
 A dokumentum kőbontást, mérést, finom felületi megmunkálást és nagy mennyiségű élő manát követelt. Az ehhez szükséges műhelyek és emberek a négy nép között oszlottak meg.
-
-
 
 Odren Pell hangja nem remegett, amikor elmondta, miért temették vissza.
 
 > Mert nem tudtuk, mire való. Csak azt tudtuk, mire használnák.
-
 
 Ez csak a nyilvános mondat volt.
 
@@ -354,7 +331,6 @@ Nem azért, mert biztosan tudták, hogy gonosz.
 
 Hanem mert nem tudták bizonyítani, hogy nem az.
 
-
 Fenwick Ollam neve akkor még nem szerepelt a Lezárt Jegyzék őrzői között.
 
 Ő nem a régi titkot olvasta ki a kőből.
@@ -365,16 +341,15 @@ Ezért hallgatták meg.
 
 És ezért féltek tőle.
 
-
-
 Senki nem bocsátott meg nekik azon az éjszakán.
 
 De senki nem állt fel az asztaltól.
 
-# III. Négy kéz
+---
 
+## III. Négy kéz
 
-## A Kristály munkálatai
+### A Kristály munkálatai
 
 A Kadd Range kapui közben megnyíltak a menekülők előtt. Nem azért, mert a Dwarfok nagylelkűbbek lettek, hanem mert Hurn Kadd kiszámolta, hogy zárt kapuk mögött is csak halott király maradhat. A hegy ideiglenes menedéket adhatott, de megoldást nem.
 
@@ -408,8 +383,7 @@ A túlélők nevét külön iratban őrizték meg.
 
 A halottakét kőbe vésték.
 
-
-## A burok és a Kapu
+### A burok és a Kapu
 
 A Kristály felizzott.
 
@@ -447,16 +421,13 @@ Hanem mert úgy nézett ki.
 
 ---
 
-# IV. A zöld túloldal
+## IV. A zöld túloldal
 
 Az első százhúsz nap Brink Valleyben nem béke volt. Zsúfoltság, éhezés, sátorváros, viták, fanyilvántartás, karantén, halott mágusok nevei és egy halványkék keret, amelyről senki nem tudta, micsoda.
 
-## A Kapu próbái
-
-
+### A Kapu próbái
 
 Az átkelés előtt próbáknak vetették alá a keretet.
-
 
 | Próba | Eredmény |
 | --- | --- |
@@ -466,7 +437,7 @@ Az átkelés előtt próbáknak vetették alá a keretet.
 | Állatot vezettek oda | Egyetlen állat sem ment be önként. |
 | Birkát belöktek | Eltűnt, négy nap múlva visszajött sértetlenül, ismeretlen bogánccsal a gyapjában. |
 
-## Az első átkelés
+### Az első átkelés
 
 A felderítőcsapat tizenkét fő volt: négy ember, három Dwarf, három elf, két Gnome.
 
@@ -478,23 +449,17 @@ A három hiányzó nem meghalt. Maradt.
 
 Ketten emberek voltak.
 
-
 A harmadik Loeran.
 
 Loeran a Thaelwood pereméről jött, azok közül az elfek közül, akik már Aethelgardon is közelebb éltek az emberek útjaihoz, mint az Öreg-erdő belső ligeteihez. Az első átkelés hetedik napján azt mondta a visszatérőknek, hogy nem megy vissza a burok alá.
 
-
 Egyetlen dolgot kért:
-
 
 > Ha itt élünk majd, adjatok nekem egy fát.
 
 Az emberek először nem értették. A Gnome-ok felírták. A Dwarfok vállat vontak. Az elfek viszont értették, és ezért a mondat később nagyobb lett, mint Loeran maga.
 
-
-
 Odaát napfény fogadta őket, kék ég és tiszta levegő. A fű között patak futott, az erdőben madarak és rovarok éltek, a tisztáson szarvascsapat legelt.
-
 
 És semmi értelmes élet nyoma.
 
@@ -508,7 +473,7 @@ Ez nem ajándéknak érződött.
 
 Hanem gyanúnak.
 
-## Elysia neve
+### Elysia neve
 
 Az első aratás két és félszer annyit adott, mint a legjobb aethelgardi fekete föld.
 
@@ -532,11 +497,9 @@ Régi temetési formulából: a mezők, ahol nincs tél.
 
 Először keserű vicc volt. Aztán hivatalos név. Az elfek nem szerették, mert ők komolyan veszik, hol vannak a halottaik. A Gnome-ok nem használták; náluk a világ továbbra is sorszám maradt.
 
-
 A térképek fejlécén így két megnevezés maradt ugyanarra a vidékre: a telepeseké és a felmérőké. Arról egyik sem mondott semmit, mi lehet a határain túl.
 
-
-## A Perem
+### A Perem
 
 A hatodik hónapban négy felmérőcsapat indult ki, hogy megállapítsák, mekkora Elysia.
 
@@ -571,14 +534,11 @@ A világ, ahová menekültek, ködbe volt csomagolva.
 
 Fenwick nem hitt a költői egybeesésekben.
 
-## A világ kijavítja magát
-
+### A világ kijavítja magát
 
 Coll Marn vadász lőtt egy őzsutát. A bal füle félig hiányzott, régi sérülés.
 
-
 Tizenkilenc nappal később ugyanazon a tisztáson egy ugyanúgy félfülű sutát látott. A régi sérülés alapján a korábban elejtett állatot vélte felismerni.
-
 
 Nem szólt senkinek két hétig.
 
@@ -588,7 +548,6 @@ Aztán elment a Gnome-okhoz, és azt mondta:
 
 A Gnome-ok tizennégy hónapig vizsgálták.
 
-
 Az elejtett állatok helyén újra állatok jelentek meg. Ugyanazokat a tisztásokat járták, és némelyiken a korábbi egyed sérülését is felismerték. A megfigyelők feljegyezték az egyezéseket, de ezekből még nem tudták eldönteni, mi tért vissza.
 
 Fenwick a jelentésben különválasztotta a látottakat a magyarázatától:
@@ -596,7 +555,6 @@ Fenwick a jelentésben különválasztotta a látottakat a magyarázatától:
 > A hiányzó állatok helye újra benépesül. Azt feltételezem, hogy Elysia az üresen maradt helyeket tölti ki. Az ismétlődő sérüléseket ez önmagában nem magyarázza. A fél fül alapján nem tudom bizonyítani, hogy ugyanaz az egyed tért vissza; azt sem, hogy másik.
 
 A vadászoknak ettől még el kellett dönteniük, mikor induljanak újra útnak. A visszatérés helyét és idejét akkor is érdemes volt feljegyezni, ha az okát nem értették.
-
 
 Ezért a vadászat egy ideig végtelennek tűnt.
 
@@ -606,24 +564,17 @@ Elysia állatai nem szaporodtak, nem neveltek új nemzedékeket. Az elejtett őz
 
 Fenwick ezt a jelenséget a szerepek pótlásával magyarázta: szerinte a világ a völgyből hiányzó őzet vagy a patakpartról hiányzó farkast állította vissza. A megfigyelésekből a vadászok megtanulhatták, hol és mennyi idő után várjanak ismét zsákmányt. Arról azonban továbbra sem tudtak bizonyosat, miért ismétlődnek még az állatok régi sérülései is.
 
-
-
-
 A vadászat tartós élelemforrást adott, de egyetlen nap alatt nem lehetett tetszőleges mennyiségű húst hazavinni. Elysia nem azonnal pótolt: az elejtett állat helye napokig vagy hetekig üres maradhatott. Egy völgyben attól sem jelent meg több vad, hogy több vadász várta a visszatérését.
 
 Az ismételten levadászott tisztások később ugyanúgy benépesültek. A vadászat nem szegényítette el tartósan a vidéket, és az állatok visszatéréséhez nem kellett másikat odahajtani. Aki túl hamar indult ugyanarra a körre, üres kézzel jöhetett haza; aki kivárta az újabb megjelenést, ismét talált zsákmányt.
 
 A napi ellátást a bejárható terület, a visszatérés ideje és a hazaszállítható hús mennyisége korlátozta. A gabonaföldekre továbbra is szükség volt.
 
-
-
-
 Aztán valaki megkérdezte:
 
 > És ha az őz visszajön, akkor az uram miért nem?
 
 Fenwick a nyilvános jelentésben csak ezt írta:
-
 
 > Elysia azokat pótolja, akik a világ mintájához tartoznak.  
 > Mi nem tartozunk hozzá.
@@ -632,12 +583,9 @@ A Lezárt Jegyzékbe viszont odaírta a félelmét:
 
 > Ez ment meg minket. Vagy csak kívül tart.
 
-
-
 ---
 
-# V. Az új világ ára
-
+## V. Az új világ ára
 
 Az első év jó volt.
 
@@ -648,7 +596,6 @@ Point One várossá nőtt. Nyolc további település épült. Az Egyezmény mű
 A négy nép nem olvadt össze.
 
 De a határok repedezni kezdtek.
-
 
 Point One első terén Loeran fája állt.
 
@@ -661,7 +608,6 @@ Nem kőből.
 Nem könyvből.
 
 Egy fából.
-
 
 Elysia nem paradicsom volt, de annak látszott azoknak, akik hónapokig kő alatt éltek. Volt ég. Volt víz. Volt föld, amely engedte magát felszántani. Volt fa, amely nőtt. Voltak állatok, amelyek visszatértek, ha eltűntek. És ami a legveszélyesebb: volt idő elhinni, hogy a menekülés véget ért.
 
@@ -677,7 +623,7 @@ A második a karbantartott világ.
 
 A harmadik még nem mutatta meg a nevét.
 
-## A tisztás
+### A tisztás
 
 A tizenharmadik hónapban Hessa Vren elővette az első felderítő jelentés utolsó oldalát.
 
@@ -712,8 +658,7 @@ Egy letakart kordét hoztak.
 
 A ponyva alatt egy farkas volt.
 
-
-## A Rewrite Field
+### A Rewrite Field
 
 A farkas boncolása megváltoztatta Elysia értelmét.
 
@@ -747,9 +692,7 @@ A Gnome-ok három nap múlva már mérni tudták.
 
 Nem úgy, ahogy a ködöt mérték Aethelgardon. Nem sűrűséget, nem részecskét, nem mérgező párát. A műszereik ugyanazt a furcsa eltérést mutatták, amelyet Dorren Hale jegyzetei után a Rewrite ködéhez kötöttek: az élő szövetek körül megváltozott a mana válasza, mintha a test nem ugyanarra a kérdésre felelne, mint előtte.
 
-
 Hessa Vren nevezte el Rewrite Fieldnek:
-
 
 > Ez nem hasonlít The Rewrite-ra.  
 > Ez The Rewrite.  
@@ -764,11 +707,9 @@ Fenwick megfogalmazása pontosabb volt:
 
 Az állatok viselkedése hamarabb változott, mint a testük. Nyugtalanok lettek, elkerültek helyeket, aztán agresszívek, aztán mások.
 
-
 A Rewrite Field Elysia saját élőlényeit változtatta meg. Az emberek, elfek, Dwarfok és Gnome-ok nem tartoztak a világ által fenntartott mintákhoz, és nem alakultak át ugyanígy.
 
-
-## Nem két erő
+### Nem két erő
 
 Fenwick felismerése:
 
@@ -780,12 +721,9 @@ Fenwick felismerése:
 > Mindkettő azt csinálja, hogy megmondja egy élőlényről, mi az, és az élőlény azzá válik.  
 > Csak nem tudjuk, ki mondja meg neki, mit írjon.
 
-
 A felmérők ezután a kelet felé erősödő változásokat vetették össze.
 
-
-## A Rewrite Field térképe
-
+### A Rewrite Field térképe
 
 A Rewrite Field nem levegőben terjedt, nem vízben és nem szélben.
 
@@ -807,9 +745,6 @@ Nem azért, mert pontosan értették.
 
 Azért, mert kellett rá egy szám, különben a tanács nem hitt neki.
 
-
-
-
 Hessa Vren két külön adatot kért a felmérőktől:
 
 | Adat | Mit jegyeztek fel? | Miért számított? |
@@ -818,9 +753,6 @@ Hessa Vren két külön adatot kért a felmérőktől:
 | Egyedi kitettség | Mennyi időt töltött az adott lény a mezőben, és mely területeket járta be | Ugyanazon a helyen sem feltétlenül tartott ugyanott két állat átalakulása. |
 
 Az erősebb mezőben hamarabb jelentkeztek a változás jelei. A vadászat megszakíthatta egy lény hosszú kitettségét, de a helyen mért Field Saturationt nem csökkentette. Az újra megjelenő állatokra ugyanaz a környezeti hatás várt.
-
-
-
 
 A vadászok viszont előbb értették meg, mint a tanács.
 
@@ -836,9 +768,7 @@ Először a viselkedésük változott meg.
 
 Aztán a bőrük.
 
-
 Végül a testük annyira eltorzult, hogy alig lehetett felismerni őket.
-
 
 A végén már nem farkas volt ott, amely rossz helyen élt túl sokáig.
 
@@ -848,11 +778,9 @@ Nem a Rewrite Field mászott nyugat felé.
 
 A Rewritten lények jöttek.
 
-
 Elysia közben tovább pótolta az elejtett állatokat. A vadászoknak vissza kellett járniuk: az újra benépesült területeken ismét megkezdődött a lények kitettsége. A keleti, erősebb mezőben rövidebb idő maradt két bejárás között, nyugaton pedig a keletről érkező Rewritten lényeket is figyelni kellett.
 
 Egy állat átírt állapota attól sem szűnt meg, hogy gyengébb mezőbe jutott. Így olyan vidéken is megjelenhetett, ahol a helyi állatok még egészségesek voltak.
-
 
 Ezért a térkép nem körökből állt.
 
@@ -875,7 +803,6 @@ Egy farkasnak nem.
 A fal nem a Rewrite Fieldet zárta ki.
 
 A fal őket zárta ki.
-
 
 Az első igazi riadót nem Point One-ban fújták meg, hanem Elysia keleti őrhelyén, a Harmadik Cölöpnél.
 
@@ -901,8 +828,7 @@ A többiek átértek Brink Valleybe, mielőtt az első Rewritten falka elérte v
 
 Így volt idő bezárni a Kapu körüli teret.
 
-## A költségvetési hiba
-
+### A költségvetési hiba
 
 Az első két évben a vadászok messze kijártak. Nem azért, hogy mindent megöljenek, ami mozog. Azért, hogy semmi ne maradjon túl sokáig rossz helyen.
 
@@ -912,9 +838,7 @@ Nem földrajzi határt.
 
 Időhatárt.
 
-
 A rendszeres vadászat miatt kevesebb ragadozó és kóborló lény maradt életben olyan hosszú ideig az erős mezőben, hogy végigmenjen rajta az átalakulás.
-
 
 Ha magukra hagyták őket, a vidék nem azonnal veszett el.
 
@@ -923,7 +847,6 @@ Ez volt benne a kegyetlen.
 Várt.
 
 Aztán egyszer csak már nem ugyanazok az állatok jártak ott.
-
 
 A tanács csak annyit látott, hogy a vadászdíjak sokba kerülnek.
 
@@ -952,13 +875,9 @@ Hessa Vren későbbi számítása:
 > Kiszámoltam, mennyibe került volna megállítani. Évi négyezer ezüst.  
 > Ma reggelig hatezer-négyszáz embert költöztettünk el a keleti falvakból.
 
-
-
 ---
 
-# VI. A második Kapu
-
-
+## VI. A második Kapu
 
 A tanács a harmincnegyedik hónapban döntött.
 
@@ -968,11 +887,9 @@ A csapat kétszáznegyven fős volt: emberi katonák, elf íjászok, Dwarf-pajzs
 
 Ez volt a legnagyobb fegyveres erő, amelyet a négy nép valaha együtt kiállított.
 
-
 A forrást azonban még nem derítették fel. A fegyvereseknek útközben kellett megtudniuk, mivel állnak szemben, és honnan marad lehetőségük visszavonulni.
 
-
-## A menet
+### A menet
 
 Tizenkilenc napig mentek kelet felé.
 
@@ -1011,7 +928,7 @@ Nyitva.
 
 A Kapu előtt pedig állt valami.
 
-## Az őr
+### Az őr
 
 Saelin Reth később azt mondta, hogy a szörnyet nem akkor értette meg, amikor meglátta.
 
@@ -1110,7 +1027,7 @@ Vér nélkül.
 
 És olyan csendben, hogy három napig senki nem tudta eldönteni, él-e még teljesen.
 
-## Az év vége
+### Az év vége
 
 A harmincötödik hónap végén Elysia mérlege:
 
@@ -1132,12 +1049,9 @@ Fenwick Ollam ekkor írta:
 > A második legkevésbé valószínű az, hogy nekünk készült.  
 > A legvalószínűbb pedig az, amire nem szívesen gondolok: hogy ez már régóta így áll, és mi csak most sétáltunk bele.
 
-
-
 ---
 
-# VII. A Kalandorok kora
-
+## VII. A Kalandorok kora
 
 A keleti menet elvesztése után a tanács még nyolc hónapig próbálta megtartani Elysiát.
 
@@ -1155,7 +1069,7 @@ De nem mentek ki a vonalon túlra. Nem gyávaságból. Nem volt kivel. Kétszáz
 
 A vonal túloldalán a világ tovább festette magát.
 
-## A kiürítés
+### A kiürítés
 
 A tanács a negyvennegyedik hónapban szavazott.
 
@@ -1177,7 +1091,6 @@ Nem azért, mert bárki hallotta.
 
 Hanem hogy ne maradjon félbe.
 
-
 Loeran fájánál álltak meg utoljára.
 
 A fa addigra már magasabb volt egy embernél, de még nem volt elég idős ahhoz, hogy árnyékot adjon. Loeran nem akarta kivágni. Nem akarta átültetni. Azt mondta, egy emlék nem attól él, hogy magaddal hurcolod, hanem attól, hogy van hová visszatérned.
@@ -1194,8 +1107,7 @@ Az elfek mégis sírt adtak neki: egy alacsony követ a fa gyökerénél, név n
 
 Csak utána volt illendő kérdezni tőle bármit.
 
-
-## A Szűk Év
+### A Szűk Év
 
 Brink Valleyben tizenkétezren haltak meg.
 
@@ -1205,9 +1117,7 @@ Nem járványban.
 
 Abban, hogy a völgy kicsi.
 
-
 A Szűk Év nem egyetlen hosszú éhezés volt, hanem elosztási háború, amelyet senki nem mert háborúnak nevezni.
-
 
 Volt, aki teljes adagot kapott, mert dolgoznia kellett: kapuőr, vízhordó, kovács, gyógyító, csatornatisztító, magőrző.
 
@@ -1221,9 +1131,7 @@ A Ledger első lapjai nem földről szóltak.
 
 Ki dolgozott. Ki állt sorban. Ki kapott lisztet. Ki tartozott vissza. Ki halt meg úgy, hogy a nevét még le kellett húzni a következő heti adaglistáról.
 
-
 Brink Valleyben mindent feléltek, amit nem kellett feltétlenül életben hagyni.
-
 
 Elysia raktáraiból gabonát hoztak át a kiürítés első napjaiban. Point One malmaiból lisztet. A vadászoktól füstölt húst.
 
@@ -1235,8 +1143,6 @@ Ekkor lett a visszatérés nem remény.
 
 Kényszer.
 
-
-
 Két dolog mentett meg annyit, amennyit meg lehetett menteni.
 
 Az első a fa volt.
@@ -1247,12 +1153,9 @@ Nem teljes erdő nőtt belőle, hanem éppen elég alacsony szintű anyag ahhoz,
 
 A második az Egyezmény volt.
 
-
 A négy évvel korábbi Nyílt Mesterségek Egyezménye minden nép előtt megnyitotta a mesterségek tanulását. A Szűk Évben a hatvanegy Dwarf kovács helyett már közel ezernégyszáz, különböző népekből származó kovács dolgozhatott.
 
-
-## Ami kijött a Kapun
-
+### Ami kijött a Kapun
 
 A Szűk Év tizenharmadik hónapjában nem Rewritten Wolf lépett ki először a Kapun.
 
@@ -1264,17 +1167,13 @@ A harmadikat vonszolva.
 
 Ők voltak az Utolsó Cölöp őrségének maradéka.
 
-
 Elysia kiürítése után is hagytak odakint őrhelyeket. Nem azért, mert bárki azt hitte, hogy meg tudják tartani a világot, hanem mert valakinek figyelnie kellett, mi történik a Kapu másik oldalán.
-
 
 Az első cölöpöket még a menekülés napján állították fel. Három nappal később leváltották az ott maradt őröket; az őrhelyet ezután is váltásokkal tartották fenn.
 
 Ezt hívták később Utolsó Cölöpnek. Point One nyugati peremén állt, látótávolságra a Kaputól, egy raktárból, egy jelzőtoronyból és három egymás mögé húzott palánkból.
 
 A Szűk Év tizenharmadik hónapjában szolgáló őrség látta meg a közeledő lényeket.
-
-
 
 Aztán a keleti út egyszerre megtelt mozgással.
 
@@ -1290,9 +1189,7 @@ Felgyújtották a tornyot.
 
 A jelzőfény Brink Valleyből is látszott a Kapu kék felületén át, torzan és remegve, mintha víz alatt égne.
 
-
 A jelzés és az első Rewritten lény átkelése között tizenkilenc perc telt el. Kiürítették a teret, elvitték a gyermekeket, és a Kapu elé felsorakoztak a pajzsosok. Ilvenna Corr kiadta a parancsot:
-
 
 > Senki nem lép hátra a kék fény elől.
 
@@ -1310,9 +1207,7 @@ Beric Hallen egyetlen kérdése döntött:
 
 > Ha befalazzuk, akkor mit eszünk?
 
-
 A befalazott Kapu a szántóföldjeiktől is elvágta volna őket.
-
 
 A Dwarfok tizenhét nap alatt felépítették a kapuzsilipet, amelyet mindenki csak Doboznak hívott: szűkülő kőfalak, ledobható rácsok, felül lándzsaállások. Aki átjön, egy tizenegy lépés hosszú, két lépés széles kőládába érkezik.
 
@@ -1320,8 +1215,7 @@ Ettől a Kapu-őrség nem lett biztonságos.
 
 Csak többé nem civilek közé nyílt.
 
-
-## Nincs hova
+### Nincs hova
 
 A hetedik napon egy fiatal emberi tiszt, Cabel Roe, felállt, és feltette azt a kérdést, amelyre nem volt válasz:
 
@@ -1341,7 +1235,7 @@ Beric Hallen válasza:
 
 Hessa Vren mellé tette az ellátási számítást: Brink Valley művelhető földje nem volt elegendő. Vissza kellett jutniuk Elysia szántóira, és még a vetés idején meg kellett tartaniuk az odavezető utat.
 
-## A visszatérés
+### A visszatérés
 
 Négyszáztizenkét fegyveres ment át egy tavaszi reggelen, hogy visszafoglalják a saját elhagyott városukat, és megtartsanak belőle annyit, amennyin vetni lehet.
 
@@ -1401,11 +1295,7 @@ Hessa a Point One körül végzett munka alapján készített becslést:
 
 > Ezzel az ütemmel körülbelül négyszáz fő és három év kellene Elysia megtisztításához. Ez csak akkor áll, ha a keleti területeken is ugyanígy tudunk dolgozni. A forrástól távol mértünk; odabent még nem tudjuk, mire lesz elég négyszáz ember. A megtisztított részek fenntartására mindenesetre évente újra munkaerőt kell számolnunk, amíg a forrás működik.
 
-
----
-
-
-## A régi új szakma
+### A régi új szakma
 
 A Kapu, Point One és az odavezető utak őrzése felőrölte a megmaradt fegyveres erőt. A hivatásos katonaságnak nem maradt elég embere ahhoz, hogy minden távoli vadászterületre, patakpartra, elhagyott gazdasághoz és veszélyessé vált útszakaszhoz külön járőrt küldjön.
 
@@ -1477,8 +1367,7 @@ Előőrsök.
 
 Így lett a régi világ egyik legkevésbé nélkülözhetetlen szakmájából Brink Valley egyik legfontosabbja.
 
-
-## Saelin Reth leckéi: A Kalandorügyi Felügyelő útmutatása
+### Saelin Reth leckéi: A Kalandorügyi Felügyelő útmutatása
 
 Saelin Reth neve sokáig a gyávaság szinonimája volt Brink Valleyben.
 
@@ -1524,7 +1413,7 @@ Nem hivatalos szabályok.
 
 Saelin leckéi.
 
-### Első lecke: A visszavonulás nem szégyen, hanem taktika.
+#### Első lecke: A visszavonulás nem szégyen, hanem taktika.
 
 > A halott hősök nem védik meg a völgyet.
 
@@ -1540,7 +1429,7 @@ A vakmerőség nem erény.
 
 Csak az élők próbálkozhatnak újra holnap.
 
-### Második lecke: A tudás az igazi pajzs.
+#### Második lecke: A tudás az igazi pajzs.
 
 > Ha nem tudod, mi van előtted, előbb nézd meg. Utána döntsd el, meg akarod-e ölni.
 
@@ -1564,7 +1453,7 @@ Azt, hogy hol fordultak vissza.
 
 Egy rossz hír, amely időben hazaér, többet érhet egy jó hírnél, amelyet senki nem hozott vissza.
 
-### Harmadik lecke: Tudd, mit kell hazahozni.
+#### Harmadik lecke: Tudd, mit kell hazahozni.
 
 Saelin minden életet értékesnek tart.
 
@@ -1588,7 +1477,7 @@ Néha egy térképért.
 
 És néha az a helyes döntés, hogy semmiért.
 
-### Negyedik lecke: Mindig legyen visszaút.
+#### Negyedik lecke: Mindig legyen visszaút.
 
 > Egy útvonal nem biztonságos. Legfeljebb tegnap az volt.
 
@@ -1610,7 +1499,7 @@ Csak időt ad rá.
 
 Saelin szerint ez általában elég ok arra, hogy legyen kettő.
 
-### Ötödik lecke: Nem minden jelentésnek ugyanaz az útja.
+#### Ötödik lecke: Nem minden jelentésnek ugyanaz az útja.
 
 Ezt Saelin ritkán mondja el hangosan.
 
@@ -1634,8 +1523,7 @@ Ennél többet ritkán tesz hozzá.
 
 A legtöbb kalandor egy idő után megtanulja, hogy ne kérdezze meg másodszor.
 
-
-## A kerülő
+### A kerülő
 
 Coll Marn egyik csapata eleinte ugyanazért a munkáért járt vissza a Point One környéki földekre. Megtisztították a szekérutat, kikísérték a földműveseket, aztán a megrakott szekerekkel visszatértek a városba. Mire újra rájuk került a sor, az út melletti mélyedésben megint állatok mozogtak. A keletről érkező lényeket a magas part mögül sokszor csak akkor vették észre, amikor a szekerek már lent jártak.
 
@@ -1669,8 +1557,7 @@ Amikor Coll csapata máshová indult, egy másik csapat kapta meg a szállítás
 
 A kerülőt később is járőrözni kellett. Eső után ellenőrizték a patakpartot, az újra megjelenő állatokat feljegyezték, a Rewritten lényeket eltávolították. A lerakott kövek, a kitisztított árkok és a fordulóhelyek azonban megmaradtak. A következő megbízásnál már ezekről az alapokról indultak, és a felszabaduló kísérők közben egy másik szállítmány mellett dolgozhattak.
 
-
-## A Ledger és a Kristály Rendje
+### A Ledger és a Kristály Rendje
 
 A Szűk Év után Brink Valley már nem ugyanúgy működött, mint előtte.
 
@@ -1690,7 +1577,7 @@ A Ledger.
 
 És a Kristály Rendje.
 
-### A Ledger: A túlélés matematikája
+#### A Ledger: A túlélés matematikája
 
 A Ledger eredetileg nem hatalomnak készült.
 
@@ -1746,7 +1633,7 @@ Csak azt, hogy egy adott megbízás mennyi veszteséget bír el.
 
 A különbség főleg annak fontos, akit kiküldenek.
 
-### A Kristály Rendje: Az intézményesített óvatosság
+#### A Kristály Rendje: Az intézményesített óvatosság
 
 A Ledger azt számolja, amit Brink Valley elveszíthet.
 
@@ -1794,7 +1681,7 @@ Senki nem tudja biztosan, mi történne, ha valaki hibázna.
 
 És senki nem akar az lenni, aki ezt kideríti.
 
-### A Lezárt Jegyzék
+#### A Lezárt Jegyzék
 
 A Lezárt Jegyzék régebbi mindkét intézménynél.
 
@@ -1818,7 +1705,7 @@ Kevesen szeretik ezt a rendszert.
 
 Még kevesebben merik kipróbálni, milyen lenne nélküle.
 
-### Két intézmény, egy völgy
+#### Két intézmény, egy völgy
 
 A Ledger és a Kristály Rendje nem ugyanazt akarja.
 
@@ -1854,18 +1741,13 @@ A legtöbben megtanulták, melyik ajtón mikor érdemes kopogni.
 
 És melyiken nem.
 
-
-## A hat megőrzött hang
-
+### A hat megőrzött hang
 
 A későbbi nemzedékek a hat megőrzött hang történeteivel adták tovább a pusztulás és a Kalandorok korának emlékét.
 
-
 Nem minden mondat maradt fenn szó szerint. Némelyiket naplóból vették, némelyiket tanúk ismételték, némelyiket annyiszor mondták újra, hogy már nem lehetett tudni, hol végződik a jegyzőkönyv és hol kezdődik az emlékezet.
 
-
 A hat történetben döntések, vallomások és félbemaradt szándékok maradtak fenn. Vane pecsét nélküli hadparancsát később a háborúról való lemondás példájaként mondták tovább. A fennmaradt történet azonban csak a halasztást és az azt követő menekítést őrizte meg.
-
 
 | Hang | Kihez kötődik | Mit őriz |
 | --- | --- | --- |
@@ -1876,12 +1758,9 @@ A hat történetben döntések, vallomások és félbemaradt szándékok maradta
 | A záródó kőkapu | Saelin Reth | A kalandorok első törvényét: a hír néha többet ér, mint a hősi halál. |
 | A befalazott Kapu kérdése | Beric Hallen és Cabel Roe | A túlélés legkegyetlenebb egyszerűségét: nincs tovább, és mégis enni kell. |
 
-
 Aki ma kalandornak áll, legalább egyet hall ezek közül.
 
-
-
-## A Kalandorok indulása
+### A Kalandorok indulása
 
 Brink Valley ma is a burok alatt áll.
 
@@ -1991,7 +1870,7 @@ Hanem hogy holnap is legyen világ.
 
 ---
 
-# VIII. Tizenkét évvel később
+## VIII. Tizenkét évvel később
 
 Tizenkét év telt el.
 
@@ -2003,7 +1882,7 @@ Az már nincs.
 
 De élet.
 
-## Brink Valley
+### Brink Valley
 
 Ahol egykor sátorváros állt, ma házak sorakoznak.
 
@@ -2061,7 +1940,7 @@ A Szűk Év túlélői közül néhányan még mindig rossz szemmel nézik a fel
 
 A fiatalabbak kevésbé.
 
-### Az erdő
+#### Az erdő
 
 A völgy egyik oldalán ma már valódi erdő áll.
 
@@ -2099,7 +1978,7 @@ De lehet benne elveszni egy órára.
 
 Brink Valleyben ez is luxus.
 
-### A város
+#### A város
 
 A négy nép régi negyedeinek nyomai továbbra is felismerhetők.
 
@@ -2135,7 +2014,7 @@ A legtöbben már nem néznek fel rá minden reggel.
 
 Ez talán nagyobb változás, mint bármelyik új ház.
 
-### A Kapu
+#### A Kapu
 
 A Kapu környéke más maradt.
 
@@ -2169,7 +2048,7 @@ Ezért könnyű elfelejteni, miért épült oda a Doboz.
 
 Az őrség dolga, hogy ne felejtse el.
 
-## Elysia
+### Elysia
 
 A Kapu túloldala is megváltozott.
 
@@ -2191,7 +2070,7 @@ A településnek új neve van.
 
 **Loeran’s Rest.**
 
-### Loeran fája
+#### Loeran fája
 
 A város főterének közepén áll Loeran fája.
 
@@ -2257,7 +2136,7 @@ A fa maradt.
 
 Később a város kapta meg az ő nevét.
 
-### Loeran’s Rest
+#### Loeran’s Rest
 
 Loeran’s Rest alig töredéke annak a városnak, amely egykor Point One helyén állt.
 
@@ -2303,7 +2182,7 @@ De lassan.
 
 Mindig csak annyival, amennyit meg tudnak tartani.
 
-### A régi Point One
+#### A régi Point One
 
 Ha valaki kelet felé indul Loeran’s Rest főteréről, hamar észreveszi, hol ér véget az új település.
 
@@ -2355,7 +2234,7 @@ Másokat csak térképen jelölnek.
 
 És vannak olyanok is, amelyekhez tizenkét éve senki nem ment vissza.
 
-## A két oldal
+### A két oldal
 
 Brink Valley gazdag.
 
@@ -2401,7 +2280,7 @@ Ez azonban nem jelenti azt, hogy Brink Valley biztonságban van.
 
 Csak azt, hogy tizenkét éve nem veszített.
 
-## Ami nem változott
+### Ami nem változott
 
 The Rewrite még mindig ott van a burkon túl.
 
@@ -2433,7 +2312,7 @@ Aki azt mondja, hogy igen, attól megkérdezi:
 
 Tizenkét év alatt ez sem változott.
 
-## A jelen
+### A jelen
 
 A régi világ halott.
 

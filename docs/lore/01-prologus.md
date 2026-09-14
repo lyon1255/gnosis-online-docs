@@ -1,10 +1,3 @@
-# Gnosis Online — A világ lore-ja
-
-**Első könyv — Előzmény**  
-*Verzió: 0.12*
-
----
-
 ## I. Az utolsó békés nap
 
 Ez a világ nem haldoklott.

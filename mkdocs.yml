@@ -47,3 +47,8 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
+
+copyright: "© 2026 Gnosis Online"
+
+extra:
+  generator: false

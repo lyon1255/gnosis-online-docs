@@ -26,6 +26,16 @@
 
   --gnosis-blue: #6ba8ff;
   --gnosis-blue-soft: rgba(107, 168, 255, 0.10);
+
+  --gnosis-gradient: linear-gradient(
+    90deg,
+    #8b5cf6 0%,
+    #a78bfa 20%,
+    #c084fc 40%,
+    #d8b4fe 60%,
+    #e9d5ff 80%,
+    #ffffff 100%
+  );
 }
 
 
@@ -82,15 +92,36 @@ body {
    --------------------------------------------------------- */
 
 .md-header {
-  background: rgba(0, 0, 0, 0.95);
-  border-bottom: 1px solid var(--gnosis-border);
-  box-shadow: none;
+  background: rgba(0, 0, 0, 0.96);
+  border-bottom: 1px solid rgba(147, 104, 255, 0.18);
+
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.025),
+    0 8px 28px rgba(89, 56, 170, 0.08);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .md-header__title {
   color: #ffffff;
   font-weight: 700;
   letter-spacing: 0.03em;
+}
+
+/* GNOSIS ONLINE - gradient brand title */
+.md-header__title .md-header__topic:first-child .md-ellipsis {
+  display: inline-block;
+
+  background: var(--gnosis-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  font-weight: 800;
+  letter-spacing: 0.045em;
+
+  filter: drop-shadow(0 0 10px rgba(147, 104, 255, 0.16));
 }
 
 .md-tabs {
@@ -164,11 +195,7 @@ body {
   width: 90px;
   height: 2px;
 
-  background: linear-gradient(
-    90deg,
-    var(--gnosis-purple),
-    var(--gnosis-blue)
-  );
+  background: var(--gnosis-gradient);
 }
 
 
@@ -295,7 +322,24 @@ body {
   font-style: italic;
 
   box-shadow:
-    inset 12px 0 30px rgba(147, 104, 255, 0.025);
+    inset 12px 0 30px rgba(147, 104, 255, 0.025),
+    0 10px 35px rgba(0, 0, 0, 0.12);
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.md-typeset blockquote:hover {
+  transform: translateX(2px);
+
+  background: linear-gradient(
+    90deg,
+    rgba(147, 104, 255, 0.14),
+    rgba(147, 104, 255, 0.045) 55%,
+    transparent 100%
+  );
 }
 
 
@@ -303,17 +347,10 @@ body {
 .md-typeset blockquote p {
   margin: 0.35rem 0;
 
-  background: linear-gradient(
-    90deg,
-    #9368ff 0%,
-    #b79cff 30%,
-    #ddd4ff 60%,
-    #ffffff 100%
-  );
+  background: var(--gnosis-gradient);
 
   -webkit-background-clip: text;
   background-clip: text;
-
   -webkit-text-fill-color: transparent;
 
   color: #ffffff;
@@ -443,8 +480,11 @@ body {
 }
 
 .md-nav__link--active {
-  color: var(--gnosis-purple) !important;
+  color: #d8c9ff !important;
   font-weight: 650;
+
+  text-shadow:
+    0 0 14px rgba(147, 104, 255, 0.26);
 }
 
 
@@ -506,6 +546,14 @@ body {
 
 .md-search__input {
   color: #ffffff;
+}
+
+.md-search__form:focus-within {
+  border-color: rgba(147, 104, 255, 0.65);
+
+  box-shadow:
+    0 0 0 1px rgba(147, 104, 255, 0.16),
+    0 0 24px rgba(147, 104, 255, 0.10);
 }
 
 .md-search-result__item {
@@ -572,6 +620,16 @@ body {
 
 .md-footer-meta {
   background: #000000;
+  border-top: 1px solid rgba(147, 104, 255, 0.08);
+}
+
+/* Custom copyright text, if configured in mkdocs.yml */
+.md-copyright {
+  color: #70707a;
+}
+
+.md-copyright__highlight {
+  color: #cfcfd6;
 }
 
 

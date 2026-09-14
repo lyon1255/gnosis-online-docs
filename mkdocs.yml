@@ -1,0 +1,23 @@
+site_name: Gnosis Online
+site_description: Gnosis Online lore and game documentation
+
+theme:
+  name: material
+  language: hu
+
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+  - toc:
+      permalink: true

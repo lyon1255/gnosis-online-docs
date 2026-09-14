@@ -1,18 +1,18 @@
 # Gnosis Online
 
-Üdvözöllek a **Gnosis Online** hivatalos világ- és narratív dokumentációjában.
+## Világdokumentáció
 
-## Dokumentáció
+A **Gnosis Online** világa két központ köré szerveződik:
 
-Itt található:
+- **Brink Valley** – a túlélésből kinőtt város
+- **Elysia** – a Kapun túli, lassan visszahódított föld
 
-- a világ története;
-- Brink Valley;
-- Elysia;
-- a fontosabb karakterek;
-- a Main Questline;
-- a frakciók;
-- a játék történelmi eseményei.
+## Tartalom
+
+- [Lore](lore/01-prologus/)
+- [Main Questek](quests/)
+- [Karakterek](characters/)
+- [Frakciók](factions/)
 
 ---
 

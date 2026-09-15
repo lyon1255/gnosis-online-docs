@@ -394,3 +394,266 @@ Nem felszerelhető. Későbbi Threshold-dialogue flaghez kapcsolódik.
 | ITEM-E01-ACC-004 | Vadász jelzőszalag | Accessory | SQ-E15 |
 | ITEM-E01-LOR-003 | Meleg kőszilánk | Lore | SQ-E16 |
 | ITEM-E01-ARM-005 | Keleti mérőköpeny | Armor | SQ-E16 |
+
+
+---
+
+# Main Quest Items
+
+## Kalandor-jelvény
+
+**Item ID:** `ITEM-E01-KEY-001`  
+**Type:** Key Item / Credential  
+**Rarity:** Common  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E02  
+**Function:** Kalandor szolgáltatások és quest eligibility.
+
+A hátoldal gravírozása:
+
+> Gyere vissza.
+
+---
+
+## Loeran’s Rest városi térképe
+
+**Item ID:** `ITEM-E01-MAP-001`  
+**Type:** Map Item  
+**Rarity:** Common  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E02
+
+**Effect:** Loeran’s Rest teljes városi térképének feloldása.
+
+**Nem oldja fel:** Elysia városon kívüli területeit.
+
+---
+
+## Terepi keserűkenőcs
+
+**Item ID:** `ITEM-E01-CON-002`  
+**Type:** Consumable  
+**Rarity:** Common  
+**Stack:** 10  
+**Binding:** Character-Bound on reward  
+**Sell Value:** 2
+
+**Initial Balance Effect:** 8 sec alatt 15% maximum HP regeneration; combatban használható, damage nem szakítja meg, 45 sec item cooldown.
+
+**Source:** MQ-E05 ×2.
+
+---
+
+## E-17 járőrjel másolata
+
+**Item ID:** `ITEM-E01-LOR-004`  
+**Type:** Lore / Report Item  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E08
+
+---
+
+## Tessa hordozható Field-mérője
+
+**Item ID:** `ITEM-E01-QST-006`  
+**Type:** Quest Tool  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E12  
+**Function:** designated Field measurement interactions.
+
+---
+
+## Nima Korona-jelének másolata
+
+**Item ID:** `ITEM-E01-LOR-005`  
+**Type:** Lore Item  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E15
+
+---
+
+## Második Cölöp megfigyelési lapja
+
+**Item ID:** `ITEM-E01-LOR-006`  
+**Type:** Lore / Observation Item  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E18
+
+---
+
+## Keleti farmok Ledger-táblái
+
+**Item ID:** `ITEM-E01-QST-007`  
+**Type:** Quest Item  
+**Stack:** 3  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E21
+
+---
+
+## Nima terepi vázlata
+
+**Item ID:** `ITEM-E01-MAP-002`  
+**Type:** Directional Map Note  
+**Rarity:** Common  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E25
+
+**Effect:** Nem fed fel automatikusan területet. A három tájjel leírását tárolja.
+
+---
+
+## Crowned csonttöredék
+
+**Item ID:** `ITEM-E01-MAT-003`  
+**Type:** Research Material  
+**Rarity:** Uncommon  
+**Stack:** 20  
+**Binding:** Character-Bound on first quest copy; future mob drops may be Unbound  
+**Sell Value:** 6  
+**Source:** MQ-E27 / Crowned creatures
+
+---
+
+## Seral-Fen vadászati jelentések
+
+**Item ID:** `ITEM-E01-LOR-007`  
+**Type:** Lore Collection  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E28
+
+---
+
+## Hollow Crown levált csontlemeze
+
+**Item ID:** `ITEM-E01-MAT-004`  
+**Type:** Research Material  
+**Rarity:** Rare  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E32
+
+---
+
+## Elysiai útjelző készlet
+
+**Item ID:** `ITEM-E01-QST-008`  
+**Type:** Quest Tool  
+**Stack:** 3  
+**Binding:** Character-Bound  
+**Sell Value:** 0  
+**Source:** MQ-E35
+
+---
+
+## Hollow Crown emléktöredék
+
+**Item ID:** `ITEM-E01-ACC-005`  
+**Type:** Relic  
+**Slot:** Relic  
+**Rarity:** Rare  
+**Item Level:** 5  
+**Required Level:** 3  
+**Binding:** Character-Bound  
+**Sell Value:** 40  
+**Durability:** N/A
+
+| Stat | Value |
+| --- | ---: |
+| Magic Resistance | +7 |
+| Haste | +3 |
+| Crit Chance | +1% |
+
+**Source:** MQ-E37 guaranteed first-clear reward.
+
+
+---
+
+# Hollow Crown Personal Loot
+
+## Hollow Crown Bone Shard
+
+**Item ID:** `ITEM-E01-MAT-005`  
+**Type:** Boss Material  
+**Rarity:** Rare  
+**Stack:** 20  
+**Binding:** Unbound  
+**Sell Value:** 18  
+**Source:** The Hollow Crown — 65%
+
+---
+
+## Crownweave Mantle
+
+**Item ID:** `ITEM-E01-ARM-006`  
+**Type:** Armor  
+**Region:** Törzs  
+**Sub-slot:** Váll  
+**Armor Category:** Cloth / Mail compatible content tag TBD  
+**Rarity:** Rare  
+**Item Level:** 5  
+**Required Level:** 3  
+**Binding:** Bind on Pickup  
+**Durability:** 75 / 75  
+**Sell Value:** 46
+
+| Stat | Value |
+| --- | ---: |
+| Armor | +9 |
+| Magic Resistance | +11 |
+| Haste | +3 |
+
+**Source:** The Hollow Crown — 18%.
+
+---
+
+## Hollow Antler Ring
+
+**Item ID:** `ITEM-E01-ACC-006`  
+**Type:** Accessory  
+**Slot:** Ring  
+**Rarity:** Rare  
+**Item Level:** 5  
+**Required Level:** 3  
+**Binding:** Bind on Pickup  
+**Sell Value:** 52
+
+| Stat | Value |
+| --- | ---: |
+| Crit Chance | +2% |
+| Haste | +2 |
+
+**Source:** The Hollow Crown — 12%.
+
+---
+
+## Seral-Fen Relic
+
+**Item ID:** `ITEM-E01-ACC-007`  
+**Type:** Relic  
+**Slot:** Relic  
+**Rarity:** Rare  
+**Item Level:** 6  
+**Required Level:** 3  
+**Binding:** Bind on Pickup  
+**Sell Value:** 70
+
+| Stat | Value |
+| --- | ---: |
+| Magic Resistance | +8 |
+| Haste | +3 |
+| Swiftness | +2 |
+
+**Unique Effect — Initial Balance:**  
+`Field Awareness` — ha a karakter magas Saturation területre lép, az első 5 másodpercben +5 Magic Resistance. 60 sec internal cooldown.
+
+**Source:** The Hollow Crown — 6%.

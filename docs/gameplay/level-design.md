@@ -15,12 +15,14 @@ title: Elysia Level Design
 ## Áttekintő térkép
 
 <p align="center">
-  <a href="../../assets/images/maps/Elysia.png">
-    <img src="../../assets/images/maps/Elysia.png" alt="Elysia Floor 1 Map" width="100%">
+  <a href="../assets/images/maps/Elysia.png">
+    <img src="../assets/images/maps/Elysia.png" alt="Elysia Floor 1 Map" width="100%">
   </a>
 </p>
 
-<p align="center"><em>Elysia Floor 1 — ortografikus zónatérkép, a fő landmarkokkal, quest-régiókkal és a Hollow Crown útvonalával.</em></p>
+<p align="center">
+  <em>Elysia Floor 1 — ortografikus zónatérkép, a fő landmarkokkal, quest-régiókkal és a Hollow Crown útvonalával.</em>
+</p>
 
 
 ---

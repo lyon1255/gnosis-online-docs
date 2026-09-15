@@ -1832,15 +1832,13 @@ A játékos válaszolt.
 
 A játékos elmondhatta, mi történt.
 
-Saelin ekkor bólintott.
+Saelin bólintott.
 
 > „A halott hősök nem védik meg a völgyet.”
 
-Nem magyarázta rögtön.
-
 > „Noll ezért nem azt nézte, le tudod-e győzni a gépet.”
 
-> „Hanem hogy felismered-e azt a pillanatot, amikor már nem kell harcolnod.”
+> „Hanem azt, felismered-e azt a pillanatot, amikor már nem kell harcolnod.”
 
 Saelin hátradőlt.
 
@@ -1850,10 +1848,6 @@ Saelin hátradőlt.
 
 > „Taktika.”
 
-A játékos hallgatott.
-
-Saelin folytatta.
-
 > „Második.”
 
 > „A tudás az igazi pajzs.”
@@ -1862,11 +1856,9 @@ Saelin folytatta.
 
 > „Utána döntsd el, meg akarod-e ölni.”
 
-Egy útvonal-lapot vett elő.
+Saelin egy útvonal-lapot vett elő.
 
-Négy név volt rajta.
-
-Mind mellett helyszín.
+Öt név állt rajta.
 
 **Dena Kadd — Felszerelési Raktár**
 
@@ -1876,19 +1868,25 @@ Mind mellett helyszín.
 
 **Pell Ormin — Térképház**
 
+**Joren Vale — Doboz**
+
 Saelin átadta.
 
-> „Ők tudják, hogy jössz.”
+> „Harmadik.”
 
-A játékos talán a névsorra nézett.
+> „Tudd, mit kell hazahozni.”
 
-> „Nem kell keresned őket.”
+> „Mielőtt elindulsz, tudd, miért mész.”
 
-> „Mindegyik a saját helyén lesz.”
+> „Negyedik.”
 
-Ez is úgy hangzott, mintha valami többről beszélne.
+> „Mindig legyen visszaút.”
 
-> „Menj sorban.”
+> „Egy útvonal nem biztonságos.”
+
+> „Legfeljebb tegnap az volt.”
+
+Aztán Joren nevére bökött.
 
 > „Dena adja, amit vihetsz.”
 
@@ -1896,11 +1894,77 @@ Ez is úgy hangzott, mintha valami többről beszélne.
 
 > „Sella megmutatja, mit érdemes magaddal vinni.”
 
-> „Pell megmutatja, honnan kell visszajönnöd.”
+> „Pell megmutatja, hogyan találj vissza.”
 
-Saelin az ablak felé nézett.
+> „Ha mind a négyen aláírták, menj Jorenhez.”
 
-> „Ha Pell végzett, gyere vissza.”
+A játékos talán megkérdezte, utána vissza kell-e jönnie.
+
+Saelin megrázta a fejét.
+
+> „Nem.”
+
+> „Joren látni fogja a papíron, hogy megfeleltél.”
+
+> „Ha nála is minden rendben, átmész.”
+
+> „Nem foglak végigvezetni a városon.”
+
+> „Mindegyikük tudja, hogy érkezel.”
+
+Rövid szünet.
+
+> „Odakint sem fog senki a kezedet fogva vinni.”
+
+Saelin az asztalra tette a kezét.
+
+> „És az ötödik lecke.”
+
+> „Nem minden jelentésnek ugyanaz az útja.”
+
+> „A legtöbb dolgot a Ledgernek mondod.”
+
+> „Veszteséget.”
+
+> „Felszerelést.”
+
+> „Készletet.”
+
+> „Megbízást.”
+
+A hangja halkabb lett.
+
+> „Amit nem értesz…”
+
+Rövid csend.
+
+> „Előbb nekem.”
+
+A játékos talán megkérdezte, miért.
+
+Saelin az ablakon túlra nézett.
+
+> „Mert odakint elég egyetlen hibát elkövetni.”
+
+Tekintete visszatért.
+
+> „Idebent néha ugyanígy van.”
+
+Nem nevezte meg a Kristály Rendjét.
+
+Nem beszélt a Lezárt Jegyzékről.
+
+Saelin végül a lapra bökött.
+
+> „Menj sorban.”
+
+> „Ha Joren átenged, Loeran’s Restben fejezik be a bejegyzésedet.”
+
+> „Ott kapod meg a végleges Kalandor-jelvényt.”
+
+Az ideiglenes engedélyre nézett.
+
+> „Addig ezt tartod meg.”
 
 A játékos elindult.
 
@@ -2274,137 +2338,92 @@ Pell visszaadta.
 
 > „Megvagy.”
 
-> „Vissza Saelinhez.”
+Pell az útvonal-lapra tette az utolsó jelzést.
 
-A játékos talán megkérdezte, hogy ő nem megy-e vele.
-
-Pell felnevetett.
-
-> „Van háromszáz térképem.”
-
-> „Saelinnek van két lába.”
-
-> „Majd megoldja.”
-
-A játékos visszaindult a Hivatalba.
-
----
-
-## X. Saelin másodszor
-
-Saelin ugyanabban a székben ült.
-
-A papírhalom más volt.
-
-A hely nem.
-
-Átvette az útvonal-lapot.
-
-Dena.
-
-Orrek.
-
-Sella.
-
-Pell.
-
-Mind a négy jel megvolt.
-
-> „Jó.”
-
-A lapot az asztalra tette.
-
-> „Most már van fegyvered.”
-
-> „Tudod, mikor rossz.”
-
-> „Van kötszered.”
-
-> „Tudod, hol van.”
-
-> „Van térképed.”
-
-> „És legalább két útvonalad.”
-
-Saelin egy másik papírt vett elő.
-
-A tetején:
-
-**DOBOZ — BELÉPÉSI ENGEDÉLY**
+Aztán a Doboz felé vezető széles útra mutatott.
 
 > „Joren Vale.”
 
 > „Kapuszázados.”
 
-> „A Doboznál.”
+> „Ő az utolsó állomásod Brink Valleyben.”
 
-Rápillantott a játékosra.
+A játékos talán megkérdezte, vissza kell-e még mennie Saelinhez.
 
-> „Ő is tudja, hogy jössz.”
+Pell megrázta a fejét.
 
-Az engedélyt átadta.
+> „Nem.”
 
-> „Ott lesz az első valódi harci ellenőrzésed.”
+> „Ha Saelin vissza akart volna hívni, ráírta volna.”
 
-A játékos talán rákérdezett.
+A térképet összecsavarta.
 
-Saelin nem részletezte.
+> „Most már tudod, hol vagy.”
 
-> „Nem foglak elkísérni.”
+> „Tudod, merre van a Kapu.”
 
-A mondat most már ismerős lehetett.
+> „És tudod, hogy nem csak egy út vezet vissza.”
 
-> „Nem azért, mert nem érdekel.”
+A lapot visszaadta.
 
-> „Azért, mert ha csak akkor tudsz működni, amikor melletted állok, nem vagy kész Elysiára.”
+> „Menj Jorenhez.”
 
-Saelin még egyszer a papírra nézett.
+Pell nem ment vele.
 
-> „Joren után visszajössz.”
-
-> „Akkor eldöntjük, átkelsz-e.”
+Már a következő térképet húzta maga elé.
 
 ---
 
-## XI. A Doboz
+## X. A Doboz
+
 
 A Kapuhoz vezető út szélesebb volt Brink Valley bármely más utcájánál.
 
 Nem ünnepi útnak építették.
 
-Azért kellett ekkorának lennie, hogy két megrakott szekér elférjen egymás mellett.
+Szekerekre tervezték.
 
-Az egyik Elysiába ment.
+Ellátmányra.
 
-A másik onnan jött.
+Őrségre.
+
+És arra az esetre, ha egyszer ismét nagyon gyorsan kellene lezárni.
+
+Ahogy a játékos közelebb ért, a város megváltozott körülötte.
 
 A boltok ritkultak.
 
 A raktárak nagyobbak lettek.
 
-A fegyveresek száma nőtt.
+Több lett az őr.
 
-Az út végén ott állt a Doboz.
+Több lett a fegyver.
+
+Az út végén állt a Doboz.
 
 A név egyszerűbb volt, mint az építmény.
 
 Kőfalak szűkítették le a Kapu körüli teret.
 
-Drop-rácsok ültek a magasban.
+Fent rácsok ültek a vezetősíneken.
+
+A falakban lőrések.
 
 Lándzsaállások.
 
-Lőrések.
-
 Jelzőharangok.
 
-Többször javított kövek.
+A járófelületeken régi javítások foltjai.
 
-Az egyik falon mély karmolások.
+Az egyik falszakaszon mély sérülések futottak végig a kövön.
 
-Nem vakolták be.
+Nem tüntették el őket.
 
-A bejáratnál egy magas ember állt.
+Nem emlékműnek hagyták ott.
+
+Mértéknek.
+
+A bejárat mellett egy magas ember állt.
 
 Őszülő haj.
 
@@ -2416,19 +2435,33 @@ Bal vállán kapuőri jel.
 
 > „Kapuszázados.”
 
-Elvette Saelin papírját.
+A játékos átadta az útvonal-lapot és az ideiglenes Kalandor-engedélyt.
 
-Végigolvasta.
+Joren először a pecséteket nézte.
 
-> „Első alkalom?”
+Dena.
 
-A játékos válaszolt.
+Orrek.
 
-Joren visszaadta.
+Sella.
 
-> „Akkor először nézz.”
+Pell.
 
-A falra mutatott.
+Aztán Saelin aláírását.
+
+> „Rendben.”
+
+Visszaadta az engedélyt.
+
+> „Mielőtt átmész, tudnod kell, hol állsz.”
+
+Nem indult el sehova.
+
+Nem kellett.
+
+A Doboz minden fontos része látható volt onnan, ahol álltak.
+
+Joren a felső sínre mutatott.
 
 > „Első rács.”
 
@@ -2436,21 +2469,23 @@ A következőre.
 
 > „Második.”
 
-A felső állásokra.
+A falakra.
 
-> „Lándzsások.”
+> „Lándzsaállások.”
 
-A falon futó jelzőkötélre.
+A jelzőkötélre.
 
 > „Harang.”
 
-A karmolásokra.
+A régi sérülésekre.
 
 > „És ez.”
 
-A játékos megvizsgálta.
+A játékos megvizsgálhatta a követ.
 
-Túl nagy nyomok.
+A nyomok régiek voltak.
+
+Javítások futottak mellettük.
 
 > „Nem dísz.”
 
@@ -2460,449 +2495,135 @@ Joren a Kapu felé nézett.
 
 > „Azért van, hogy időt adjon.”
 
-A fal fölött megszólalt egy őr.
+A védmű belsejében közben folyt a munka.
 
-> „Mozgás!”
+Az egyik oldalon Elysiából érkezett ládákat ellenőriztek.
 
-Joren arca nem változott.
+A másikon Brink Valleyből induló rakományokat.
 
-> „Melyik oldal?”
+Őrök váltották egymást.
 
-> „Kék!”
+Egy raktáros számokat olvasott fel.
 
-Elysia.
+Egy Ledger-írnok jegyzetelt.
 
-Az első rács lezuhant.
+A Kapu körül nem uralkodott pánik.
 
-A kereskedők hátrébb húzódtak.
+Ez volt a fontos.
 
-A Kapu halványkék felülete megmozdult.
+A Doboz veszélyre készült.
 
-Valami közelebb került benne.
+De nem úgy működött, mintha minden percben támadásra számítana.
 
-Négy láb.
+Loeran’s Rest a túloldalon működő, őrzött település volt.
 
-Alacsony fej.
+A Kapun keresztül napi forgalom járt.
 
-Hosszú test.
+A veszély Elysiában létezett.
 
-Aztán kilépett.
+De nem a Kapu küszöbén kezdődött.
 
-Farkas.
+Joren a játékos kezében lévő papírra mutatott.
 
-Valaha.
-
-A jobb első lába hosszabb volt.
-
-A vállán csontlemez nőtt.
-
-A bőre több helyen felrepedt.
-
-A repedések mélyén lila fény mozgott.
-
-A lény megszagolta Brink Valley levegőjét.
-
-Aztán nekirontott a rácsnak.
-
-Fém csattant.
-
-Joren a játékosra nézett.
-
-> „Amit tudsz.”
-
-Nem adott új spellt.
-
-Nem adott új képességet.
-
-Nem nyitott fel talentet.
-
-A játékos azt használta, amivel érkezett.
-
-Az egy-két alap képességét.
-
-A fegyvert.
-
-A mozgást.
-
-Azt, amit Kerrnél gyakorolt.
-
-A második rács részben felnyílt.
-
-> „Most.”
-
-A játékos belépett a kijelölt térbe.
-
-A Rewritten Wolf gyors volt.
-
-Sokkal gyorsabb, mint Noll szerkezete.
-
-De ugyanaz az alapelv maradt.
-
-Távolság.
-
-Figyelem.
-
-Nem szorulni a falhoz.
-
-Nem üldözni vakon.
-
-A csontlemez a kőnek csapódott.
-
-A lény megtántorodott.
-
-A játékos kihasználta.
-
-A harc rövid volt.
-
-Keményebb, mint a gyakorlóterem.
-
-Sokkal rövidebb, mint ahogy később emlékezni fog rá.
-
-A Rewritten Wolf összeesett.
-
-A lila fény a repedésekben nem aludt ki azonnal.
-
-Joren odalépett.
-
-Letérdelt.
-
-> „Most ne nyúlj hozzá.”
-
-Egy zárt mintatartót vett elő.
-
-Keskeny késsel mintát vágott a torz szövetből.
-
-Lezárta.
-
-> „Ezt a mérők kapják.”
-
-Felállt.
-
-> „Te pedig ezt.”
-
-A Saelin-féle papírra pecsét került.
-
-**MEGFELELT**
-
-Joren visszaadta.
-
-> „Vissza a Hivatalba.”
-
-A játékos talán a Kapura nézett.
-
-Loeran’s Rest háztetői már látszottak a túloldalon.
-
-Joren észrevette.
-
-> „Nem ma mész át csak azért, mert már látod.”
-
-A következő jelentkező felé fordult.
-
-> „Saelin dönt.”
-
-Joren a helyén maradt.
-
-A játékos visszaindult.
-
----
-
-## XII. Az öt lecke
-
-Saelin harmadszor is ugyanott volt.
-
-Ezúttal Joren pecsétje került elé.
-
-Saelin megnézte.
-
-Aztán félretette.
-
-> „Mit láttál?”
-
-Megvárta.
-
-Nem azt kérdezte, hány ütés kellett.
-
-Nem azt, mennyit sebzett.
-
-> „Hogyan mozgott?”
-
-Újabb válasz.
-
-> „Mit csinált a rács?”
-
-A játékos elmondta.
-
-> „Ki vett mintát?”
-
-Új válasz.
-
-Saelin bólintott.
-
-> „Jó.”
-
-Közelebb húzta a széket.
-
-> „Most már van miről beszélni.”
-
-Az első ujj.
-
-> „A visszavonulás nem szégyen.”
-
-> „Taktika.”
-
-A második.
-
-> „A tudás az igazi pajzs.”
-
-> „Ha nem tudod, mi van előtted, előbb nézd meg.”
-
-A harmadik.
-
-> „Tudd, mit kell hazahozni.”
-
-> „Mielőtt elindulsz, tudd, miért mész.”
-
-A negyedik.
-
-> „Mindig legyen visszaút.”
-
-> „Egy útvonal nem biztonságos.”
-
-> „Legfeljebb tegnap az volt.”
-
-Saelin ezután nem emelte fel az ötödik ujját.
-
-Csak az asztalra tette a kezét.
-
-> „És az ötödik.”
-
-> „Nem minden jelentésnek ugyanaz az útja.”
-
-A játékos figyelt.
-
-> „A legtöbb dolgot a Ledgernek mondod.”
-
-> „Veszteséget.”
-
-> „Felszerelést.”
-
-> „Készletet.”
-
-> „Megbízást.”
-
-Aztán a hangja halkabb lett.
-
-> „Amit nem értesz…”
-
-Rövid csend.
-
-> „Előbb nekem.”
-
-A játékos talán megkérdezte, miért.
-
-Saelin az ablakon túlra nézett.
-
-> „Mert odakint elég egyetlen hibát elkövetni.”
-
-Tekintete visszatért.
-
-> „Idebent néha ugyanígy van.”
-
-Nem nevezte meg a Kristály Rendjét.
-
-Nem beszélt a Lezárt Jegyzékről.
-
-A játékos még nem tudta, hogy Brink Valleyben vannak kérdések, amelyekre nem azért nincs válasz, mert senki nem ismeri.
-
-Saelin elővette az utolsó Brink Valley-i lapot.
-
-Nem Kalandor-jelvény.
-
-Az még nem járt.
-
-Csak átkelési engedély.
-
-> „Holnap reggel.”
-
-A játékos talán rögtön a Kapu felé nézett.
-
-> „Loeran’s Rest.”
-
-Saelin a papír aljára írt.
-
-> „Ott fejezik be a bejegyzésedet.”
-
-A játékos ideiglenes engedélyére nézett.
-
-> „Ezt addig megtartod.”
-
-A végleges jelvény majd odaát várta.
-
-Ha visszaért az első átkelésből.
-
-Saelin átadta az engedélyt.
-
-> „Mára menj haza.”
-
-> „Holnap nem itt kezdődik a napod.”
-
----
-
-## XIII. Az utolsó reggel Brink Valleyben
-
-Másnap a négy kezdőterület ugyanúgy ébredt.
-
-A Human városrészben Mara Venn új papírcsomagokat készített elő.
-
-Selai Ther kenyeret számolt.
-
-Harrek Keln a malom mellett dolgozott.
-
-Toren Marr már valakivel vitatkozott.
-
-A Mérők Negyedében Tovin Ollam újra kalibrálta ugyanazt a műszert.
-
-Nessa Vren továbbra is kereste a harmadik ibolya prizmát.
-
-Pella Orin pedig a tegnapi mérést tette egy külön fiókba.
-
-Az erdőben Aren Thael végigment az ösvényen.
-
-Lethiel Venn megvizsgálta a vízelvezetést.
-
-Mira Sael új neveket rendezett a polcon.
-
-A Mélyműhelyben Borr Keln újra megnézte ugyanazt a repedést.
-
-Dena Kadd új mérést írt mellé.
-
-Harrek Voss visszatette a mérőékeket.
-
-A világ nem állt meg azért, mert egy új Kalandor átkelni készült.
-
-Ez fontos volt.
-
-Brink Valley nem a játékos körül épült.
-
-A játékos Brink Valleyből indult.
-
-A Kalandorügyi Hivatalnál Tressa Marr várta.
-
-> „Átkelési engedély?”
-
-A játékos átadta.
-
-Tressa ellenőrizte.
-
-> „Ideiglenes jelvény?”
-
-Azt is.
-
-Visszaadta.
-
-> „Mindkettőt tartsd meg.”
-
-A pult mögül egy kis csomagot vett elő.
-
-Nem új fegyver.
-
-Nem spellkönyv.
-
-Nem varázstárgy.
-
-Tartalék kötés.
-
-Egy adag élelem.
-
-Egy egyszerű térképmásolat.
-
-> „Az új képességeidet nem itt fogod megtanulni.”
-
-Tressa egy pillanatra a Kapu felé nézett.
-
-> „Odaát minden szakma máshogy fejlődött tovább.”
-
-> „Majd meglátod.”
-
-A játékos talán rákérdezett, mikor kapja meg a végleges Kalandor-jelvényt.
-
-Tressa az ideiglenes lapra bökött.
-
-> „Ha Loeran’s Restben befejezték a regisztrációt.”
-
-> „Akkor.”
-
-Rövid szünet.
-
-> „Előbb oda kell érned.”
-
----
-
-## XIV. A Kapu
-
-Joren Vale ugyanott állt, ahol előző nap.
-
-A Doboz ugyanúgy működött.
-
-A tegnapi Rewritten Wolf már nem feküdt ott.
-
-A követ eltakarították.
-
-A vért lemosták.
-
-A karmolások maradtak.
-
-A játékos átadta az engedélyt.
-
-Joren elolvasta.
-
-> „Saelin jóváhagyta.”
-
-Visszaadta.
-
-A Kapu felülete halványkéken derengett.
-
-Túloldalán napfény.
-
-Zöld fű.
-
-Út.
-
-Messzebb háztetők.
-
-Loeran’s Rest.
-
-Joren a rácsokra nézett.
-
-> „Első rács?”
+> „Pell megmutatta a visszautat?”
 
 A játékos válaszolt.
 
-> „Második?”
+> „A másikat is?”
 
-Válasz.
-
-> „Visszaút?”
-
-A játékos Brink Valley felé mutatott.
+Újabb válasz.
 
 Joren bólintott.
 
 > „Jó.”
 
-Oldalra lépett.
+A Kapu előtt álló őrhöz fordult.
 
-Nem kísérte át.
+> „Első átkelő.”
 
-Nem mozdult el a posztjáról.
+Az őr feljegyzett valamit.
+
+Joren ezután elővette a saját pecsétjét.
+
+Az útvonal-lap utolsó üres helyére nyomta.
+
+**ÁTKELÉS ENGEDÉLYEZVE**
+
+Nem volt újabb vizsga.
+
+Nem volt újabb kör a városban.
+
+Nem kellett visszamenni Saelinhez.
+
+Amit Saelin el akart mondani, már elmondta.
+
+Amit Brink Valley ellenőrizni akart, már ellenőrizte.
+
+Joren visszaadta a papírt.
+
+> „Innentől Loeran’s Rest.”
+
+> „Ott fejezik be a Kalandor-regisztrációdat.”
+
+Az ideiglenes engedélyre mutatott.
+
+> „Ezt odaát leadod.”
+
+> „Ha minden rendben, ott kapod meg a végleges jelvényt.”
+
+A játékos a Kapu felé nézett.
+
+Halványkék felület töltötte ki a keretet.
+
+Semmi több.
+
+Nem lehetett átlátni rajta.
+
+Nem látszott út.
+
+Nem látszott ég.
+
+Nem látszott Loeran’s Rest.
+
+A Kapu nem ablak volt.
+
+A másik oldal csak akkor létezett a játékos számára, amikor átlépett rajta.
+
+Joren észrevette, hogy nézi.
+
+> „Első alkalommal mindenki vár valamit.”
+
+> „Fényt.”
+
+> „Szelet.”
+
+> „Valami érzést.”
+
+Joren vállat vont.
+
+> „Nem lesz.”
+
+Az őr félreállt a Kapu elől.
+
+Joren nem mozdult a helyéről.
+
+> „Saelin mondta, hogy legyen visszautad?”
+
+A játékos válaszolt.
+
+Joren bólintott.
+
+> „Akkor menj.”
+
+Nem mondta, hogy szerencsét.
 
 Nem kellett.
 
-A játékos egyedül állt a Kapu előtt.
+A játékos közelebb lépett.
 
-Mögötte Brink Valley.
+Mögötte Brink Valley maradt.
 
-A Human negyed utcái.
+A Human városrész utcái.
 
 A Mérők Negyedének műhelyei.
 
@@ -2914,37 +2635,29 @@ A Főkönyv.
 
 Saelin irodája.
 
-Kerr gyakorlótere.
+Kerr Dain.
 
-Maela kötszerei.
+Maela Ther.
 
-Noll fehér vonala.
+Noll Vren.
 
-Dena raktára.
+Dena Kadd.
 
-Orrek kovácsműhelye.
+Orrek Marr.
 
-Sella polcai.
+Sella Venn.
 
-Pell térképei.
+Pell Ormin.
 
-Mind mögötte.
+Mind ugyanabban a városban maradtak.
 
-Előtte Elysia.
+Nem követték.
 
-Joren még egyszer megszólalt.
+Nem kellett.
 
-> „Saelin mondta, hogy legyen visszautad?”
+A Kapu halványkék fénye egyetlen lépésnyire volt.
 
-A játékos válaszolt.
-
-Joren halványan elmosolyodott.
-
-> „Akkor használd is.”
-
-A játékos közelebb lépett.
-
-A kék fény egyetlen lépésnyire volt.
+A játékos előrelépett.
 
 Nem érzett hőt.
 
@@ -2965,7 +2678,7 @@ A történet innen az **Elysia** című könyvben folytatódik.
 Ott kezdődik:
 
 - Loeran’s Rest első bejárása;
-- a végleges Kalandor-regisztráció;
+- a végleges Kalandor-regisztráció és a Kalandor-jelvény átvétele;
 - Loeran fája;
 - az első Elysiához kötött Main Quest;
 - az első új class-képességek és spellek megszerzése;
@@ -2973,11 +2686,3 @@ Ott kezdődik:
 - Point One régi romjainak feltárása;
 - a Rewrite Field fokozatos megismerése;
 - a kelet felé vezető történet.
-
----
-
-## Kapcsolódó dokumentáció
-
-- [Prologue](01-prologus.md)
-- [Class Lore](../class-lore/index.md)
-- [Elysia](03-elysia.md)

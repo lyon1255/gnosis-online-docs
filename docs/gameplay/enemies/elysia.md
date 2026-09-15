@@ -202,3 +202,27 @@ Nem Rewritten. Az Elysia-vadon normál veszélyeinek fenntartására szolgál.
 - Quest-specific guaranteed items are not random mob drops unless explicitly listed.
 - Personal Loot is used where multiple players tag the same elite/boss.
 - Exact rates are Initial Balance.
+
+
+---
+
+## Crowned Stag
+
+**Creature ID:** `MOB-E01-CROWN-03`  
+**Type:** Crowned Rewritten Beast  
+**Level:** 3  
+**Base HP:** 350  
+**Armor:** 13  
+**Magic Resistance:** 16  
+**Basic Damage:** 15–23  
+**Move Speed:** 110%
+
+### Abilities
+
+- **Crown Charge:** long straight charge.
+- **Antler Sweep:** frontal cone physical damage.
+- **Field Step:** short movement speed burst after taking spell damage; 12 sec cooldown.
+
+### Lore Role
+
+A Hollow Crown mintázatát hordozó, de nem fő-boss szerepű szarvas.

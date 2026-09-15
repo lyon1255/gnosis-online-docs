@@ -12,6 +12,17 @@ title: Elysia Level Design
 >
 > Egy environment artistnak vagy level designernek ebből a dokumentumból el kell tudnia készíteni az első grayboxot anélkül, hogy újra ki kellene találnia, merre van egy út, mit kell látnia a játékosnak egy dombtetőről, vagy milyen hangulati átmenet vezet Loeran’s Restből a Hollow Crown völgyéig.
 
+## Áttekintő térkép
+
+<p align="center">
+  <a href="../../assets/images/maps/elysia-floor-1-map.png">
+    <img src="../../assets/images/maps/elysia-floor-1-map.png" alt="Elysia Floor 1 Map" width="100%">
+  </a>
+</p>
+
+<p align="center"><em>Elysia Floor 1 — ortografikus zónatérkép, a fő landmarkokkal, quest-régiókkal és a Hollow Crown útvonalával.</em></p>
+
+
 ---
 
 ## 0. A terület alapgondolata

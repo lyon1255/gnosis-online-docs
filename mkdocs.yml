@@ -12,14 +12,35 @@ theme:
     accent: deep purple
 
   features:
-    - navigation.sections
-    - navigation.expand
     - navigation.path
     - navigation.top
     - toc.follow
     - search.suggest
     - search.highlight
     - content.code.copy
+
+nav:
+  - Kezdőlap: index.md
+
+  - Lore:
+      - Prologue: lore/00-prologus-lore.md
+      - Brink Valley: lore/01-brink-valley-lore.md
+
+      - Elysia:
+          - Main Lore: lore/02-elysia-lore.md
+          - Side Quests: lore/side-quests/elysia.md
+
+  - Gameplay:
+      - Áttekintés: gameplay/index.md
+
+      - Elysia:
+          - Level Design: gameplay/level-design.md
+          - Main Quests: gameplay/main-quests/elysia.md
+          - Side Quests: gameplay/side-quests/elysia.md
+          - NPCs: gameplay/npcs/elysia.md
+          - Items: gameplay/items/elysia.md
+          - Enemies: gameplay/enemies/elysia.md
+          - Bosses: gameplay/bosses/elysia.md
 
 plugins:
   - search

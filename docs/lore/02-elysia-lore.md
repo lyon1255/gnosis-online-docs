@@ -80,9 +80,9 @@ Ledger-írnokok.
 
 Kereskedők.
 
-Egy öszvér türelmetlenül kaparta a földet.
+Egy öszvér türelmetlenül kaparta a földet, miközben gazdája, **Oren Marr** a rakományjegyzéket ellenőrizte.
 
-Két munkás egy szekér tengelyén vitatkozott.
+Két munkás, **Barek Voss** és **Tila Venn** egy szekér tengelyén vitatkozott.
 
 Valaki egy láda tetejére krétával ezt írta:
 
@@ -172,11 +172,11 @@ Nem vendégek.
 
 Lakók.
 
-Egy Dwarf asszony zöldséget árult.
+Egy Dwarf asszony, **Mara Kadd** zöldséget árult.
 
-Egy emberi fiú elf kézjelekkel magyarázott valamit egy rakodónak.
+Egy emberi fiú, **Teren Marr** elf kézjelekkel magyarázott valamit egy rakodónak, **Sael Thernek**.
 
-Két Gnome a csatornafedél mellett térdelt.
+Két Gnome, **Perrin Orin** és **Lessa Vren** a csatornafedél mellett térdelt.
 
 A tér közepén pedig állt egy fa.
 
@@ -378,7 +378,7 @@ A játékos kiment.
 
 A főtéren ugyanúgy folyt az élet.
 
-Loeran fájánál egy idős elf állt.
+Loeran fájánál egy idős elf állt. **Edrin Sael** volt a neve.
 
 Nem őr.
 
@@ -388,7 +388,11 @@ Csak ott volt.
 
 A játékos közelebb lépett.
 
-Az elf oldalra nézett.
+Edrin Sael oldalra nézett.
+
+> „Edrin Sael.”
+
+> „Emlékezetőr.”
 
 > „Először vagy itt.”
 
@@ -451,6 +455,22 @@ A város közepén állt egy fa, amelyet nem neki ültettek.
 Hanem amelyet ő választott.
 
 És amelyet utána senki nem vágott ki.
+
+### Side Quest nyom — A névtelen csomag
+
+A fa mögötti pad alatt a játékos egy lezárt, de címzés nélküli kis csomagot vehet észre.
+
+A viaszpecséten régi Point One-jel látható.
+
+Edrin Sael nem nyúl hozzá.
+
+> „Nem az enyém.”
+
+> „Ha felveszed, onnantól a te döntésed, megkeresed-e, kié volt.”
+
+Ez a történet nem része a Main Questnek.
+
+[→ Side Quest Lore — Elysia: A névtelen csomag](../side-quests/elysia.md#a-nevtelen-csomag)
 
 ---
 
@@ -558,6 +578,24 @@ Halen intett.
 
 > „Holnap megint lesz másik.”
 
+Halen Marr ekkor a régi malomút felé nézett.
+
+> „Ha egyszer arra jársz, nézd meg a kis vízkereket.”
+
+> „Három napja nem hoztak onnan lisztet.”
+
+Nem kérte, hogy a játékos azonnal menjen.
+
+Csak megjegyezte.
+
+A malom külön történet volt.
+
+> **Side Quest nyom — A malom, amely elhallgatott**
+>
+> Halen Marr említése felold egy opcionális történeti ágat.
+>
+> [→ Side Quest Lore — Elysia: A malom, amely elhallgatott](../side-quests/elysia.md#a-malom-amely-elhallgatott)
+
 A mondat Elysiában mást jelentett.
 
 A világ pótolta az állatokat.
@@ -646,6 +684,12 @@ A játékos a saját útjának megfelelő mesterhez ment.
 
 > „Azt már tudnod kell.”
 
+> „Minden szintlépés után nézz vissza hozzám.”
+
+> „Nem ígérem, hogy mindig új technikát kapsz.”
+
+> „Azt igen, hogy mindig lesz valami, amit jobban csinálhatsz.”
+
 A következő képesség nem látványos jutalomként érkezett.
 
 Gyakorlatként.
@@ -662,6 +706,12 @@ Egy új harci technika.
 
 > „Ha az ellenfél már rád néz, néha későn kezdted.”
 
+> „Ha szintet lépsz, gyere vissza.”
+
+> „Az új fogásokat nem a Főkönyv tanítja meg.”
+
+> „Hanem az, aki túlélte őket.”
+
 A játékos megtanulta az első olyan class-képességét, amely már nem alapfogás volt.
 
 ### Mage — Fen Orin
@@ -671,6 +721,12 @@ A játékos megtanulta az első olyan class-képességét, amely már nem alapfo
 > „A varázslat nem attól jobb, hogy nagyobb.”
 
 > „Attól, hogy akkor használod, amikor kell.”
+
+> „Minden szint után térj vissza.”
+
+> „Néha új spellt tanulsz.”
+
+> „Néha csak azt, miért használtad rosszul a régit.”
 
 Új spell.
 
@@ -686,6 +742,12 @@ Gyakorlással.
 
 > „Csak idő.”
 
+> „Szintlépés után keress meg.”
+
+> „Lehet, hogy új technikád lesz.”
+
+> „Lehet, hogy csak megtanulod, hogyan ne pazarold el azt az időt.”
+
 Új ranged technika.
 
 ### Cleric — Mira Venn
@@ -696,6 +758,12 @@ Gyakorlással.
 
 > „Azt jelenti, hogy eldöntöd, melyik sérülés számít most.”
 
+> „Minden szintlépés után gyere vissza.”
+
+> „A következő lecke lehet új spell.”
+
+> „Vagy annak felismerése, mikor nem szabad elhasználnod.”
+
 Új támogató vagy gyógyító képesség.
 
 ### Adept — Saar Keln
@@ -705,6 +773,12 @@ Gyakorlással.
 > „A tested nem fegyver.”
 
 > „Te vagy az.”
+
+> „Ha szintet lépsz, térj vissza.”
+
+> „Az erő nem attól nő, hogy új mozdulatot kapsz.”
+
+> „Attól, hogy tudod, mikor melyiket használd.”
 
 Új technika.
 
@@ -718,6 +792,12 @@ Nem azért, mert a világ kiválasztotta.
 
 Hanem mert most először volt rá szüksége.
 
+> **Class Lore kapcsolat**
+>
+> A class mesterek nem egyszeri tutorial-NPC-k. A játékosnak minden szintlépés után érdemes visszatérnie a saját mesteréhez. Az új spellek, technikák és class-specifikus történetek részletes leírása külön dokumentumban található:
+>
+> [→ Class Lore](../class-lore/index.md)
+
 ---
 
 ## IV. A térkép széle
@@ -730,7 +810,7 @@ Ott dolgozott.
 
 Mindig.
 
-A játékos érkezésekor egy másik Kalandorral beszélt.
+A játékos érkezésekor egy másik Kalandorral, **Kalen Vossszal** beszélt.
 
 > „Ha a híd nincs ott, visszafordulsz.”
 
@@ -1162,6 +1242,34 @@ Derr és Leth.
 
 Nima hiányzott.
 
+Derr Voss kabátjának belső zsebében összehajtott levél volt.
+
+Nem katonai jelentés.
+
+Nem Ledger-papír.
+
+Személyes levél.
+
+A címzett:
+
+**Ressa Voss — Loeran’s Rest**
+
+A levél végén egy helynév szerepelt, amelyet a játékos térképe még nem ismert.
+
+**Kőalmás-kert.**
+
+Az utolsó sor:
+
+> Ha visszajövök, először oda megyünk.
+
+A hely nem része a Main Quest útvonalának.
+
+A játékos megtarthatja a levelet, és később megkeresheti Ressa Vosst vagy magát a Kőalmás-kertet.
+
+> **Side Quest nyom — A levél, amely nem ért haza**
+>
+> [→ Side Quest Lore — Elysia: A levél, amely nem ért haza](../side-quests/elysia.md#a-level-amely-nem-ert-haza)
+
 A testeken karmolások.
 
 Nem farkastól.
@@ -1314,6 +1422,20 @@ A torony tetején régi távcső.
 
 Használható.
 
+A távcső mellett egy rozsdás fémdoboz feküdt.
+
+Benne egy félbehagyott őrnapló és egy kulcs.
+
+A napló utolsó olvasható sora:
+
+> A lámpa még mindig ég a déli romnál.
+
+A déli rom nincs rajta a játékos térképén.
+
+> **Side Quest nyom — A lámpa a romok között**
+>
+> [→ Side Quest Lore — Elysia: A lámpa a romok között](../side-quests/elysia.md#a-lampa-a-romok-kozott)
+
 A játékos három dolgot látott.
 
 Füstöt délen.
@@ -1364,7 +1486,7 @@ A kötél elszakadt.
 
 A csónak a túlparton.
 
-A közelben élő két munkás megoldást kínált.
+A közelben élő két munkás, **Jarek Dorr** és **Nessa Keln** megoldást kínált.
 
 Nem csodát.
 
@@ -2594,11 +2716,11 @@ Az idős elf, akivel először találkozott, nem volt ott.
 
 Mások igen.
 
-Egy Human asszony ült a gyökereknél.
+Egy Human asszony, **Mira Dorr** ült a gyökereknél.
 
-Egy Dwarf gyerek a lehullott leveleket gyűjtötte.
+Egy Dwarf gyerek, **Kerin Kadd** a lehullott leveleket gyűjtötte.
 
-Két Gnome valamin vitatkozott a tér szélén.
+Két Gnome, **Pella Orin** és **Vennik Vren** valamin vitatkozott a tér szélén.
 
 A névtelen kő ugyanott feküdt.
 
@@ -2694,33 +2816,31 @@ Ez volt a térkép valódi értéke.
 
 ## XXV. A következő út
 
-A Threshold előtt új őrhely épült.
+A Threshold körül nem épült semmi.
 
-Nem város.
+Nem volt őrhely.
 
-Nem falu.
+Nem álltak sátrak.
 
-Még nem.
+Nem volt Ledger-asztal.
 
-Néhány láda.
+Nem húztak kerítést a kövek köré.
 
-Két sátor.
+A helyet szándékosan hagyták úgy, ahogy megtalálták.
 
-Jelzőoszlop.
+Nem azért, mert nem akarták biztosítani.
 
-Ledger-asztal.
+Azért, mert senki nem tudta, mit változtatna meg rajta egy fal, egy cölöp vagy akár egy leszúrt jelzőkaró.
 
-Maren egyik embere átvette a szolgálatot.
+A névtelen völgy ugyanúgy csendes maradt.
 
-> „Ha átmész, nem tudjuk, mi lesz odaát.”
+A kör alakú kövek ugyanott álltak.
 
-A játékos erre már tudta a választ.
+A Hollow Crown teste már nem volt ott.
 
-Ez nem volt új mondat.
+A Threshold fénye azonban igen.
 
-Minden út így kezdődött.
-
-A Threshold fénye más volt, mint a Kapué.
+Más volt, mint Brink Valley Kapuja.
 
 A Kapu történelmi súlyú tárgy.
 
@@ -2731,6 +2851,18 @@ Hidegebb.
 Kevésbé méltóságteljes.
 
 Mintha egyszerűen arra készült volna, hogy valami átmenjen rajta.
+
+A játékos egyedül vagy a saját csapatával tért vissza.
+
+Nem várta NPC.
+
+Nem állt ott kapuőr.
+
+Nem volt senki, aki még egyszer ellenőrizte volna a papírjait.
+
+A Boss legyőzése már bekerült a karakter saját nyilvántartásába.
+
+Ez volt az engedély.
 
 A játékos mögött Elysia maradt.
 
@@ -2761,6 +2893,24 @@ A Threshold fénye elnyelte.
 Elysia mögötte maradt.
 
 És a következő világ elkezdődött.
+
+---
+
+# Elysia — Side Quest kapcsolódások
+
+A Main Quest során a játékos több opcionális történeti nyomot talál.
+
+Ezek **nem kerülnek automatikusan a Main Quest Logba kötelező feladatként**. A játékos egy tárgy, levél, környezeti jel vagy NPC-megjegyzés alapján döntheti el, követi-e őket.
+
+| Hely | Side Quest nyom | Kapcsolódás |
+| --- | --- | --- |
+| Loeran’s Rest főtere | A névtelen csomag | [→ Side Quest Lore](../side-quests/elysia.md#a-nevtelen-csomag) |
+| Marrin-farm / régi malomút | A malom, amely elhallgatott | [→ Side Quest Lore](../side-quests/elysia.md#a-malom-amely-elhallgatott) |
+| Eltűnt járőr | A levél, amely nem ért haza | [→ Side Quest Lore](../side-quests/elysia.md#a-level-amely-nem-ert-haza) |
+| Második Cölöp | A lámpa a romok között | [→ Side Quest Lore](../side-quests/elysia.md#a-lampa-a-romok-kozott) |
+| Régi kompállás | A két part neve | [→ Side Quest Lore](../side-quests/elysia.md#a-ket-part-neve) |
+
+Ez a rendszer később további Side Questekkel bővíthető anélkül, hogy a Main Quest történeti struktúráját át kellene írni.
 
 ---
 
@@ -2892,6 +3042,51 @@ A Hollow Crown legyőzése nem oldja meg:
 - a Kristály eredetét.
 
 Ezek a fő történet későbbi könyveiben folytatódnak.
+
+---
+
+# Elysia — NPC névjegyzék
+
+*A névjegyzék fejlesztési segédlet: minden, a történetben névvel szereplő NPC egy helyen.*
+
+| NPC | Szerep / hely |
+| --- | --- |
+| Tarel Venn | Nyugati Kapuőrség |
+| Oren Marr | Öszvér és rakomány tulajdonosa a Kapu környékén |
+| Barek Voss | Szekérjavító munkás |
+| Tila Venn | Szekérjavító munkás |
+| Mara Kadd | Piaci zöldségárus |
+| Teren Marr | Fiatal városi lakó |
+| Sael Ther | Rakodó |
+| Perrin Orin | Csatornamunkás / mérő |
+| Lessa Vren | Csatornamunkás / mérő |
+| Illa Orin | Helyi Kalandor-nyilvántartás |
+| Edrin Sael | Loeran fájának emlékezetőre |
+| Maren Dorr | Keleti útvonalak felügyelője |
+| Kalen Voss | Kalandor, Marennel beszél a keleti kapunál |
+| Halen Marr | Marrin-farm gazdája |
+| Sera Thael | Terepi gyógyító |
+| Dorran Kadd | Warrior class-mester |
+| Vessa Marr | Assassin class-mester |
+| Fen Orin | Mage class-mester |
+| Telan Thael | Ranger class-mester |
+| Mira Venn | Cleric class-mester |
+| Saar Keln | Adept class-mester |
+| Tessa Ormin | Field-mérő |
+| Derr Voss | Eltűnt járőr |
+| Leth Sael | Eltűnt járőr |
+| Nima Orin | Eltűnt járőr / mérő |
+| Ressa Voss | Derr Voss levelének címzettje |
+| Coll Marr | Vadász |
+| Sella Dorn | Gazda |
+| Jarek Dorr | Kompállás munkása |
+| Nessa Keln | Kompállás munkása |
+| Beren Marr | Raktáros |
+| Ossa Venn | Ledger-írnok |
+| Mira Dorr | Loeran fájánál ülő városi lakó |
+| Kerin Kadd | Dwarf gyermek |
+| Pella Orin | Gnome városi lakó |
+| Vennik Vren | Gnome városi lakó |
 
 ---
 

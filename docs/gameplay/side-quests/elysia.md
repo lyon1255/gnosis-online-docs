@@ -1,5 +1,5 @@
 ---
-title: Elysia Side Quests — Gameplay
+title: Elysia Side Quests
 ---
 
 # Elysia — Side Quests

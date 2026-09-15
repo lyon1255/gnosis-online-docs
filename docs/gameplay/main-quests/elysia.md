@@ -1,5 +1,5 @@
 ---
-title: Elysia Main Quests — Gameplay
+title: Elysia Main Quests
 ---
 
 # Elysia — Main Quest

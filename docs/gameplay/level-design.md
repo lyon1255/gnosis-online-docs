@@ -15,8 +15,8 @@ title: Elysia Level Design
 ## Áttekintő térkép
 
 <p align="center">
-  <a href="../../assets/images/maps/elysia.png">
-    <img src="../../assets/images/maps/elysia.png" alt="Elysia Floor 1 Map" width="100%">
+  <a href="../../assets/images/maps/Elysia.png">
+    <img src="../../assets/images/maps/Elysia.png" alt="Elysia Floor 1 Map" width="100%">
   </a>
 </p>
 

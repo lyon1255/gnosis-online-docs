@@ -12,10 +12,12 @@ A Gameplay dokumentumok azt rögzítik, hogy ezt a játékban hogyan implementá
 
 ## Tartalom
 
+- [Elysia Main Quests](main-quests/elysia.md)
 - [Elysia Side Quests](side-quests/elysia.md)
 - [Elysia Items](items/elysia.md)
 - [Elysia Enemies](enemies/elysia.md)
 - [Elysia Bosses](bosses/elysia.md)
+- [Elysia NPCs](npcs/elysia.md)
 
 ## Stabil ID-konvenció
 

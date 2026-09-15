@@ -1,4 +1,3 @@
-
 ---
 title: Elysia Side Quests
 ---

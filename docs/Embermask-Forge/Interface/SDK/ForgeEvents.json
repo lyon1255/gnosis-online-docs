@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 2,
+  "enums": [
+  ],
+  "dataObjects": [
+  ],
+  "domains": [
+    {
+      "name": "Unit",
+      "csharpClassName": "UnitEvents",
+      "events": [
+        {
+          "name": "TARGET_CHANGED",
+          "csharpName": "TargetChanged",
+          "description": "Published when the local target token is bound to an entity or cleared.",
+          "fields": [
+            { "name": "unit", "csharpType": "string", "jsType": "string", "nullable": false },
+            { "name": "guid", "csharpType": "string", "jsType": "string", "nullable": false },
+            { "name": "exists", "csharpType": "bool", "jsType": "boolean", "nullable": false }
+          ]
+        },
+        {
+          "name": "UNIT_HEALTH_CHANGED",
+          "csharpName": "HealthChanged",
+          "description": "Published when the health of an addressable unit entity changes. Every active unit token alias for that entity can receive the update.",
+          "fields": [
+            { "name": "unit", "csharpType": "string", "jsType": "string", "nullable": false },
+            { "name": "guid", "csharpType": "string", "jsType": "string", "nullable": false },
+            { "name": "current", "csharpType": "int", "jsType": "number", "nullable": false },
+            { "name": "max", "csharpType": "int", "jsType": "number", "nullable": false }
+          ]
+        }
+      ]
+    }
+  ]
+}

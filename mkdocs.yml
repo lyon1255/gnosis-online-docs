@@ -44,13 +44,7 @@ nav:
 
   - Embermask Forge:
       - Interface:
-          - Level Design: gameplay/level-design.md
-          - Main Quests: gameplay/main-quests/elysia.md
-          - Side Quests: gameplay/side-quests/elysia.md
-          - NPCs: gameplay/npcs/elysia.md
-          - Items: gameplay/items/elysia.md
-          - Enemies: gameplay/enemies/elysia.md
-          - Bosses: gameplay/bosses/elysia.md
+          - Level Design: Embermask-Forge/Interface/UnitEvents.md
 
 plugins:
   - search

@@ -45,7 +45,41 @@ nav:
   - Embermask Forge:
       - Interface:
           - Overview: Embermask-Forge/Interface/overview.md
+          - Achievement Events: Embermask-Forge/Interface/AchievementEvents.md
+          - Appearance Events: Embermask-Forge/Interface/AppearanceEvents.md
+          - Auction Events: Embermask-Forge/Interface/AuctionEvents.md
+          - Aura Events: Embermask-Forge/Interface/AuraEvents.md
+          - Character Events: Embermask-Forge/Interface/CharacterEvents.md
+          - Chat Events: Embermask-Forge/Interface/ChatEvents.md
+          - Combat Events: Embermask-Forge/Interface/CombatEvents.md
+          - Contract Events: Embermask-Forge/Interface/ContractEvents.md
+          - Currency Events: Embermask-Forge/Interface/CurrencyEvents.md
+          - Death Events: Embermask-Forge/Interface/DeathEvents.md
+          - Encounter Events: Embermask-Forge/Interface/EncounterEvents.md
+          - Equipment Events: Embermask-Forge/Interface/EquipmentEvents.md
+          - Group Events: Embermask-Forge/Interface/GroupEvents.md
+          - Guild Events: Embermask-Forge/Interface/GuildEvents.md
+          - Interaction Events: Embermask-Forge/Interface/InteractionEvents.md
+          - Inventory Events: Embermask-Forge/Interface/InventoryEvents.md
+          - Item Events: Embermask-Forge/Interface/ItemEvents.md
+          - Loot Events: Embermask-Forge/Interface/LootEvents.md
+          - Mail Events: Embermask-Forge/Interface/MailEvents.md
+          - Map Events: Embermask-Forge/Interface/MapEvents.md
+          - Mount Events: Embermask-Forge/Interface/MountEvents.md
+          - Movement Events: Embermask-Forge/Interface/MovementEvents.md
+          - Platform Events: Embermask-Forge/Interface/PlatformEvents.md
+          - PvP Events: Embermask-Forge/Interface/PvPEvents.md
+          - Quest Events: Embermask-Forge/Interface/QuestEvents.md
+          - Reputation Events: Embermask-Forge/Interface/ReputationEvents.md
+          - Settings Events: Embermask-Forge/Interface/SettingsEvents.md
+          - Social Events: Embermask-Forge/Interface/SocialEvents.md
+          - Spell Events: Embermask-Forge/Interface/SpellEvents.md
+          - Stats Events: Embermask-Forge/Interface/StatsEvents.md
+          - System Events: Embermask-Forge/Interface/SystemEvents.md
+          - Trade Events: Embermask-Forge/Interface/TradeEvents.md
           - Unit Events: Embermask-Forge/Interface/UnitEvents.md
+          - Vendor Events: Embermask-Forge/Interface/VendorEvents.md
+          - World Events: Embermask-Forge/Interface/WorldEvents.md
 
 plugins:
   - search

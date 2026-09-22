@@ -1,19 +1,19 @@
 # Unit Events
 
 
-Public events related to addressable units such as player, target, focus, pet, party members and bosses. Unit tokens are aliases; GUID identifies the actual entity.
+Addressable unit state és target binding. 
 
 
-Events: **2**
+Events: **7**
 
 ## `1. TARGET_CHANGED`
-Published when the local target token is bound to an entity or cleared.
+A lokális `target` token más entitáshoz kötődik vagy kiürül.
 
 | Field | C# Type | JS Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `unit` | `string` | `string` | No | Target token. Normally target. |
-| `guid` | `string` | `string` | No | Entity identifier that was targeted or cleared. |
-| `exists` | `bool` | `boolean` | No | True when the target is now bound; false when it was cleared. |
+| `guid` | `System.Guid?` | `string | null` | Yes | új target |
+| `entityType` | `EntityType?` | `string | null` | Yes | új target típusa |
+| `spawnGeneration` | `long?` | `number | null` | Yes | target lifecycle-generációja Non-negative value; represented as Long in the public Forge schema. |
 
 JavaScript:
 ```javascript
@@ -24,15 +24,52 @@ const unsubscribe = Forge.Events.on("TARGET_CHANGED", payload => {
 
 C# publisher: `UnitEvents.PublishTargetChanged(...)`
 
-## `2. UNIT_HEALTH_CHANGED`
-Published when the health of an addressable unit entity changes. Every active unit token alias for that entity can receive the update.
+## `2. UNIT_ADDED`
+Egy publikus unit token egy legitim módon látható entitáshoz kötődik.
 
 | Field | C# Type | JS Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `unit` | `string` | `string` | No | Unit token receiving this alias-specific update. |
-| `guid` | `string` | `string` | No | Stable entity identifier shared by all aliases for the same entity. |
-| `current` | `int` | `number` | No | Current health after the change. |
-| `max` | `int` | `number` | No | Maximum health after the change. |
+| `unit` | `string` | `string` | No | unit token |
+| `guid` | `System.Guid` | `string` | No | entitásazonosító |
+| `entityType` | `EntityType` | `string` | No | entitás típusa |
+| `spawnGeneration` | `long` | `number` | No | aktuális lifecycle-generáció Non-negative value; represented as Long in the public Forge schema. |
+
+JavaScript:
+```javascript
+const unsubscribe = Forge.Events.on("UNIT_ADDED", payload => {
+    // payload.<field>
+});
+```
+
+C# publisher: `UnitEvents.PublishAdded(...)`
+
+## `3. UNIT_COMBAT_STATE_CHANGED`
+Egy addressable unit in/out-of-combat állapota változik.
+
+| Field | C# Type | JS Type | Nullable | Description |
+|---|---|---|:---:|---|
+| `unit` | `string` | `string` | No |  |
+| `guid` | `System.Guid` | `string` | No |  |
+| `state` | `UnitCombatState` | `string` | No | új combat state |
+
+JavaScript:
+```javascript
+const unsubscribe = Forge.Events.on("UNIT_COMBAT_STATE_CHANGED", payload => {
+    // payload.<field>
+});
+```
+
+C# publisher: `UnitEvents.PublishCombatStateChanged(...)`
+
+## `4. UNIT_HEALTH_CHANGED`
+Egy addressable unit HP-állapota megváltozott.
+
+| Field | C# Type | JS Type | Nullable | Description |
+|---|---|---|:---:|---|
+| `unit` | `string` | `string` | No | frissített alias |
+| `guid` | `System.Guid` | `string` | No | entitás |
+| `current` | `int` | `number` | No | változás utáni HP |
+| `max` | `int` | `number` | No | változás utáni max HP |
 
 JavaScript:
 ```javascript
@@ -42,4 +79,60 @@ const unsubscribe = Forge.Events.on("UNIT_HEALTH_CHANGED", payload => {
 ```
 
 C# publisher: `UnitEvents.PublishHealthChanged(...)`
+
+## `5. UNIT_LEVEL_CHANGED`
+Egy olyan addressable unit látható szintje módosult, amelynél a kliens ezt jogszerűen ismeri.
+
+| Field | C# Type | JS Type | Nullable | Description |
+|---|---|---|:---:|---|
+| `unit` | `string` | `string` | No |  |
+| `guid` | `System.Guid` | `string` | No |  |
+| `level` | `int` | `number` | No | új szint Canonical import default: Integer, pending GAP-005 end-to-end numeric-width finalization. |
+
+JavaScript:
+```javascript
+const unsubscribe = Forge.Events.on("UNIT_LEVEL_CHANGED", payload => {
+    // payload.<field>
+});
+```
+
+C# publisher: `UnitEvents.PublishLevelChanged(...)`
+
+## `6. UNIT_REMOVED`
+Egy unit token többé nem addressable az adott kliens számára.
+
+| Field | C# Type | JS Type | Nullable | Description |
+|---|---|---|:---:|---|
+| `unit` | `string` | `string` | No | megszűnt token |
+| `guid` | `System.Guid` | `string` | No | korábbi entitás |
+| `spawnGeneration` | `long` | `number` | No | eltávolított lifecycle-generáció Non-negative value; represented as Long in the public Forge schema. |
+
+JavaScript:
+```javascript
+const unsubscribe = Forge.Events.on("UNIT_REMOVED", payload => {
+    // payload.<field>
+});
+```
+
+C# publisher: `UnitEvents.PublishRemoved(...)`
+
+## `7. UNIT_RESOURCE_CHANGED`
+Egy látható unit resource-állapota megváltozott.
+
+| Field | C# Type | JS Type | Nullable | Description |
+|---|---|---|:---:|---|
+| `unit` | `string` | `string` | No | frissített alias |
+| `guid` | `System.Guid` | `string` | No | entitás |
+| `powerType` | `PowerType` | `string` | No | resource típusa |
+| `current` | `int` | `number` | No | új érték |
+| `max` | `int` | `number` | No | aktuális maximum |
+
+JavaScript:
+```javascript
+const unsubscribe = Forge.Events.on("UNIT_RESOURCE_CHANGED", payload => {
+    // payload.<field>
+});
+```
+
+C# publisher: `UnitEvents.PublishResourceChanged(...)`
 

@@ -6,17 +6,1140 @@ interface ForgeUnityObjectRef {
     readonly instanceId: number;
 }
 
+type AuraDisposition = "Buff" | "Debuff";
+type AuraRemovalReason = "Expired" | "Dispelled" | "Removed";
+type CastFailureReason = "Unknown" | "SpellNotKnown" | "WrongClass" | "LevelRequirement" | "TalentRequirement" | "NotInLoadout" | "NoResource" | "Cooldown" | "OutOfRange" | "LineOfSight" | "InvalidTarget" | "Silenced" | "Stunned" | "AlreadyCasting" | "CasterDead";
+type CastInterruptReason = "Interrupted" | "Stunned" | "Silenced" | "CasterDied" | "Disconnected" | "TargetInvalidated";
+type ChatChannel = "Local" | "Global" | "Trade" | "Whisper" | "Party" | "Guild" | "Officer" | "Alliance";
+type CombatAvoidanceResult = "Miss" | "Dodge" | "Parry";
+type ConnectionState = "Disconnected" | "Connecting" | "Connected" | "Reconnecting";
+type CurrencyChangeReason = "Loot" | "Quest" | "Achievement" | "VendorPurchase" | "VendorSale" | "Trade" | "Auction" | "Repair" | "FastTravel" | "GuildInvestment" | "AdminCorrection";
+type DamageType = "Physical" | "Magic" | "True";
+type EncounterDifficulty = "Normal" | "Heroic" | "Mythic" | "Challenge";
+type EntityType = "Player" | "Npc" | "WorldObject";
+type GroupRole = "Tank" | "Healer" | "Damage" | "Support" | "Hybrid";
+type GroupType = "Party" | "Raid";
+type GuildRank = "Recruit" | "Member" | "Veteran" | "Officer" | "GuildMaster";
+type LoadingState = "Idle" | "Loading" | "Loaded" | "Failed";
+type PlatformAuthState = "Unavailable" | "Unauthenticated" | "Authenticating" | "Authenticated" | "Failed";
+type PowerType = "None" | "Mana" | "Stamina" | "Energy";
+type PurchaseState = "AwaitingApproval" | "Cancelled" | "PaidAwaitingGrant" | "Complete" | "Refunded" | "Revoked" | "Failed";
+type QuestCollectMode = "Possess" | "Acquire";
+type QuestObjectiveType = "Kill" | "Collect" | "Gather" | "Explore" | "Deliver" | "Interact" | "UseItemOn" | "Escort" | "Defend" | "BossClear" | "WorldEvent" | "Emote" | "Craft";
+type QuestState = "Active" | "ReadyToTurnIn" | "Completed" | "Failed";
+type ReadyCheckResponse = "Pending" | "Ready" | "NotReady";
+type ResurrectionOfferResult = "Accepted" | "Declined" | "Expired" | "Cancelled";
+type UnitCombatState = "OutOfCombat" | "InCombat";
+
+interface AuctionInfo {
+    auctionId: number;
+    itemId: number;
+    quantity: number;
+    startingBid: number;
+    buyout: number | null;
+    expiresAt: string;
+}
+
+interface AuraInfo {
+    effectInstanceId: string;
+    spellId: number;
+    source: EntityRef | null;
+    disposition: string;
+    stacks: number;
+    expiresAt: string | null;
+}
+
+interface ChatMessageInfo {
+    messageId: string;
+    channel: string;
+    senderGuid: string | null;
+    senderName: string | null;
+    text: string;
+    sentAt: string;
+}
+
+interface ContractInfo {
+    contractId: string;
+    areaId: number;
+    holderGuildId: string | null;
+    holderPartyId: string | null;
+    expiresAt: string;
+    progress: number;
+    stateCode: string;
+}
+
+interface CosmeticEntitlementInfo {
+    cosmeticDefinitionId: string;
+    owned: boolean;
+    verifiedAt: string;
+}
+
+interface EncounterInfo {
+    instanceId: string;
+    encounterId: string;
+    bossId: number | null;
+    difficulty: string;
+    groupId: string;
+}
+
+interface EntityRef {
+    guid: string;
+    entityType: string;
+    spawnGeneration: number;
+}
+
+interface GuildMemberInfo {
+    characterGuid: string;
+    name: string;
+    rank: string;
+    online: boolean;
+}
+
+interface ItemStackInfo {
+    itemInstanceGuid: string;
+    itemId: number;
+    quantity: number;
+    slot: number | null;
+    isBound: boolean;
+}
+
+interface MailSummaryInfo {
+    mailId: string;
+    senderDisplayName: string;
+    subject: string;
+    receivedAt: string;
+    expiresAt: string | null;
+    isRead: boolean;
+    hasAttachment: boolean;
+}
+
+interface MapDiscoveryDelta {
+    revealedCells: ReadonlyArray<{ x: number; y: number }>;
+    revision: number;
+}
+
+interface PartyMemberInfo {
+    guid: string;
+    name: string;
+    role: string;
+    online: boolean;
+    sameLayer: boolean;
+    subgroup: number | null;
+}
+
+interface PurchaseInfo {
+    purchaseId: string;
+    productId: string;
+    state: string;
+    updatedAt: string;
+}
+
+interface QuestObjectiveProgress {
+    objectiveId: number;
+    type: string;
+    collectMode: string | null;
+    current: number;
+    required: number;
+    completed: boolean;
+}
+
+interface ReadyCheckMemberInfo {
+    memberGuid: string;
+    response: string;
+}
+
+interface RewardChoiceInfo {
+    choiceId: number;
+    reward: RewardInfo;
+}
+
+interface RewardInfo {
+    items: ReadonlyArray<ItemStackInfo>;
+    money: number;
+    experience: number;
+    reputation: number | null;
+}
+
+interface SpellCastInfo {
+    castId: string;
+    spellId: number;
+    caster: EntityRef;
+    target: EntityRef | null;
+    startedAt: string;
+    endsAt: string | null;
+}
+
+interface StatValue {
+    statId: string;
+    value: number;
+}
+
+interface TradeItemInfo {
+    itemInstanceGuid: string;
+    itemId: number;
+    quantity: number;
+}
+
+interface TradeOfferInfo {
+    items: ReadonlyArray<TradeItemInfo>;
+    money: number;
+}
+
+interface WorldEventInfo {
+    worldEventId: string;
+    eventTemplateId: number;
+    stateCode: string;
+    startedAt: string;
+    endsAt: string | null;
+    progress: number | null;
+}
+
 interface ForgeEventMap {
-    "TARGET_CHANGED": {
+    "ACHIEVEMENT_COMPLETED": {
+        achievementId: number;
+        completedAt: string;
+        reward: RewardInfo | null;
+    };
+    "ACHIEVEMENT_PROGRESS_CHANGED": {
+        achievementId: number;
+        current: number;
+        required: number;
+    };
+    "CHARACTER_APPEARANCE_CHANGED": {
+        characterGuid: string;
+        appearanceRevision: number;
+    };
+    "COSMETIC_EQUIPPED": {
+        cosmeticDefinitionId: string;
+        slotId: string;
+    };
+    "COSMETIC_UNEQUIPPED": {
+        cosmeticDefinitionId: string;
+        slotId: string;
+    };
+    "TRANSMOG_CHANGED": {
+        itemInstanceGuid: string;
+        appearanceId: string | null;
+    };
+    "AUCTION_BID_PLACED": {
+        auctionId: number;
+        amount: number;
+    };
+    "AUCTION_BUYOUT_COMPLETED": {
+        auctionId: number;
+        itemId: number;
+        quantity: number;
+        totalPaid: number;
+    };
+    "AUCTION_ITEM_RETURNED": {
+        auctionId: number;
+        item: ItemStackInfo;
+    };
+    "AUCTION_LISTING_CANCELLED": {
+        auctionId: number;
+    };
+    "AUCTION_LISTING_CREATED": {
+        auction: AuctionInfo;
+    };
+    "AUCTION_LISTING_EXPIRED": {
+        auctionId: number;
+        hadWinningBid: boolean;
+    };
+    "AUCTION_OUTBID": {
+        auctionId: number;
+        refunded: number;
+    };
+    "AUCTION_SOLD": {
+        auctionId: number;
+        grossPrice: number;
+        fee: number;
+        netProceeds: number;
+    };
+    "AUCTION_WON": {
+        auctionId: number;
+        item: ItemStackInfo;
+        winningBid: number;
+    };
+    "AURA_ADDED": {
         unit: string;
         guid: string;
-        exists: boolean;
+        aura: AuraInfo;
+    };
+    "AURA_REMOVED": {
+        unit: string;
+        guid: string;
+        effectInstanceId: string;
+        spellId: number;
+        reason: string;
+    };
+    "AURA_UPDATED": {
+        unit: string;
+        guid: string;
+        aura: AuraInfo;
+    };
+    "ABILITY_LOADOUT_CHANGED": {
+        slotIndex: number;
+        spellId: number | null;
+    };
+    "PLAYER_LEVEL_CHANGED": {
+        previous: number;
+        current: number;
+    };
+    "PLAYER_ROLE_CHANGED": {
+        previous: string | null;
+        current: string;
+    };
+    "PLAYER_XP_CHANGED": {
+        current: number;
+        delta: number;
+        reasonCode: string;
+    };
+    "SPECIALIZATION_CHANGED": {
+        previousSpecializationId: number | null;
+        currentSpecializationId: number;
+    };
+    "SPECIALIZATION_UNLOCKED": {
+        specializationId: number;
+    };
+    "SPELLBOOK_CHANGED": {
+        spellId: number;
+        known: boolean;
+    };
+    "TALENT_CHANGED": {
+        talentId: number;
+        previousRank: number;
+        currentRank: number;
+    };
+    "TALENT_POINTS_CHANGED": {
+        available: number;
+        spent: number;
+    };
+    "CHAT_MESSAGE_RECEIVED": {
+        message: ChatMessageInfo;
+    };
+    "CHAT_MESSAGE_REJECTED": {
+        channel: string;
+        reasonCode: string;
+    };
+    "AUTO_ATTACK_STARTED": {
+        source: EntityRef;
+        target: EntityRef;
+    };
+    "AUTO_ATTACK_STOPPED": {
+        source: EntityRef;
+        target: EntityRef | null;
+        reasonCode: string;
+    };
+    "COMBAT_ABSORB": {
+        source: EntityRef | null;
+        target: EntityRef;
+        spellId: number | null;
+        amount: number;
+    };
+    "COMBAT_DAMAGE": {
+        source: EntityRef;
+        target: EntityRef;
+        spellId: number | null;
+        amount: number;
+        absorbed: number;
+        blocked: number;
+        damageType: string;
+        critical: boolean;
+    };
+    "COMBAT_DISPEL": {
+        source: EntityRef;
+        target: EntityRef;
+        spellId: number | null;
+        effectInstanceId: string;
+    };
+    "COMBAT_HEAL": {
+        source: EntityRef;
+        target: EntityRef;
+        spellId: number | null;
+        amount: number;
+        critical: boolean;
+    };
+    "COMBAT_INTERRUPT": {
+        source: EntityRef;
+        target: EntityRef;
+        spellId: number | null;
+        interruptedSpellId: number;
+        castId: string;
+    };
+    "COMBAT_MISS": {
+        source: EntityRef;
+        target: EntityRef;
+        spellId: number | null;
+        result: string;
+    };
+    "COMBAT_TAUNT": {
+        source: EntityRef;
+        target: EntityRef;
+        spellId: number | null;
+    };
+    "CONTRACT_ACQUIRED": {
+        contract: ContractInfo;
+    };
+    "CONTRACT_EXPIRED": {
+        contractId: string;
+        expiredAt: string;
+    };
+    "CONTRACT_PROGRESS_CHANGED": {
+        contract: ContractInfo;
+    };
+    "CONTRACT_REVOKED": {
+        contractId: string;
+        reasonCode: string;
+    };
+    "CONTRACT_SUSPENDED": {
+        contractId: string;
+        reasonCode: string;
+    };
+    "PLAYER_MONEY_CHANGED": {
+        current: number;
+        delta: number;
+        reason: string;
+    };
+    "PLAYER_RESPAWNED": {
+        position: { x: number; y: number; z: number };
+        floorId: number;
+        mapId: number;
+    };
+    "PLAYER_RESPAWN_SCHEDULED": {
+        respawnAt: string;
+        bindPointId: number | null;
+        floorId: number;
+        mapId: number;
+    };
+    "RESURRECTION_OFFERED": {
+        offerId: string;
+        caster: EntityRef;
+        spellId: number;
+        expiresAt: string | null;
+    };
+    "RESURRECTION_OFFER_ENDED": {
+        offerId: string;
+        result: string;
+    };
+    "UNIT_DIED": {
+        unit: EntityRef;
+        killer: EntityRef | null;
+        spellId: number | null;
+    };
+    "UNIT_RESURRECTED": {
+        unit: EntityRef;
+        caster: EntityRef | null;
+        spellId: number | null;
+    };
+    "CHALLENGE_TIMER_ENDED": {
+        instanceId: string;
+        elapsed: number;
+        success: boolean;
+    };
+    "CHALLENGE_TIMER_STARTED": {
+        instanceId: string;
+        startedAt: string;
+        endsAt: string;
+    };
+    "ENCOUNTER_COMPLETED": {
+        encounterId: string;
+        bossId: number | null;
+        difficulty: string;
+        duration: number;
+    };
+    "ENCOUNTER_DIFFICULTY_CHANGED": {
+        instanceId: string;
+        difficulty: string;
+    };
+    "ENCOUNTER_PHASE_CHANGED": {
+        encounterId: string;
+        phaseId: string;
+    };
+    "ENCOUNTER_RESET": {
+        encounterId: string;
+        resetAt: string;
+    };
+    "ENCOUNTER_STARTED": {
+        encounter: EncounterInfo;
+        startedAt: string;
+    };
+    "ENCOUNTER_WIPED": {
+        encounterId: string;
+        wipedAt: string;
+    };
+    "FIRST_KILL_RECORDED": {
+        bossId: number;
+        recordId: string;
+        recordedAt: string;
+    };
+    "INSTANCE_ENTERED": {
+        encounter: EncounterInfo;
+    };
+    "INSTANCE_LEFT": {
+        instanceId: string;
+        reasonCode: string;
+    };
+    "RAID_LOOT_LOCKOUT_CHANGED": {
+        bossId: number;
+        eligible: boolean;
+        resetAt: string | null;
+    };
+    "ITEM_EQUIPPED": {
+        itemInstanceGuid: string;
+        itemId: number;
+        slotMask: number;
+    };
+    "ITEM_UNEQUIPPED": {
+        itemInstanceGuid: string;
+        itemId: number;
+        previousSlotMask: number;
+    };
+    "GROUP_TYPE_CHANGED": {
+        groupId: string;
+        previous: string;
+        current: string;
+    };
+    "LFG_LISTING_CHANGED": {
+        listingId: string;
+        active: boolean;
+        revision: number;
+    };
+    "PARTY_CREATED": {
+        partyId: string;
+        leaderGuid: string;
+    };
+    "PARTY_DISBANDED": {
+        partyId: string;
+        reasonCode: string;
+    };
+    "PARTY_INVITE_ENDED": {
+        inviteId: string;
+        resultCode: string;
+    };
+    "PARTY_INVITE_RECEIVED": {
+        inviteId: string;
+        inviter: EntityRef;
+        expiresAt: string;
+    };
+    "PARTY_LAYER_STATUS_CHANGED": {
+        partyId: string;
+        memberGuid: string;
+        sameLayer: boolean;
+        layerId: string | null;
+    };
+    "PARTY_LEADER_CHANGED": {
+        partyId: string;
+        previousLeaderGuid: string;
+        currentLeaderGuid: string;
+    };
+    "PARTY_MEMBER_JOINED": {
+        partyId: string;
+        member: PartyMemberInfo;
+    };
+    "PARTY_MEMBER_LEFT": {
+        partyId: string;
+        memberGuid: string;
+        reasonCode: string;
+    };
+    "PARTY_MEMBER_UPDATED": {
+        partyId: string;
+        member: PartyMemberInfo;
+    };
+    "READY_CHECK_COMPLETED": {
+        readyCheckId: string;
+        responses: ReadonlyArray<ReadyCheckMemberInfo>;
+    };
+    "READY_CHECK_RESPONSE_CHANGED": {
+        readyCheckId: string;
+        memberGuid: string;
+        response: string;
+    };
+    "READY_CHECK_STARTED": {
+        readyCheckId: string;
+        partyId: string;
+        initiatorGuid: string;
+        expiresAt: string;
+    };
+    "GUILD_ALLIANCE_CHANGED": {
+        guildId: string;
+        allianceId: string | null;
+        active: boolean;
+    };
+    "GUILD_APPLICATION_CHANGED": {
+        applicationId: string;
+        guildId: string;
+        stateCode: string;
+    };
+    "GUILD_BANK_CHANGED": {
+        guildId: string;
+        revision: number;
+    };
+    "GUILD_BOSS_STATE_CHANGED": {
+        guildId: string;
+        bossId: number;
+        stateCode: string;
+    };
+    "GUILD_CALENDAR_CHANGED": {
+        guildId: string;
+        revision: number;
+    };
+    "GUILD_INVESTMENT_CHANGED": {
+        guildId: string;
+        contributorGuid: string;
+        amount: number;
+        totalInvestment: number;
+    };
+    "GUILD_JOINED": {
+        guildId: string;
+        guildName: string;
+        rank: string;
+    };
+    "GUILD_LEADER_CHANGED": {
+        guildId: string;
+        previousLeaderGuid: string;
+        currentLeaderGuid: string;
+    };
+    "GUILD_LEFT": {
+        guildId: string;
+        reasonCode: string;
+    };
+    "GUILD_LEVEL_CHANGED": {
+        guildId: string;
+        previous: number;
+        current: number;
+    };
+    "GUILD_MEMBER_JOINED": {
+        guildId: string;
+        member: GuildMemberInfo;
+    };
+    "GUILD_MEMBER_LEFT": {
+        guildId: string;
+        memberGuid: string;
+        reasonCode: string;
+    };
+    "GUILD_MEMBER_UPDATED": {
+        guildId: string;
+        member: GuildMemberInfo;
+    };
+    "GUILD_QUEST_CHANGED": {
+        guildId: string;
+        questId: number;
+        revision: number;
+    };
+    "GUILD_RANK_CHANGED": {
+        guildId: string;
+        memberGuid: string;
+        previous: string;
+        current: string;
+    };
+    "INTERACTION_ENDED": {
+        interactionId: string;
+        reasonCode: string;
+    };
+    "INTERACTION_STARTED": {
+        interactionId: string;
+        target: EntityRef;
+    };
+    "NPC_DIALOGUE_CLOSED": {
+        npc: EntityRef;
+        dialogueId: number;
+        reasonCode: string;
+    };
+    "NPC_DIALOGUE_OPENED": {
+        npc: EntityRef;
+        dialogueId: number;
+    };
+    "INVENTORY_CAPACITY_CHANGED": {
+        capacity: number;
+        used: number;
+    };
+    "INVENTORY_ITEM_ADDED": {
+        item: ItemStackInfo;
+    };
+    "INVENTORY_ITEM_MOVED": {
+        itemInstanceGuid: string;
+        fromSlot: number;
+        toSlot: number;
+    };
+    "INVENTORY_ITEM_QUANTITY_CHANGED": {
+        itemInstanceGuid: string;
+        itemId: number;
+        previous: number;
+        current: number;
+    };
+    "INVENTORY_ITEM_REMOVED": {
+        itemInstanceGuid: string;
+        itemId: number;
+        quantity: number;
+        slot: number | null;
+    };
+    "INVENTORY_LAYOUT_CHANGED": {
+        revision: number;
+    };
+    "ITEM_BINDING_CHANGED": {
+        itemInstanceGuid: string;
+        itemId: number;
+        isBound: boolean;
+    };
+    "ITEM_BROKEN": {
+        itemInstanceGuid: string;
+        itemId: number;
+    };
+    "ITEM_CHARGE_CHANGED": {
+        itemInstanceGuid: string;
+        itemId: number;
+        current: number;
+        max: number;
+        effectActive: boolean;
+    };
+    "ITEM_DURABILITY_CHANGED": {
+        itemInstanceGuid: string;
+        itemId: number;
+        current: number;
+        max: number;
+    };
+    "ITEM_RECHARGED": {
+        itemInstanceGuid: string;
+        itemId: number;
+        current: number;
+        max: number;
+    };
+    "ITEM_REPAIRED": {
+        itemInstanceGuid: string;
+        itemId: number;
+        current: number;
+        max: number;
+    };
+    "ITEM_USED": {
+        itemInstanceGuid: string;
+        itemId: number;
+        quantity: number;
+    };
+    "LOOT_GRANTED": {
+        source: EntityRef | null;
+        reward: RewardInfo;
+    };
+    "MAIL_ATTACHMENT_CLAIMED": {
+        mailId: string;
+        reward: RewardInfo;
+    };
+    "MAIL_EXPIRED": {
+        mailId: string;
+    };
+    "MAIL_READ_CHANGED": {
+        mailId: string;
+        isRead: boolean;
+    };
+    "MAIL_RECEIVED": {
+        mail: MailSummaryInfo;
+    };
+    "MAIL_REMOVED": {
+        mailId: string;
+        reasonCode: string;
+    };
+    "MAIL_SENT": {
+        mailId: string;
+        recipientIdentity: string;
+    };
+    "MAP_COPY_APPLIED": {
+        mapId: number;
+        mapVersion: string;
+        delta: MapDiscoveryDelta;
+    };
+    "MAP_COPY_CONSUMED": {
+        itemInstanceGuid: string;
+        mapId: number;
+        mapVersion: string;
+    };
+    "MAP_COPY_CREATED": {
+        item: ItemStackInfo;
+        mapId: number;
+        mapVersion: string;
+    };
+    "MAP_DISCOVERY_CHANGED": {
+        mapId: number;
+        mapVersion: string;
+        delta: MapDiscoveryDelta;
+    };
+    "SECRET_DISCOVERED": {
+        secretId: number;
+        mapId: number;
+    };
+    "DISMOUNTED": {
+        mountId: number;
+        reasonCode: string;
+    };
+    "MOUNTED": {
+        mountId: number;
+    };
+    "MOUNT_AVAILABILITY_CHANGED": {
+        mountId: number;
+        available: boolean;
+        reasonCode: string;
+    };
+    "MOUNT_COLLECTED": {
+        mountId: number;
+    };
+    "PLAYER_MOVEMENT_SPEED_CHANGED": {
+        current: number;
+        previous: number;
+    };
+    "PLAYER_POSITION_CORRECTED": {
+        position: { x: number; y: number; z: number };
+        correctionDistance: number;
+    };
+    "COSMETIC_ENTITLEMENTS_SYNCED": {
+        revision: number;
+        verifiedAt: string;
+    };
+    "COSMETIC_ENTITLEMENT_GRANTED": {
+        entitlement: CosmeticEntitlementInfo;
+    };
+    "COSMETIC_ENTITLEMENT_REVOKED": {
+        entitlement: CosmeticEntitlementInfo;
+        reasonCode: string;
+    };
+    "PLATFORM_AUTH_STATE_CHANGED": {
+        state: string;
+        reasonCode: string | null;
+    };
+    "PLATFORM_AVAILABILITY_CHANGED": {
+        available: boolean;
+        reasonCode: string | null;
+    };
+    "PURCHASE_STATE_CHANGED": {
+        purchase: PurchaseInfo;
+    };
+    "DUEL_ENDED": {
+        duelId: string;
+        winnerGuid: string | null;
+        reasonCode: string;
+    };
+    "DUEL_REQUESTED": {
+        duelId: string;
+        challenger: EntityRef;
+    };
+    "DUEL_REQUEST_ENDED": {
+        duelId: string;
+        resultCode: string;
+    };
+    "DUEL_STARTED": {
+        duelId: string;
+        opponent: EntityRef;
+        startedAt: string;
+    };
+    "QUEST_ABANDONED": {
+        questId: number;
+    };
+    "QUEST_ACCEPTED": {
+        questId: number;
+        state: string;
+    };
+    "QUEST_COMPLETED": {
+        questId: number;
+        reward: RewardInfo;
+    };
+    "QUEST_FAILED": {
+        questId: number;
+        reasonCode: string;
+        canRetry: boolean;
+    };
+    "QUEST_OBJECTIVE_COMPLETED": {
+        questId: number;
+        objectiveId: number;
+        objectiveType: string;
+    };
+    "QUEST_OBJECTIVE_PROGRESS_CHANGED": {
+        questId: number;
+        objective: QuestObjectiveProgress;
+    };
+    "QUEST_READY_TO_TURN_IN": {
+        questId: number;
+    };
+    "QUEST_RESET": {
+        questId: number;
+        resetAt: string;
+    };
+    "QUEST_REWARD_CHOICE_REQUIRED": {
+        questId: number;
+        choices: ReadonlyArray<RewardChoiceInfo>;
+    };
+    "QUEST_REWARD_CHOICE_SELECTED": {
+        questId: number;
+        choiceId: number;
+    };
+    "QUEST_SHARED": {
+        shareId: string;
+        questId: number;
+        target: EntityRef;
+    };
+    "QUEST_SHARE_RECEIVED": {
+        shareId: string;
+        questId: number;
+        sender: EntityRef;
+    };
+    "REPUTATION_CHANGED": {
+        organizationId: number;
+        current: number;
+        delta: number;
+    };
+    "REPUTATION_STANDING_CHANGED": {
+        organizationId: number;
+        previousStandingId: string | null;
+        currentStandingId: string;
+    };
+    "AUDIO_SETTINGS_CHANGED": {
+        groupId: string;
+        value: number;
+    };
+    "KEYBIND_CHANGED": {
+        actionId: string;
+        binding: string;
+    };
+    "LOCALE_CHANGED": {
+        locale: string;
+    };
+    "UI_SCALE_CHANGED": {
+        scale: number;
+    };
+    "BLOCK_ADDED": {
+        socialIdentityId: string;
+    };
+    "BLOCK_REMOVED": {
+        socialIdentityId: string;
+    };
+    "FRIEND_ADDED": {
+        socialIdentityId: string;
+        displayName: string;
+    };
+    "FRIEND_PRESENCE_CHANGED": {
+        socialIdentityId: string;
+        online: boolean;
+        locationId: number | null;
+    };
+    "FRIEND_REMOVED": {
+        socialIdentityId: string;
+    };
+    "SPELL_CAST_COMMITTED": {
+        castId: string;
+        spellId: number;
+        caster: EntityRef;
+        target: EntityRef | null;
+    };
+    "SPELL_CAST_FAILED": {
+        castId: string | null;
+        spellId: number;
+        caster: EntityRef;
+        reason: string;
+    };
+    "SPELL_CAST_INTERRUPTED": {
+        castId: string;
+        spellId: number;
+        caster: EntityRef;
+        reason: string;
+        interrupter: EntityRef | null;
+    };
+    "SPELL_CAST_STARTED": {
+        cast: SpellCastInfo;
+    };
+    "SPELL_CAST_SUCCEEDED": {
+        castId: string;
+        spellId: number;
+        caster: EntityRef;
+        target: EntityRef | null;
+    };
+    "SPELL_COOLDOWNS_RESET": {
+        spellIds: ReadonlyArray<number>;
+    };
+    "SPELL_COOLDOWN_ENDED": {
+        spellId: number;
+    };
+    "SPELL_COOLDOWN_STARTED": {
+        spellId: number;
+        startedAt: string;
+        endsAt: string;
+    };
+    "PLAYER_STATS_CHANGED": {
+        stats: ReadonlyArray<StatValue>;
+        revision: number;
+    };
+    "CHARACTER_ROSTER_CHANGED": {
+        revision: number;
+    };
+    "CHARACTER_SELECTION_CHANGED": {
+        characterGuid: string | null;
+    };
+    "CONNECTION_STATE_CHANGED": {
+        state: string;
+        reasonCode: string | null;
+    };
+    "GLOBAL_ANNOUNCEMENT_RECEIVED": {
+        message: string;
+        severityCode: string;
+    };
+    "LOADING_STATE_CHANGED": {
+        state: string;
+        context: string | null;
+    };
+    "RECONNECT_COMPLETED": {
+        floorId: number;
+        mapId: number;
+    };
+    "RECONNECT_FAILED": {
+        reasonCode: string;
+        willRetry: boolean;
+    };
+    "RECONNECT_STARTED": {
+        attempt: number;
+    };
+    "WORLD_ENTRY_COMPLETED": {
+        floorId: number;
+        mapId: number;
+        layerId: string | null;
+    };
+    "WORLD_ENTRY_FAILED": {
+        floorId: number | null;
+        reasonCode: string;
+    };
+    "WORLD_ENTRY_STARTED": {
+        floorId: number;
+        mapId: number;
+    };
+    "TRADE_CANCELLED": {
+        tradeId: string;
+        reasonCode: string;
+    };
+    "TRADE_COMPLETED": {
+        tradeId: string;
+    };
+    "TRADE_CONFIRMATION_CHANGED": {
+        tradeId: string;
+        offerVersion: number;
+        playerGuid: string;
+        confirmed: boolean;
+    };
+    "TRADE_FAILED": {
+        tradeId: string;
+        reasonCode: string;
+    };
+    "TRADE_OFFER_CHANGED": {
+        tradeId: string;
+        offerVersion: number;
+        playerGuid: string;
+        offer: TradeOfferInfo;
+    };
+    "TRADE_REQUESTED": {
+        tradeId: string;
+        requester: EntityRef;
+        target: EntityRef;
+    };
+    "TRADE_STARTED": {
+        tradeId: string;
+        participants: ReadonlyArray<EntityRef>;
+    };
+    "TARGET_CHANGED": {
+        guid: string | null;
+        entityType: string | null;
+        spawnGeneration: number | null;
+    };
+    "UNIT_ADDED": {
+        unit: string;
+        guid: string;
+        entityType: string;
+        spawnGeneration: number;
+    };
+    "UNIT_COMBAT_STATE_CHANGED": {
+        unit: string;
+        guid: string;
+        state: string;
     };
     "UNIT_HEALTH_CHANGED": {
         unit: string;
         guid: string;
         current: number;
         max: number;
+    };
+    "UNIT_LEVEL_CHANGED": {
+        unit: string;
+        guid: string;
+        level: number;
+    };
+    "UNIT_REMOVED": {
+        unit: string;
+        guid: string;
+        spawnGeneration: number;
+    };
+    "UNIT_RESOURCE_CHANGED": {
+        unit: string;
+        guid: string;
+        powerType: string;
+        current: number;
+        max: number;
+    };
+    "VENDOR_PURCHASE_COMPLETED": {
+        vendor: EntityRef;
+        itemId: number;
+        quantity: number;
+        totalPrice: number;
+    };
+    "VENDOR_SALE_COMPLETED": {
+        vendor: EntityRef;
+        itemId: number;
+        quantity: number;
+        totalReceived: number;
+    };
+    "AREA_CHANGED": {
+        floorId: number;
+        areaId: number;
+        subzoneId: number | null;
+    };
+    "BIND_POINT_CHANGED": {
+        bindPointId: number;
+        floorId: number;
+        mapId: number;
+    };
+    "FAST_TRAVEL_COMPLETED": {
+        travelId: string;
+        floorId: number;
+        mapId: number;
+        position: { x: number; y: number; z: number };
+    };
+    "FAST_TRAVEL_FAILED": {
+        travelId: string | null;
+        reasonCode: string;
+    };
+    "FAST_TRAVEL_STARTED": {
+        travelId: string;
+        destinationId: number;
+        cost: number;
+    };
+    "FLOOR_ACCESS_CHANGED": {
+        floorId: number;
+        unlocked: boolean;
+        reasonCode: string;
+    };
+    "FLOOR_CHANGED": {
+        previousFloorId: number | null;
+        currentFloorId: number;
+        mapId: number;
+    };
+    "WORLD_EVENT_ENDED": {
+        worldEventId: string;
+        resultCode: string;
+    };
+    "WORLD_EVENT_STARTED": {
+        worldEvent: WorldEventInfo;
+    };
+    "WORLD_EVENT_UPDATED": {
+        worldEvent: WorldEventInfo;
+    };
+    "WORLD_PORTAL_CLOSED": {
+        portalId: number;
+    };
+    "WORLD_PORTAL_OPENED": {
+        portalId: number;
+        floorId: number;
+        closesAt: string | null;
     };
 }
 

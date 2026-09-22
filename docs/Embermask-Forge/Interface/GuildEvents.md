@@ -1,275 +1,613 @@
 # Guild Events
 
+Guild membership, roster, rank, progression, investment, bank, quest, boss, application, calendar, and alliance events.
 
-Guild tagság, rang, bank, progress, social. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `GUILD_ALLIANCE_CHANGED` | Published when the authoritative guild alliance state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling. |
+| `GUILD_APPLICATION_CHANGED` | Published when the authoritative guild application state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling. |
+| `GUILD_BANK_CHANGED` | Published when the authoritative guild bank state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling. |
+| `GUILD_BOSS_STATE_CHANGED` | Published when the authoritative guild boss state state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling. |
+| `GUILD_CALENDAR_CHANGED` | Published when the authoritative guild calendar state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling. |
+| `GUILD_INVESTMENT_CHANGED` | Published when the authoritative guild investment state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling. |
+| `GUILD_JOINED` | Published when guild joins the relevant social or group context and becomes visible to the local client. |
+| `GUILD_LEADER_CHANGED` | Published when the authoritative guild leader state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling. |
+| `GUILD_LEFT` | Published when guild leaves the relevant social, group, or world context. |
+| `GUILD_LEVEL_CHANGED` | Published when the authoritative guild level state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling. |
+| `GUILD_MEMBER_JOINED` | Published when guild member joins the relevant social or group context and becomes visible to the local client. |
+| `GUILD_MEMBER_LEFT` | Published when guild member leaves the relevant social, group, or world context. |
+| `GUILD_MEMBER_UPDATED` | Published when the public state of guild member is updated. The payload contains the latest authoritative snapshot or delta required by consumers. |
+| `GUILD_QUEST_CHANGED` | Published when the authoritative guild quest state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling. |
+| `GUILD_RANK_CHANGED` | Published when the authoritative guild rank state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling. |
 
-Events: **15**
+## Subscription lifecycle
 
-## `1. GUILD_ALLIANCE_CHANGED`
-A guild alliance tagsága/state-je megváltozott.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `GUILD_ALLIANCE_CHANGED`
+
+Published when the authoritative guild alliance state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `allianceId` | `System.Guid?` | `string | null` | Yes |  |
-| `active` | `bool` | `boolean` | No |  |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `allianceId` | `System.Guid?` | `string | null` | Yes | Stable identifier of the guild alliance. |
+| `active` | `bool` | `boolean` | No | Whether the relationship or state is currently active. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_ALLIANCE_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishAllianceChanged(...)`
+#### Unsubscribe
 
-## `2. GUILD_APPLICATION_CHANGED`
-Saját Guild Finder jelentkezés állapota változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishAllianceChanged(
+    eventBus,
+    guildId,
+    allianceId,
+    active
+);
+```
+
+## `GUILD_APPLICATION_CHANGED`
+
+Published when the authoritative guild application state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `applicationId` | `System.Guid` | `string` | No |  |
-| `guildId` | `System.Guid` | `string` | No |  |
-| `stateCode` | `string` | `string` | No |  |
+| `applicationId` | `System.Guid` | `string` | No | Stable identifier of the guild application. |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `stateCode` | `string` | `string` | No | Stable non-localized state code describing the current lifecycle state. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_APPLICATION_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishApplicationChanged(...)`
+#### Unsubscribe
 
-## `3. GUILD_BANK_CHANGED`
-A guildbank engedélyezett nézete megváltozott; a részletes state Query API-ból kérhető jogosultság szerint.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishApplicationChanged(
+    eventBus,
+    applicationId,
+    guildId,
+    stateCode
+);
+```
+
+## `GUILD_BANK_CHANGED`
+
+Published when the authoritative guild bank state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `revision` | `long` | `number` | No | Non-negative revision/identifier; represented as Long in the public Forge schema. |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `revision` | `int` | `number` | No | Monotonically increasing revision number used to detect stale cached state. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_BANK_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishBankChanged(...)`
+#### Unsubscribe
 
-## `4. GUILD_BOSS_STATE_CHANGED`
-Guild Boss summon/encounter hozzáférési state változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishBankChanged(
+    eventBus,
+    guildId,
+    revision
+);
+```
+
+## `GUILD_BOSS_STATE_CHANGED`
+
+Published when the authoritative guild boss state state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `bossId` | `int` | `number` | No |  |
-| `stateCode` | `string` | `string` | No |  |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `bossId` | `int` | `number` | No | Optional stable content identifier of the primary boss. |
+| `stateCode` | `string` | `string` | No | Stable non-localized state code describing the current lifecycle state. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_BOSS_STATE_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishBossStateChanged(...)`
+#### Unsubscribe
 
-## `5. GUILD_CALENDAR_CHANGED`
-A guild calendar saját jogosultságon belüli state-je módosult.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishBossStateChanged(
+    eventBus,
+    guildId,
+    bossId,
+    stateCode
+);
+```
+
+## `GUILD_CALENDAR_CHANGED`
+
+Published when the authoritative guild calendar state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `revision` | `long` | `number` | No | Non-negative revision/identifier; represented as Long in the public Forge schema. |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `revision` | `int` | `number` | No | Monotonically increasing revision number used to detect stale cached state. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_CALENDAR_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishCalendarChanged(...)`
+#### Unsubscribe
 
-## `6. GUILD_INVESTMENT_CHANGED`
-Visszavonhatatlan progression-befizetés commitolt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishCalendarChanged(
+    eventBus,
+    guildId,
+    revision
+);
+```
+
+## `GUILD_INVESTMENT_CHANGED`
+
+Published when the authoritative guild investment state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `contributorGuid` | `System.Guid` | `string` | No |  |
-| `amount` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `totalInvestment` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `contributorGuid` | `System.Guid` | `string` | No | Stable character identifier of the member responsible for the contribution. |
+| `amount` | `int` | `number` | No | Resolved numeric amount associated with the event. |
+| `totalInvestment` | `int` | `number` | No | Authoritative total guild investment after the change. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_INVESTMENT_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishInvestmentChanged(...)`
+#### Unsubscribe
 
-## `7. GUILD_JOINED`
-A lokális karakter guildtagságot kapott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishInvestmentChanged(
+    eventBus,
+    guildId,
+    contributorGuid,
+    amount,
+    totalInvestment
+);
+```
+
+## `GUILD_JOINED`
+
+Published when guild joins the relevant social or group context and becomes visible to the local client.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `guildName` | `string` | `string` | No |  |
-| `rank` | `GuildRank` | `string` | No |  |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `guildName` | `string` | `string` | No | Display name of the guild. |
+| `rank` | `GuildRank` | `GuildRank` | No | Public guild rank assigned to the member. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_JOINED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishJoined(...)`
+#### Unsubscribe
 
-## `8. GUILD_LEADER_CHANGED`
-A guild vezetője megváltozott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishJoined(
+    eventBus,
+    guildId,
+    guildName,
+    rank
+);
+```
+
+## `GUILD_LEADER_CHANGED`
+
+Published when the authoritative guild leader state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `previousLeaderGuid` | `System.Guid` | `string` | No |  |
-| `currentLeaderGuid` | `System.Guid` | `string` | No |  |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `previousLeaderGuid` | `System.Guid` | `string` | No | Stable identifier of the previous group leader. |
+| `currentLeaderGuid` | `System.Guid` | `string` | No | Stable identifier of the new group leader. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_LEADER_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishLeaderChanged(...)`
+#### Unsubscribe
 
-## `9. GUILD_LEFT`
-A lokális karakter guildtagsága megszűnt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishLeaderChanged(
+    eventBus,
+    guildId,
+    previousLeaderGuid,
+    currentLeaderGuid
+);
+```
+
+## `GUILD_LEFT`
+
+Published when guild leaves the relevant social, group, or world context.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_LEFT", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishLeft(...)`
+#### Unsubscribe
 
-## `10. GUILD_LEVEL_CHANGED`
-Guild progression level változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishLeft(
+    eventBus,
+    guildId,
+    reasonCode
+);
+```
+
+## `GUILD_LEVEL_CHANGED`
+
+Published when the authoritative guild level state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `previous` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `current` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `previous` | `int` | `number` | No | Authoritative value before the change. |
+| `current` | `int` | `number` | No | Authoritative current value after the change. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_LEVEL_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishLevelChanged(...)`
+#### Unsubscribe
 
-## `11. GUILD_MEMBER_JOINED`
-Új member került a guild rosterbe.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishLevelChanged(
+    eventBus,
+    guildId,
+    previous,
+    current
+);
+```
+
+## `GUILD_MEMBER_JOINED`
+
+Published when guild member joins the relevant social or group context and becomes visible to the local client.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `member` | `GuildMemberInfo` | `GuildMemberInfo` | No |  |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `member` | `GuildMemberInfo` | `GuildMemberInfo` | No | Current public snapshot of the group member. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_MEMBER_JOINED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishMemberJoined(...)`
+#### Unsubscribe
 
-## `12. GUILD_MEMBER_LEFT`
-Member kikerült a rosterből.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishMemberJoined(
+    eventBus,
+    guildId,
+    member
+);
+```
+
+## `GUILD_MEMBER_LEFT`
+
+Published when guild member leaves the relevant social, group, or world context.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `memberGuid` | `System.Guid` | `string` | No |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `memberGuid` | `System.Guid` | `string` | No | Stable character identifier of the group member. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_MEMBER_LEFT", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishMemberLeft(...)`
+#### Unsubscribe
 
-## `13. GUILD_MEMBER_UPDATED`
-Publikus roster/presence metadata változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishMemberLeft(
+    eventBus,
+    guildId,
+    memberGuid,
+    reasonCode
+);
+```
+
+## `GUILD_MEMBER_UPDATED`
+
+Published when the public state of guild member is updated. The payload contains the latest authoritative snapshot or delta required by consumers.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `member` | `GuildMemberInfo` | `GuildMemberInfo` | No |  |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `member` | `GuildMemberInfo` | `GuildMemberInfo` | No | Current public snapshot of the group member. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_MEMBER_UPDATED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishMemberUpdated(...)`
+#### Unsubscribe
 
-## `14. GUILD_QUEST_CHANGED`
-Az aktív guild quest/progress state módosult.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishMemberUpdated(
+    eventBus,
+    guildId,
+    member
+);
+```
+
+## `GUILD_QUEST_CHANGED`
+
+Published when the authoritative guild quest state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `questId` | `int` | `number` | No |  |
-| `revision` | `long` | `number` | No | Non-negative revision/identifier; represented as Long in the public Forge schema. |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `questId` | `int` | `number` | No | Stable content identifier of the quest. |
+| `revision` | `int` | `number` | No | Monotonically increasing revision number used to detect stale cached state. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_QUEST_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishQuestChanged(...)`
+#### Unsubscribe
 
-## `15. GUILD_RANK_CHANGED`
-Egy member rangja módosult.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+GuildEvents.PublishQuestChanged(
+    eventBus,
+    guildId,
+    questId,
+    revision
+);
+```
+
+## `GUILD_RANK_CHANGED`
+
+Published when the authoritative guild rank state changes. The payload contains the resulting state and identifiers needed by Guild UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `guildId` | `System.Guid` | `string` | No |  |
-| `memberGuid` | `System.Guid` | `string` | No |  |
-| `previous` | `GuildRank` | `string` | No |  |
-| `current` | `GuildRank` | `string` | No |  |
+| `guildId` | `System.Guid` | `string` | No | Stable identifier of the guild. |
+| `memberGuid` | `System.Guid` | `string` | No | Stable character identifier of the group member. |
+| `previous` | `GuildRank` | `GuildRank` | No | Authoritative value before the change. |
+| `current` | `GuildRank` | `GuildRank` | No | Authoritative current value after the change. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("GUILD_RANK_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `GuildEvents.PublishRankChanged(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+GuildEvents.PublishRankChanged(
+    eventBus,
+    guildId,
+    memberGuid,
+    previous,
+    current
+);
+```
 

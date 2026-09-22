@@ -1,46 +1,103 @@
 # Vendor Events
 
+Completed vendor transaction events for purchases and sales that have been accepted by the authoritative game state.
 
-Vendor tranzakciók eredménye. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `VENDOR_PURCHASE_COMPLETED` | Published when vendor purchase completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume. |
+| `VENDOR_SALE_COMPLETED` | Published when vendor sale completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume. |
 
-Events: **2**
+## Subscription lifecycle
 
-## `1. VENDOR_PURCHASE_COMPLETED`
-Vendor buy tranzakció véglegesen commitolt.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `VENDOR_PURCHASE_COMPLETED`
+
+Published when vendor purchase completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `vendor` | `EntityRef` | `EntityRef` | No |  |
-| `itemId` | `int` | `number` | No |  |
-| `quantity` | `int` | `number` | No |  |
-| `totalPrice` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `vendor` | `EntityRef` | `EntityRef` | No | Safe reference to the vendor involved in the transaction. |
+| `itemId` | `int` | `number` | No | Stable content identifier of the item definition. |
+| `quantity` | `int` | `number` | No | Current or transferred stack quantity. |
+| `totalPrice` | `int` | `number` | No | Total price paid in the game's smallest public currency unit. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("VENDOR_PURCHASE_COMPLETED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `VendorEvents.PublishPurchaseCompleted(...)`
+#### Unsubscribe
 
-## `2. VENDOR_SALE_COMPLETED`
-Item NPC-vendornak történő eladása commitolt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+VendorEvents.PublishPurchaseCompleted(
+    eventBus,
+    vendor,
+    itemId,
+    quantity,
+    totalPrice
+);
+```
+
+## `VENDOR_SALE_COMPLETED`
+
+Published when vendor sale completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `vendor` | `EntityRef` | `EntityRef` | No |  |
-| `itemId` | `int` | `number` | No |  |
-| `quantity` | `int` | `number` | No |  |
-| `totalReceived` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `vendor` | `EntityRef` | `EntityRef` | No | Safe reference to the vendor involved in the transaction. |
+| `itemId` | `int` | `number` | No | Stable content identifier of the item definition. |
+| `quantity` | `int` | `number` | No | Current or transferred stack quantity. |
+| `totalReceived` | `int` | `number` | No | Total currency received in the game's smallest public currency unit. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("VENDOR_SALE_COMPLETED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `VendorEvents.PublishSaleCompleted(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+VendorEvents.PublishSaleCompleted(
+    eventBus,
+    vendor,
+    itemId,
+    quantity,
+    totalReceived
+);
+```
 

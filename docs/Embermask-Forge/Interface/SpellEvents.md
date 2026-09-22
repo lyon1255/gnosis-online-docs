@@ -1,151 +1,337 @@
 # Spell Events
 
+Spell and ability cast lifecycle events, including cast start, commitment, success, failure, interruption, and cooldown changes.
 
-Cast és cooldown lifecycle. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `SPELL_CAST_COMMITTED` | Published when the authoritative 'SPELL_CAST_COMMITTED' gameplay event occurs. The payload contains only client-visible state intended for Spell UI and AddOns. |
+| `SPELL_CAST_FAILED` | Published when spell cast fails before reaching a successful final state. The payload includes stable context or reason information when available. |
+| `SPELL_CAST_INTERRUPTED` | Published when the authoritative 'SPELL_CAST_INTERRUPTED' gameplay event occurs. The payload contains only client-visible state intended for Spell UI and AddOns. |
+| `SPELL_CAST_STARTED` | Published when the authoritative game state accepts and starts a spell or ability cast. The payload contains the initial cast snapshot required by cast bars and related UI. |
+| `SPELL_CAST_SUCCEEDED` | Published when the authoritative 'SPELL_CAST_SUCCEEDED' gameplay event occurs. The payload contains only client-visible state intended for Spell UI and AddOns. |
+| `SPELL_COOLDOWNS_RESET` | Published when spell cooldowns is reset to its authoritative baseline state. |
+| `SPELL_COOLDOWN_ENDED` | Published when spell cooldown reaches its final end state. The payload identifies the affected lifecycle instance and its final public result when applicable. |
+| `SPELL_COOLDOWN_STARTED` | Published when spell cooldown starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state. |
 
-Events: **8**
+## Subscription lifecycle
 
-## `1. SPELL_CAST_COMMITTED`
-A cast elérte azt a pontot, amely után az effect saját szabályai szerint folytatódik.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `SPELL_CAST_COMMITTED`
+
+Published when the authoritative 'SPELL_CAST_COMMITTED' gameplay event occurs. The payload contains only client-visible state intended for Spell UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `castId` | `System.Guid` | `string` | No |  |
-| `spellId` | `int` | `number` | No |  |
-| `caster` | `EntityRef` | `EntityRef` | No |  |
-| `target` | `EntityRef` | `EntityRef | null` | Yes |  |
+| `castId` | `System.Guid` | `string` | No | Stable identifier of this cast lifecycle. |
+| `spellId` | `int` | `number` | No | Stable content identifier of the spell or ability. |
+| `caster` | `EntityRef` | `EntityRef` | No | Entity that initiated the cast. |
+| `target` | `EntityRef` | `EntityRef | null` | Yes | Optional entity targeted by the action or cast. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("SPELL_CAST_COMMITTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SpellEvents.PublishCastCommitted(...)`
+#### Unsubscribe
 
-## `2. SPELL_CAST_FAILED`
-Egy cast request vagy cast-lifecycle érvényesítés miatt nem teljesült.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SpellEvents.PublishCastCommitted(
+    eventBus,
+    castId,
+    spellId,
+    caster,
+    target
+);
+```
+
+## `SPELL_CAST_FAILED`
+
+Published when spell cast fails before reaching a successful final state. The payload includes stable context or reason information when available.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `castId` | `System.Guid?` | `string | null` | Yes | ha már létrejött |
-| `spellId` | `int` | `number` | No |  |
-| `caster` | `EntityRef` | `EntityRef` | No |  |
-| `reason` | `CastFailureReason` | `string` | No |  |
+| `castId` | `System.Guid?` | `string | null` | Yes | Stable identifier of this cast lifecycle. |
+| `spellId` | `int` | `number` | No | Stable content identifier of the spell or ability. |
+| `caster` | `EntityRef` | `EntityRef` | No | Entity that initiated the cast. |
+| `reason` | `CastFailureReason` | `CastFailureReason` | No | Stable semantic reason associated with the event. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("SPELL_CAST_FAILED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SpellEvents.PublishCastFailed(...)`
+#### Unsubscribe
 
-## `3. SPELL_CAST_INTERRUPTED`
-Egy már elindult, még nem committed cast megszakadt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SpellEvents.PublishCastFailed(
+    eventBus,
+    castId,
+    spellId,
+    caster,
+    reason
+);
+```
+
+## `SPELL_CAST_INTERRUPTED`
+
+Published when the authoritative 'SPELL_CAST_INTERRUPTED' gameplay event occurs. The payload contains only client-visible state intended for Spell UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `castId` | `System.Guid` | `string` | No |  |
-| `spellId` | `int` | `number` | No |  |
-| `caster` | `EntityRef` | `EntityRef` | No |  |
-| `reason` | `CastInterruptReason` | `string` | No |  |
-| `interrupter` | `EntityRef` | `EntityRef | null` | Yes |  |
+| `castId` | `System.Guid` | `string` | No | Stable identifier of this cast lifecycle. |
+| `spellId` | `int` | `number` | No | Stable content identifier of the spell or ability. |
+| `caster` | `EntityRef` | `EntityRef` | No | Entity that initiated the cast. |
+| `reason` | `CastInterruptReason` | `CastInterruptReason` | No | Stable semantic reason associated with the event. |
+| `interrupter` | `EntityRef` | `EntityRef | null` | Yes | Entity responsible for the interrupt. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("SPELL_CAST_INTERRUPTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SpellEvents.PublishCastInterrupted(...)`
+#### Unsubscribe
 
-## `4. SPELL_CAST_STARTED`
-A szerver elfogadta és elindította a cast lifecycle-t.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SpellEvents.PublishCastInterrupted(
+    eventBus,
+    castId,
+    spellId,
+    caster,
+    reason,
+    interrupter
+);
+```
+
+## `SPELL_CAST_STARTED`
+
+Published when the authoritative game state accepts and starts a spell or ability cast. The payload contains the initial cast snapshot required by cast bars and related UI.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `cast` | `SpellCastInfo` | `SpellCastInfo` | No | cast snapshot |
+| `cast` | `SpellCastInfo` | `SpellCastInfo` | No | Authoritative cast value associated with this payload. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("SPELL_CAST_STARTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SpellEvents.PublishCastStarted(...)`
+#### Unsubscribe
 
-## `5. SPELL_CAST_SUCCEEDED`
-A cast sikeresen befejezte a szerveroldali cast fázist.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SpellEvents.PublishCastStarted(
+    eventBus,
+    cast
+);
+```
+
+## `SPELL_CAST_SUCCEEDED`
+
+Published when the authoritative 'SPELL_CAST_SUCCEEDED' gameplay event occurs. The payload contains only client-visible state intended for Spell UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `castId` | `System.Guid` | `string` | No |  |
-| `spellId` | `int` | `number` | No |  |
-| `caster` | `EntityRef` | `EntityRef` | No |  |
-| `target` | `EntityRef` | `EntityRef | null` | Yes |  |
+| `castId` | `System.Guid` | `string` | No | Stable identifier of this cast lifecycle. |
+| `spellId` | `int` | `number` | No | Stable content identifier of the spell or ability. |
+| `caster` | `EntityRef` | `EntityRef` | No | Entity that initiated the cast. |
+| `target` | `EntityRef` | `EntityRef | null` | Yes | Optional entity targeted by the action or cast. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("SPELL_CAST_SUCCEEDED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SpellEvents.PublishCastSucceeded(...)`
+#### Unsubscribe
 
-## `6. SPELL_COOLDOWNS_RESET`
-A lokális cooldown state szerveroldali reset vagy authoritative resync miatt újraértékelendő.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SpellEvents.PublishCastSucceeded(
+    eventBus,
+    castId,
+    spellId,
+    caster,
+    target
+);
+```
+
+## `SPELL_COOLDOWNS_RESET`
+
+Published when spell cooldowns is reset to its authoritative baseline state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `spellIds` | `System.Collections.Generic.List<int>` | `ReadonlyArray<number>` | No | resetelt spell ID-k; üres lista teljes snapshot-resetet jelenthet csak akkor, ha ezt a későbbi schema explicit rögzíti |
+| `spellIds` | `System.Collections.Generic.List<int>` | `ReadonlyArray<number>` | No | Stable content identifiers of the spells affected by the update. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("SPELL_COOLDOWNS_RESET", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SpellEvents.PublishCooldownsReset(...)`
+#### Unsubscribe
 
-## `7. SPELL_COOLDOWN_ENDED`
-Egy lokális spell-cooldown lejárt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SpellEvents.PublishCooldownsReset(
+    eventBus,
+    spellIds
+);
+```
+
+## `SPELL_COOLDOWN_ENDED`
+
+Published when spell cooldown reaches its final end state. The payload identifies the affected lifecycle instance and its final public result when applicable.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `spellId` | `int` | `number` | No |  |
+| `spellId` | `int` | `number` | No | Stable content identifier of the spell or ability. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("SPELL_COOLDOWN_ENDED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SpellEvents.PublishCooldownEnded(...)`
+#### Unsubscribe
 
-## `8. SPELL_COOLDOWN_STARTED`
-A lokális karakter egy spell-cooldownja elindult.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SpellEvents.PublishCooldownEnded(
+    eventBus,
+    spellId
+);
+```
+
+## `SPELL_COOLDOWN_STARTED`
+
+Published when spell cooldown starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `spellId` | `int` | `number` | No |  |
-| `startedAt` | `System.DateTime` | `string` | No |  |
-| `endsAt` | `System.DateTime` | `string` | No |  |
+| `spellId` | `int` | `number` | No | Stable content identifier of the spell or ability. |
+| `startedAt` | `System.DateTime` | `string` | No | Authoritative timestamp at which the operation started. |
+| `endsAt` | `System.DateTime` | `string` | No | Optional authoritative timestamp at which the operation is expected to end. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("SPELL_COOLDOWN_STARTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SpellEvents.PublishCooldownStarted(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+SpellEvents.PublishCooldownStarted(
+    eventBus,
+    spellId,
+    startedAt,
+    endsAt
+);
+```
 

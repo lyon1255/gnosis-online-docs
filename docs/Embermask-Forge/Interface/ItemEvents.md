@@ -1,138 +1,307 @@
 # Item Events
 
+Per-item-instance lifecycle events such as use, durability, breakage, repairs, binding, charges, and recharge state.
 
-Item-instance állapot. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `ITEM_BINDING_CHANGED` | Published when the authoritative item binding state changes. The payload contains the resulting state and identifiers needed by Item UI or AddOns to update without polling. |
+| `ITEM_BROKEN` | Published when item becomes broken in authoritative game state. The payload contains the public context required by consumers. |
+| `ITEM_CHARGE_CHANGED` | Published when the authoritative item charge state changes. The payload contains the resulting state and identifiers needed by Item UI or AddOns to update without polling. |
+| `ITEM_DURABILITY_CHANGED` | Published when the authoritative item durability state changes. The payload contains the resulting state and identifiers needed by Item UI or AddOns to update without polling. |
+| `ITEM_RECHARGED` | Published when item is recharged in authoritative game state. The payload contains the public context required by consumers. |
+| `ITEM_REPAIRED` | Published when item is repaired in authoritative game state. The payload contains the public context required by consumers. |
+| `ITEM_USED` | Published when item is used in authoritative game state. The payload contains the public context required by consumers. |
 
-Events: **7**
+## Subscription lifecycle
 
-## `1. ITEM_BINDING_CHANGED`
-Az item instance kötöttségi állapota megváltozott.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `ITEM_BINDING_CHANGED`
+
+Published when the authoritative item binding state changes. The payload contains the resulting state and identifiers needed by Item UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `itemInstanceGuid` | `System.Guid` | `string` | No |  |
-| `itemId` | `int` | `number` | No |  |
-| `isBound` | `bool` | `boolean` | No |  |
+| `itemInstanceGuid` | `System.Guid` | `string` | No | Stable identifier of the concrete item instance. |
+| `itemId` | `int` | `number` | No | Stable content identifier of the item definition. |
+| `isBound` | `bool` | `boolean` | No | Whether the item instance is currently bound. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ITEM_BINDING_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ItemEvents.PublishBindingChanged(...)`
+#### Unsubscribe
 
-## `2. ITEM_BROKEN`
-Egy item elérte a törött/inaktív durability állapotot.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ItemEvents.PublishBindingChanged(
+    eventBus,
+    itemInstanceGuid,
+    itemId,
+    isBound
+);
+```
+
+## `ITEM_BROKEN`
+
+Published when item becomes broken in authoritative game state. The payload contains the public context required by consumers.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `itemInstanceGuid` | `System.Guid` | `string` | No |  |
-| `itemId` | `int` | `number` | No |  |
+| `itemInstanceGuid` | `System.Guid` | `string` | No | Stable identifier of the concrete item instance. |
+| `itemId` | `int` | `number` | No | Stable content identifier of the item definition. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ITEM_BROKEN", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ItemEvents.PublishBroken(...)`
+#### Unsubscribe
 
-## `3. ITEM_CHARGE_CHANGED`
-Egy Charge-alapú item aktuális töltöttsége megváltozott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ItemEvents.PublishBroken(
+    eventBus,
+    itemInstanceGuid,
+    itemId
+);
+```
+
+## `ITEM_CHARGE_CHANGED`
+
+Published when the authoritative item charge state changes. The payload contains the resulting state and identifiers needed by Item UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `itemInstanceGuid` | `System.Guid` | `string` | No |  |
-| `itemId` | `int` | `number` | No |  |
-| `current` | `float` | `number` | No |  |
-| `max` | `float` | `number` | No |  |
-| `effectActive` | `bool` | `boolean` | No |  |
+| `itemInstanceGuid` | `System.Guid` | `string` | No | Stable identifier of the concrete item instance. |
+| `itemId` | `int` | `number` | No | Stable content identifier of the item definition. |
+| `current` | `float` | `number` | No | Authoritative current value after the change. |
+| `max` | `float` | `number` | No | Authoritative maximum value after the change. |
+| `effectActive` | `bool` | `boolean` | No | Whether the associated gameplay effect is currently active. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ITEM_CHARGE_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ItemEvents.PublishChargeChanged(...)`
+#### Unsubscribe
 
-## `4. ITEM_DURABILITY_CHANGED`
-Egy item durability állapota változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ItemEvents.PublishChargeChanged(
+    eventBus,
+    itemInstanceGuid,
+    itemId,
+    current,
+    max,
+    effectActive
+);
+```
+
+## `ITEM_DURABILITY_CHANGED`
+
+Published when the authoritative item durability state changes. The payload contains the resulting state and identifiers needed by Item UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `itemInstanceGuid` | `System.Guid` | `string` | No |  |
-| `itemId` | `int` | `number` | No |  |
-| `current` | `int` | `number` | No |  |
-| `max` | `int` | `number` | No |  |
+| `itemInstanceGuid` | `System.Guid` | `string` | No | Stable identifier of the concrete item instance. |
+| `itemId` | `int` | `number` | No | Stable content identifier of the item definition. |
+| `current` | `int` | `number` | No | Authoritative current value after the change. |
+| `max` | `int` | `number` | No | Authoritative maximum value after the change. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ITEM_DURABILITY_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ItemEvents.PublishDurabilityChanged(...)`
+#### Unsubscribe
 
-## `5. ITEM_RECHARGED`
-NPC vagy későbbi engedélyezett rendszer feltöltötte az item Charge-ját.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ItemEvents.PublishDurabilityChanged(
+    eventBus,
+    itemInstanceGuid,
+    itemId,
+    current,
+    max
+);
+```
+
+## `ITEM_RECHARGED`
+
+Published when item is recharged in authoritative game state. The payload contains the public context required by consumers.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `itemInstanceGuid` | `System.Guid` | `string` | No |  |
-| `itemId` | `int` | `number` | No |  |
-| `current` | `float` | `number` | No |  |
-| `max` | `float` | `number` | No |  |
+| `itemInstanceGuid` | `System.Guid` | `string` | No | Stable identifier of the concrete item instance. |
+| `itemId` | `int` | `number` | No | Stable content identifier of the item definition. |
+| `current` | `float` | `number` | No | Authoritative current value after the change. |
+| `max` | `float` | `number` | No | Authoritative maximum value after the change. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ITEM_RECHARGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ItemEvents.PublishRecharged(...)`
+#### Unsubscribe
 
-## `6. ITEM_REPAIRED`
-Egy item sikeresen javítva lett. Repair All esetén itemenként publikálható.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ItemEvents.PublishRecharged(
+    eventBus,
+    itemInstanceGuid,
+    itemId,
+    current,
+    max
+);
+```
+
+## `ITEM_REPAIRED`
+
+Published when item is repaired in authoritative game state. The payload contains the public context required by consumers.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `itemInstanceGuid` | `System.Guid` | `string` | No |  |
-| `itemId` | `int` | `number` | No |  |
-| `current` | `int` | `number` | No |  |
-| `max` | `int` | `number` | No |  |
+| `itemInstanceGuid` | `System.Guid` | `string` | No | Stable identifier of the concrete item instance. |
+| `itemId` | `int` | `number` | No | Stable content identifier of the item definition. |
+| `current` | `int` | `number` | No | Authoritative current value after the change. |
+| `max` | `int` | `number` | No | Authoritative maximum value after the change. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ITEM_REPAIRED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ItemEvents.PublishRepaired(...)`
+#### Unsubscribe
 
-## `7. ITEM_USED`
-Egy gameplay item használata szerveroldalon sikeresen megtörtént.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ItemEvents.PublishRepaired(
+    eventBus,
+    itemInstanceGuid,
+    itemId,
+    current,
+    max
+);
+```
+
+## `ITEM_USED`
+
+Published when item is used in authoritative game state. The payload contains the public context required by consumers.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `itemInstanceGuid` | `System.Guid` | `string` | No |  |
-| `itemId` | `int` | `number` | No |  |
-| `quantity` | `int` | `number` | No | felhasznált mennyiség |
+| `itemInstanceGuid` | `System.Guid` | `string` | No | Stable identifier of the concrete item instance. |
+| `itemId` | `int` | `number` | No | Stable content identifier of the item definition. |
+| `quantity` | `int` | `number` | No | Current or transferred stack quantity. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ITEM_USED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ItemEvents.PublishUsed(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+ItemEvents.PublishUsed(
+    eventBus,
+    itemInstanceGuid,
+    itemId,
+    quantity
+);
+```
 

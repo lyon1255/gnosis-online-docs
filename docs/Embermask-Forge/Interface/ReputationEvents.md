@@ -1,44 +1,99 @@
 # Reputation Events
 
+Reputation-value and standing changes for organizations, settlements, or other reputation-bearing factions visible to the player.
 
-Szervezet/village reputáció. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `REPUTATION_CHANGED` | Published when the authoritative reputation state changes. The payload contains the resulting state and identifiers needed by Reputation UI or AddOns to update without polling. |
+| `REPUTATION_STANDING_CHANGED` | Published when the authoritative reputation standing state changes. The payload contains the resulting state and identifiers needed by Reputation UI or AddOns to update without polling. |
 
-Events: **2**
+## Subscription lifecycle
 
-## `1. REPUTATION_CHANGED`
-Egy szervezethez/village-hez tartozó reputációpont változott.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `REPUTATION_CHANGED`
+
+Published when the authoritative reputation state changes. The payload contains the resulting state and identifiers needed by Reputation UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `organizationId` | `int` | `number` | No |  |
-| `current` | `int` | `number` | No |  |
-| `delta` | `int` | `number` | No |  |
+| `organizationId` | `int` | `number` | No | Stable identifier of the reputation-bearing organization or faction. |
+| `current` | `int` | `number` | No | Authoritative current value after the change. |
+| `delta` | `int` | `number` | No | Signed difference applied by this change. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("REPUTATION_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ReputationEvents.PublishChanged(...)`
+#### Unsubscribe
 
-## `2. REPUTATION_STANDING_CHANGED`
-Az aktuális content-defined reputation standing megváltozott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ReputationEvents.PublishChanged(
+    eventBus,
+    organizationId,
+    current,
+    delta
+);
+```
+
+## `REPUTATION_STANDING_CHANGED`
+
+Published when the authoritative reputation standing state changes. The payload contains the resulting state and identifiers needed by Reputation UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `organizationId` | `int` | `number` | No |  |
-| `previousStandingId` | `string` | `string | null` | Yes |  |
-| `currentStandingId` | `string` | `string` | No |  |
+| `organizationId` | `int` | `number` | No | Stable identifier of the reputation-bearing organization or faction. |
+| `previousStandingId` | `string` | `string | null` | Yes | Previous stable standing identifier before the change. |
+| `currentStandingId` | `string` | `string` | No | Current stable standing identifier after the change. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("REPUTATION_STANDING_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ReputationEvents.PublishStandingChanged(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+ReputationEvents.PublishStandingChanged(
+    eventBus,
+    organizationId,
+    previousStandingId,
+    currentStandingId
+);
+```
 

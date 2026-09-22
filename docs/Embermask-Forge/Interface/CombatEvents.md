@@ -1,181 +1,401 @@
 # Combat Events
 
+Combat-log style events describing resolved combat actions such as damage, healing, absorbs, avoidance, interrupts, dispels, taunts, and auto-attack state.
 
-Combat-log jellegű akciók. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `AUTO_ATTACK_STARTED` | Published when auto attack starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state. |
+| `AUTO_ATTACK_STOPPED` | Published when the authoritative 'AUTO_ATTACK_STOPPED' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns. |
+| `COMBAT_ABSORB` | Published when the authoritative 'COMBAT_ABSORB' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns. |
+| `COMBAT_DAMAGE` | Published when a resolved combat action deals actual health damage. The payload identifies source, target, ability context, damage type, amount, and critical/absorb information when available. |
+| `COMBAT_DISPEL` | Published when the authoritative 'COMBAT_DISPEL' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns. |
+| `COMBAT_HEAL` | Published when a resolved combat or healing effect restores health. The payload describes the source, target, ability context, restored amount, and critical result when applicable. |
+| `COMBAT_INTERRUPT` | Published when the authoritative 'COMBAT_INTERRUPT' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns. |
+| `COMBAT_MISS` | Published when the authoritative 'COMBAT_MISS' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns. |
+| `COMBAT_TAUNT` | Published when the authoritative 'COMBAT_TAUNT' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns. |
 
-Events: **9**
+## Subscription lifecycle
 
-## `1. AUTO_ATTACK_STARTED`
-Egy legitim basic/auto attack sorozat elindult.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `AUTO_ATTACK_STARTED`
+
+Published when auto attack starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `source` | `EntityRef` | `EntityRef` | No |  |
-| `target` | `EntityRef` | `EntityRef` | No |  |
+| `source` | `EntityRef` | `EntityRef` | No | Optional entity responsible for creating the effect or state change. |
+| `target` | `EntityRef` | `EntityRef` | No | Optional entity targeted by the action or cast. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUTO_ATTACK_STARTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `CombatEvents.PublishAutoAttackStarted(...)`
+#### Unsubscribe
 
-## `2. AUTO_ATTACK_STOPPED`
-Az aktív basic/auto attack sorozat megszűnt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+CombatEvents.PublishAutoAttackStarted(
+    eventBus,
+    source,
+    target
+);
+```
+
+## `AUTO_ATTACK_STOPPED`
+
+Published when the authoritative 'AUTO_ATTACK_STOPPED' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `source` | `EntityRef` | `EntityRef` | No |  |
-| `target` | `EntityRef` | `EntityRef | null` | Yes |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `source` | `EntityRef` | `EntityRef` | No | Optional entity responsible for creating the effect or state change. |
+| `target` | `EntityRef` | `EntityRef | null` | Yes | Optional entity targeted by the action or cast. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUTO_ATTACK_STOPPED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `CombatEvents.PublishAutoAttackStopped(...)`
+#### Unsubscribe
 
-## `3. COMBAT_ABSORB`
-Egy shield beérkező hatást nyelt el.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+CombatEvents.PublishAutoAttackStopped(
+    eventBus,
+    source,
+    target,
+    reasonCode
+);
+```
+
+## `COMBAT_ABSORB`
+
+Published when the authoritative 'COMBAT_ABSORB' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `source` | `EntityRef` | `EntityRef | null` | Yes | shield eredeti forrása, ha ismert |
-| `target` | `EntityRef` | `EntityRef` | No |  |
-| `spellId` | `int?` | `number | null` | Yes |  |
-| `amount` | `int` | `number` | No | elnyelt érték |
+| `source` | `EntityRef` | `EntityRef | null` | Yes | Optional entity responsible for creating the effect or state change. |
+| `target` | `EntityRef` | `EntityRef` | No | Optional entity targeted by the action or cast. |
+| `spellId` | `int?` | `number | null` | Yes | Stable content identifier of the spell or ability. |
+| `amount` | `int` | `number` | No | Resolved numeric amount associated with the event. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COMBAT_ABSORB", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `CombatEvents.PublishAbsorb(...)`
+#### Unsubscribe
 
-## `4. COMBAT_DAMAGE`
-Egy találat tényleges HP-sebzést okozott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+CombatEvents.PublishAbsorb(
+    eventBus,
+    source,
+    target,
+    spellId,
+    amount
+);
+```
+
+## `COMBAT_DAMAGE`
+
+Published when a resolved combat action deals actual health damage. The payload identifies source, target, ability context, damage type, amount, and critical/absorb information when available.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `source` | `EntityRef` | `EntityRef` | No | okozó |
-| `target` | `EntityRef` | `EntityRef` | No | cél |
-| `spellId` | `int?` | `number | null` | Yes | spell/ability, ha van |
-| `amount` | `int` | `number` | No | HP-ra jutó sebzés |
-| `absorbed` | `int` | `number` | No | shield által elnyelt rész |
-| `blocked` | `int` | `number` | No | block által csökkentett rész |
-| `damageType` | `DamageType` | `string` | No |  |
-| `critical` | `bool` | `boolean` | No |  |
+| `source` | `EntityRef` | `EntityRef` | No | Optional entity responsible for creating the effect or state change. |
+| `target` | `EntityRef` | `EntityRef` | No | Optional entity targeted by the action or cast. |
+| `spellId` | `int?` | `number | null` | Yes | Stable content identifier of the spell or ability. |
+| `amount` | `int` | `number` | No | Resolved numeric amount associated with the event. |
+| `absorbed` | `int` | `number` | No | Amount absorbed by shielding or mitigation, when applicable. |
+| `blocked` | `int` | `number` | No | Whether the social identity is currently blocked. |
+| `damageType` | `DamageType` | `DamageType` | No | Damage category used for this resolved combat action. |
+| `critical` | `bool` | `boolean` | No | Whether the resolved combat action was a critical result. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COMBAT_DAMAGE", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `CombatEvents.PublishDamage(...)`
+#### Unsubscribe
 
-## `5. COMBAT_DISPEL`
-Egy dispel eltávolított egy publikus aura instance-t.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+CombatEvents.PublishDamage(
+    eventBus,
+    source,
+    target,
+    spellId,
+    amount,
+    absorbed,
+    blocked,
+    damageType,
+    critical
+);
+```
+
+## `COMBAT_DISPEL`
+
+Published when the authoritative 'COMBAT_DISPEL' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `source` | `EntityRef` | `EntityRef` | No |  |
-| `target` | `EntityRef` | `EntityRef` | No |  |
-| `spellId` | `int?` | `number | null` | Yes |  |
-| `effectInstanceId` | `System.Guid` | `string` | No | eltávolított aura |
+| `source` | `EntityRef` | `EntityRef` | No | Optional entity responsible for creating the effect or state change. |
+| `target` | `EntityRef` | `EntityRef` | No | Optional entity targeted by the action or cast. |
+| `spellId` | `int?` | `number | null` | Yes | Stable content identifier of the spell or ability. |
+| `effectInstanceId` | `System.Guid` | `string` | No | Stable identifier of the individual aura or effect instance. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COMBAT_DISPEL", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `CombatEvents.PublishDispel(...)`
+#### Unsubscribe
 
-## `6. COMBAT_HEAL`
-Egy combat/healing effect HP-t állított helyre.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+CombatEvents.PublishDispel(
+    eventBus,
+    source,
+    target,
+    spellId,
+    effectInstanceId
+);
+```
+
+## `COMBAT_HEAL`
+
+Published when a resolved combat or healing effect restores health. The payload describes the source, target, ability context, restored amount, and critical result when applicable.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `source` | `EntityRef` | `EntityRef` | No |  |
-| `target` | `EntityRef` | `EntityRef` | No |  |
-| `spellId` | `int?` | `number | null` | Yes |  |
-| `amount` | `int` | `number` | No | tényleges gyógyítás |
-| `critical` | `bool` | `boolean` | No | ha a heal rendszer támogatja az adott critet |
+| `source` | `EntityRef` | `EntityRef` | No | Optional entity responsible for creating the effect or state change. |
+| `target` | `EntityRef` | `EntityRef` | No | Optional entity targeted by the action or cast. |
+| `spellId` | `int?` | `number | null` | Yes | Stable content identifier of the spell or ability. |
+| `amount` | `int` | `number` | No | Resolved numeric amount associated with the event. |
+| `critical` | `bool` | `boolean` | No | Whether the resolved combat action was a critical result. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COMBAT_HEAL", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `CombatEvents.PublishHeal(...)`
+#### Unsubscribe
 
-## `7. COMBAT_INTERRUPT`
-Egy forrás megszakított egy még megszakítható castot.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+CombatEvents.PublishHeal(
+    eventBus,
+    source,
+    target,
+    spellId,
+    amount,
+    critical
+);
+```
+
+## `COMBAT_INTERRUPT`
+
+Published when the authoritative 'COMBAT_INTERRUPT' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `source` | `EntityRef` | `EntityRef` | No |  |
-| `target` | `EntityRef` | `EntityRef` | No |  |
-| `spellId` | `int?` | `number | null` | Yes | interruptot okozó ability |
-| `interruptedSpellId` | `int` | `number` | No |  |
-| `castId` | `System.Guid` | `string` | No |  |
+| `source` | `EntityRef` | `EntityRef` | No | Optional entity responsible for creating the effect or state change. |
+| `target` | `EntityRef` | `EntityRef` | No | Optional entity targeted by the action or cast. |
+| `spellId` | `int?` | `number | null` | Yes | Stable content identifier of the spell or ability. |
+| `interruptedSpellId` | `int` | `number` | No | Stable content identifier of the spell that was interrupted. |
+| `castId` | `System.Guid` | `string` | No | Stable identifier of this cast lifecycle. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COMBAT_INTERRUPT", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `CombatEvents.PublishInterrupt(...)`
+#### Unsubscribe
 
-## `8. COMBAT_MISS`
-Egy támadás az exclusive hit/avoidance lépésben nem okozott hitet.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+CombatEvents.PublishInterrupt(
+    eventBus,
+    source,
+    target,
+    spellId,
+    interruptedSpellId,
+    castId
+);
+```
+
+## `COMBAT_MISS`
+
+Published when the authoritative 'COMBAT_MISS' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `source` | `EntityRef` | `EntityRef` | No |  |
-| `target` | `EntityRef` | `EntityRef` | No |  |
-| `spellId` | `int?` | `number | null` | Yes |  |
-| `result` | `CombatAvoidanceResult` | `string` | No | miss/dodge/parry |
+| `source` | `EntityRef` | `EntityRef` | No | Optional entity responsible for creating the effect or state change. |
+| `target` | `EntityRef` | `EntityRef` | No | Optional entity targeted by the action or cast. |
+| `spellId` | `int?` | `number | null` | Yes | Stable content identifier of the spell or ability. |
+| `result` | `CombatAvoidanceResult` | `CombatAvoidanceResult` | No | Stable semantic result of the operation. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COMBAT_MISS", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `CombatEvents.PublishMiss(...)`
+#### Unsubscribe
 
-## `9. COMBAT_TAUNT`
-Taunt effect sikeresen kényszerített threat/target reakciót.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+CombatEvents.PublishMiss(
+    eventBus,
+    source,
+    target,
+    spellId,
+    result
+);
+```
+
+## `COMBAT_TAUNT`
+
+Published when the authoritative 'COMBAT_TAUNT' gameplay event occurs. The payload contains only client-visible state intended for Combat UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `source` | `EntityRef` | `EntityRef` | No |  |
-| `target` | `EntityRef` | `EntityRef` | No |  |
-| `spellId` | `int?` | `number | null` | Yes |  |
+| `source` | `EntityRef` | `EntityRef` | No | Optional entity responsible for creating the effect or state change. |
+| `target` | `EntityRef` | `EntityRef` | No | Optional entity targeted by the action or cast. |
+| `spellId` | `int?` | `number | null` | Yes | Stable content identifier of the spell or ability. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COMBAT_TAUNT", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `CombatEvents.PublishTaunt(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+CombatEvents.PublishTaunt(
+    eventBus,
+    source,
+    target,
+    spellId
+);
+```
 

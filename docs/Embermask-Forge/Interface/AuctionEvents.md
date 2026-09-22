@@ -1,164 +1,367 @@
 # Auction Events
 
+Auction House events for the local player's visible listings and transactions, including bids, buyouts, expirations, wins, sales, and returned items.
 
-AH saját ügyleteinek lifecycle-ja. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `AUCTION_BID_PLACED` | Published when auction bid is successfully placed and accepted by the authoritative system. |
+| `AUCTION_BUYOUT_COMPLETED` | Published when auction buyout completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume. |
+| `AUCTION_ITEM_RETURNED` | Published when auction item is returned to the local player after the authoritative transaction lifecycle ends. |
+| `AUCTION_LISTING_CANCELLED` | Published when auction listing is cancelled before normal completion. The payload identifies the cancelled lifecycle and any public reason information. |
+| `AUCTION_LISTING_CREATED` | Published when auction listing is created and becomes visible to the local client. |
+| `AUCTION_LISTING_EXPIRED` | Published when auction listing expires according to authoritative game state. |
+| `AUCTION_OUTBID` | Published when the local player is outbid on auction. The payload contains only information the client is allowed to know. |
+| `AUCTION_SOLD` | Published when auction is sold and the authoritative transaction result is available. |
+| `AUCTION_WON` | Published when the local player wins auction and the result becomes authoritative. |
 
-Events: **9**
+## Subscription lifecycle
 
-## `1. AUCTION_BID_PLACED`
-A lokális játékos licitje commitolt.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `AUCTION_BID_PLACED`
+
+Published when auction bid is successfully placed and accepted by the authoritative system.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `auctionId` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `amount` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `auctionId` | `System.Guid` | `string` | No | Stable identifier of the Auction House listing. |
+| `amount` | `int` | `number` | No | Resolved numeric amount associated with the event. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUCTION_BID_PLACED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AuctionEvents.PublishBidPlaced(...)`
+#### Unsubscribe
 
-## `2. AUCTION_BUYOUT_COMPLETED`
-A lokális vevő buyout tranzakciója sikeresen lezárult.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AuctionEvents.PublishBidPlaced(
+    eventBus,
+    auctionId,
+    amount
+);
+```
+
+## `AUCTION_BUYOUT_COMPLETED`
+
+Published when auction buyout completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `auctionId` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `itemId` | `int` | `number` | No |  |
-| `quantity` | `int` | `number` | No |  |
-| `totalPaid` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `auctionId` | `System.Guid` | `string` | No | Stable identifier of the Auction House listing. |
+| `itemId` | `int` | `number` | No | Stable content identifier of the item definition. |
+| `quantity` | `int` | `number` | No | Current or transferred stack quantity. |
+| `totalPaid` | `int` | `number` | No | Total currency paid by the local player. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUCTION_BUYOUT_COMPLETED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AuctionEvents.PublishBuyoutCompleted(...)`
+#### Unsubscribe
 
-## `3. AUCTION_ITEM_RETURNED`
-Sikertelen/cancelled aukció itemje visszakerült a jogos tulajdonoshoz.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AuctionEvents.PublishBuyoutCompleted(
+    eventBus,
+    auctionId,
+    itemId,
+    quantity,
+    totalPaid
+);
+```
+
+## `AUCTION_ITEM_RETURNED`
+
+Published when auction item is returned to the local player after the authoritative transaction lifecycle ends.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `auctionId` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `item` | `ItemStackInfo` | `ItemStackInfo` | No |  |
+| `auctionId` | `System.Guid` | `string` | No | Stable identifier of the Auction House listing. |
+| `item` | `ItemStackInfo` | `ItemStackInfo` | No | Authoritative item value associated with this payload. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUCTION_ITEM_RETURNED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AuctionEvents.PublishItemReturned(...)`
+#### Unsubscribe
 
-## `4. AUCTION_LISTING_CANCELLED`
-Saját listinget sikeresen visszavontak.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AuctionEvents.PublishItemReturned(
+    eventBus,
+    auctionId,
+    item
+);
+```
+
+## `AUCTION_LISTING_CANCELLED`
+
+Published when auction listing is cancelled before normal completion. The payload identifies the cancelled lifecycle and any public reason information.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `auctionId` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `auctionId` | `System.Guid` | `string` | No | Stable identifier of the Auction House listing. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUCTION_LISTING_CANCELLED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AuctionEvents.PublishListingCancelled(...)`
+#### Unsubscribe
 
-## `5. AUCTION_LISTING_CREATED`
-A saját listing sikeresen escrow-ba került.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AuctionEvents.PublishListingCancelled(
+    eventBus,
+    auctionId
+);
+```
+
+## `AUCTION_LISTING_CREATED`
+
+Published when auction listing is created and becomes visible to the local client.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `auction` | `AuctionInfo` | `AuctionInfo` | No |  |
+| `auction` | `AuctionInfo` | `AuctionInfo` | No | Snapshot of the Auction House listing. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUCTION_LISTING_CREATED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AuctionEvents.PublishListingCreated(...)`
+#### Unsubscribe
 
-## `6. AUCTION_LISTING_EXPIRED`
-Saját listing lejárati lifecycle-ja befejeződött.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AuctionEvents.PublishListingCreated(
+    eventBus,
+    auction
+);
+```
+
+## `AUCTION_LISTING_EXPIRED`
+
+Published when auction listing expires according to authoritative game state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `auctionId` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `hadWinningBid` | `bool` | `boolean` | No |  |
+| `auctionId` | `System.Guid` | `string` | No | Stable identifier of the Auction House listing. |
+| `hadWinningBid` | `bool` | `boolean` | No | Whether the local player held the winning bid immediately before the listing ended. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUCTION_LISTING_EXPIRED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AuctionEvents.PublishListingExpired(...)`
+#### Unsubscribe
 
-## `7. AUCTION_OUTBID`
-A lokális játékos korábbi legmagasabb bidjét túllépték és escrow pénze visszajárt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AuctionEvents.PublishListingExpired(
+    eventBus,
+    auctionId,
+    hadWinningBid
+);
+```
+
+## `AUCTION_OUTBID`
+
+Published when the local player is outbid on auction. The payload contains only information the client is allowed to know.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `auctionId` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `refunded` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `auctionId` | `System.Guid` | `string` | No | Stable identifier of the Auction House listing. |
+| `refunded` | `int` | `number` | No | Currency returned to the player as part of the operation. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUCTION_OUTBID", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AuctionEvents.PublishOutbid(...)`
+#### Unsubscribe
 
-## `8. AUCTION_SOLD`
-Saját listing sikeresen elkelt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AuctionEvents.PublishOutbid(
+    eventBus,
+    auctionId,
+    refunded
+);
+```
+
+## `AUCTION_SOLD`
+
+Published when auction is sold and the authoritative transaction result is available.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `auctionId` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `grossPrice` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `fee` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `netProceeds` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `auctionId` | `System.Guid` | `string` | No | Stable identifier of the Auction House listing. |
+| `grossPrice` | `int` | `number` | No | Gross sale value before fees. |
+| `fee` | `int` | `number` | No | Auction fee deducted from the gross sale value. |
+| `netProceeds` | `int` | `number` | No | Final sale proceeds after fees. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUCTION_SOLD", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AuctionEvents.PublishSold(...)`
+#### Unsubscribe
 
-## `9. AUCTION_WON`
-A lokális bidder a listing lezárásakor megnyerte az aukciót.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AuctionEvents.PublishSold(
+    eventBus,
+    auctionId,
+    grossPrice,
+    fee,
+    netProceeds
+);
+```
+
+## `AUCTION_WON`
+
+Published when the local player wins auction and the result becomes authoritative.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `auctionId` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
-| `item` | `ItemStackInfo` | `ItemStackInfo` | No |  |
-| `winningBid` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `auctionId` | `System.Guid` | `string` | No | Stable identifier of the Auction House listing. |
+| `item` | `ItemStackInfo` | `ItemStackInfo` | No | Authoritative item value associated with this payload. |
+| `winningBid` | `int` | `number` | No | Final winning bid amount. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AUCTION_WON", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AuctionEvents.PublishWon(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+AuctionEvents.PublishWon(
+    eventBus,
+    auctionId,
+    item,
+    winningBid
+);
+```
 

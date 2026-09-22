@@ -1,25 +1,57 @@
 # Stats Events
 
+Events that invalidate or replace calculated player-stat snapshots exposed to Forge consumers.
 
-Számított player statok. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `PLAYER_STATS_CHANGED` | Published when calculated player stats have changed and consumers should refresh their stat snapshot. The revision can be used to reject stale cached data. |
 
-Events: **1**
+## Subscription lifecycle
 
-## `1. PLAYER_STATS_CHANGED`
-Egy vagy több végső, UI-releváns karakterstat megváltozott.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `PLAYER_STATS_CHANGED`
+
+Published when calculated player stats have changed and consumers should refresh their stat snapshot. The revision can be used to reject stale cached data.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `stats` | `System.Collections.Generic.List<StatValue>` | `ReadonlyArray<StatValue>` | No | csak a változott vagy az adapter policyje szerinti aktuális statértékek |
-| `revision` | `long` | `number` | No | stat snapshot revision Non-negative revision/identifier; represented as Long in the public Forge schema. |
+| `stats` | `System.Collections.Generic.List<StatValue>` | `ReadonlyArray<StatValue>` | No | Calculated stat entries included in this state snapshot. |
+| `revision` | `int` | `number` | No | Monotonically increasing revision number used to detect stale cached state. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("PLAYER_STATS_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `StatsEvents.PublishStatsChanged(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+StatsEvents.PublishStatsChanged(
+    eventBus,
+    stats,
+    revision
+);
+```
 

@@ -1,217 +1,485 @@
 # Encounter Events
 
+Instance and encounter lifecycle events for boss fights, difficulty, challenge timers, raid lockouts, and first-kill records.
 
-Instance/Boss/Raid encounter lifecycle. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `CHALLENGE_TIMER_ENDED` | Published when challenge timer reaches its final end state. The payload identifies the affected lifecycle instance and its final public result when applicable. |
+| `CHALLENGE_TIMER_STARTED` | Published when challenge timer starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state. |
+| `ENCOUNTER_COMPLETED` | Published when encounter completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume. |
+| `ENCOUNTER_DIFFICULTY_CHANGED` | Published when the authoritative encounter difficulty state changes. The payload contains the resulting state and identifiers needed by Encounter UI or AddOns to update without polling. |
+| `ENCOUNTER_PHASE_CHANGED` | Published when the authoritative encounter phase state changes. The payload contains the resulting state and identifiers needed by Encounter UI or AddOns to update without polling. |
+| `ENCOUNTER_RESET` | Published when encounter is reset to its authoritative baseline state. |
+| `ENCOUNTER_STARTED` | Published when encounter starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state. |
+| `ENCOUNTER_WIPED` | Published when encounter is recognized as a wipe by the authoritative encounter state. |
+| `FIRST_KILL_RECORDED` | Published when first kill is authoritatively recorded and becomes part of the player's visible progression state. |
+| `INSTANCE_ENTERED` | Published when the authoritative 'INSTANCE_ENTERED' gameplay event occurs. The payload contains only client-visible state intended for Encounter UI and AddOns. |
+| `INSTANCE_LEFT` | Published when instance leaves the relevant social, group, or world context. |
+| `RAID_LOOT_LOCKOUT_CHANGED` | Published when the authoritative raid loot lockout state changes. The payload contains the resulting state and identifiers needed by Encounter UI or AddOns to update without polling. |
 
-Events: **12**
+## Subscription lifecycle
 
-## `1. CHALLENGE_TIMER_ENDED`
-Challenge timer sikerrel vagy timeouttal lezárult.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `CHALLENGE_TIMER_ENDED`
+
+Published when challenge timer reaches its final end state. The payload identifies the affected lifecycle instance and its final public result when applicable.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `instanceId` | `System.Guid` | `string` | No |  |
-| `elapsed` | `long` | `number` | No | Stored as milliseconds. |
-| `success` | `bool` | `boolean` | No |  |
+| `instanceId` | `System.Guid` | `string` | No | Stable identifier of the active game instance. |
+| `elapsed` | `int` | `number` | No | Elapsed timer duration in milliseconds. |
+| `success` | `bool` | `boolean` | No | Whether the operation completed successfully. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("CHALLENGE_TIMER_ENDED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishChallengeTimerEnded(...)`
+#### Unsubscribe
 
-## `2. CHALLENGE_TIMER_STARTED`
-Időzített challenge futam órája elindult.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishChallengeTimerEnded(
+    eventBus,
+    instanceId,
+    elapsed,
+    success
+);
+```
+
+## `CHALLENGE_TIMER_STARTED`
+
+Published when challenge timer starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `instanceId` | `System.Guid` | `string` | No |  |
-| `startedAt` | `System.DateTime` | `string` | No |  |
-| `endsAt` | `System.DateTime` | `string` | No |  |
+| `instanceId` | `System.Guid` | `string` | No | Stable identifier of the active game instance. |
+| `startedAt` | `System.DateTime` | `string` | No | Authoritative timestamp at which the operation started. |
+| `endsAt` | `System.DateTime` | `string` | No | Optional authoritative timestamp at which the operation is expected to end. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("CHALLENGE_TIMER_STARTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishChallengeTimerStarted(...)`
+#### Unsubscribe
 
-## `3. ENCOUNTER_COMPLETED`
-A group sikeresen teljesítette az encountert.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishChallengeTimerStarted(
+    eventBus,
+    instanceId,
+    startedAt,
+    endsAt
+);
+```
+
+## `ENCOUNTER_COMPLETED`
+
+Published when encounter completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `encounterId` | `System.Guid` | `string` | No |  |
-| `bossId` | `int?` | `number | null` | Yes |  |
-| `difficulty` | `EncounterDifficulty` | `string` | No |  |
-| `duration` | `long` | `number` | No | Stored as milliseconds. |
+| `encounterId` | `System.Guid` | `string` | No | Stable identifier of the encounter instance. |
+| `bossId` | `int?` | `number | null` | Yes | Optional stable content identifier of the primary boss. |
+| `difficulty` | `EncounterDifficulty` | `EncounterDifficulty` | No | Difficulty mode of the encounter. |
+| `duration` | `int` | `number` | No | Elapsed duration in milliseconds. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ENCOUNTER_COMPLETED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishEncounterCompleted(...)`
+#### Unsubscribe
 
-## `4. ENCOUNTER_DIFFICULTY_CHANGED`
-Az instance/encounter kiválasztott difficulty profile-ja változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishEncounterCompleted(
+    eventBus,
+    encounterId,
+    bossId,
+    difficulty,
+    duration
+);
+```
+
+## `ENCOUNTER_DIFFICULTY_CHANGED`
+
+Published when the authoritative encounter difficulty state changes. The payload contains the resulting state and identifiers needed by Encounter UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `instanceId` | `System.Guid` | `string` | No |  |
-| `difficulty` | `EncounterDifficulty` | `string` | No |  |
+| `instanceId` | `System.Guid` | `string` | No | Stable identifier of the active game instance. |
+| `difficulty` | `EncounterDifficulty` | `EncounterDifficulty` | No | Difficulty mode of the encounter. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ENCOUNTER_DIFFICULTY_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishDifficultyChanged(...)`
+#### Unsubscribe
 
-## `5. ENCOUNTER_PHASE_CHANGED`
-A publikus encounter phase megváltozott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishDifficultyChanged(
+    eventBus,
+    instanceId,
+    difficulty
+);
+```
+
+## `ENCOUNTER_PHASE_CHANGED`
+
+Published when the authoritative encounter phase state changes. The payload contains the resulting state and identifiers needed by Encounter UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `encounterId` | `System.Guid` | `string` | No |  |
-| `phaseId` | `string` | `string` | No |  |
+| `encounterId` | `System.Guid` | `string` | No | Stable identifier of the encounter instance. |
+| `phaseId` | `string` | `string` | No | Stable identifier of the current encounter phase. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ENCOUNTER_PHASE_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishEncounterPhaseChanged(...)`
+#### Unsubscribe
 
-## `6. ENCOUNTER_RESET`
-Boss HP/fázisok authoritative resetet kaptak.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishEncounterPhaseChanged(
+    eventBus,
+    encounterId,
+    phaseId
+);
+```
+
+## `ENCOUNTER_RESET`
+
+Published when encounter is reset to its authoritative baseline state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `encounterId` | `System.Guid` | `string` | No |  |
-| `resetAt` | `System.DateTime` | `string` | No |  |
+| `encounterId` | `System.Guid` | `string` | No | Stable identifier of the encounter instance. |
+| `resetAt` | `System.DateTime` | `string` | No | Authoritative timestamp at which the lockout or state resets. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ENCOUNTER_RESET", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishEncounterReset(...)`
+#### Unsubscribe
 
-## `7. ENCOUNTER_STARTED`
-A boss/dungeon encounter authoritative combat lifecycle-ja elindult.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishEncounterReset(
+    eventBus,
+    encounterId,
+    resetAt
+);
+```
+
+## `ENCOUNTER_STARTED`
+
+Published when encounter starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `encounter` | `EncounterInfo` | `EncounterInfo` | No |  |
-| `startedAt` | `System.DateTime` | `string` | No |  |
+| `encounter` | `EncounterInfo` | `EncounterInfo` | No | Encounter identity and configuration snapshot. |
+| `startedAt` | `System.DateTime` | `string` | No | Authoritative timestamp at which the operation started. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ENCOUNTER_STARTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishEncounterStarted(...)`
+#### Unsubscribe
 
-## `8. ENCOUNTER_WIPED`
-A group wipe feltétele teljesült.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishEncounterStarted(
+    eventBus,
+    encounter,
+    startedAt
+);
+```
+
+## `ENCOUNTER_WIPED`
+
+Published when encounter is recognized as a wipe by the authoritative encounter state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `encounterId` | `System.Guid` | `string` | No |  |
-| `wipedAt` | `System.DateTime` | `string` | No |  |
+| `encounterId` | `System.Guid` | `string` | No | Stable identifier of the encounter instance. |
+| `wipedAt` | `System.DateTime` | `string` | No | Authoritative timestamp at which the encounter wipe was recognized. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ENCOUNTER_WIPED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishEncounterWiped(...)`
+#### Unsubscribe
 
-## `9. FIRST_KILL_RECORDED`
-A kliens számára látható First Kill rekord létrejött.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishEncounterWiped(
+    eventBus,
+    encounterId,
+    wipedAt
+);
+```
+
+## `FIRST_KILL_RECORDED`
+
+Published when first kill is authoritatively recorded and becomes part of the player's visible progression state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `bossId` | `int` | `number` | No |  |
-| `recordId` | `System.Guid` | `string` | No |  |
-| `recordedAt` | `System.DateTime` | `string` | No |  |
+| `bossId` | `int` | `number` | No | Optional stable content identifier of the primary boss. |
+| `recordId` | `System.Guid` | `string` | No | Stable identifier of the persisted record. |
+| `recordedAt` | `System.DateTime` | `string` | No | Authoritative timestamp at which the record was created. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("FIRST_KILL_RECORDED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishFirstKillRecorded(...)`
+#### Unsubscribe
 
-## `10. INSTANCE_ENTERED`
-A lokális karakter/group privát dungeon/raid instance-ba került.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishFirstKillRecorded(
+    eventBus,
+    bossId,
+    recordId,
+    recordedAt
+);
+```
+
+## `INSTANCE_ENTERED`
+
+Published when the authoritative 'INSTANCE_ENTERED' gameplay event occurs. The payload contains only client-visible state intended for Encounter UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `encounter` | `EncounterInfo` | `EncounterInfo` | No |  |
+| `encounter` | `EncounterInfo` | `EncounterInfo` | No | Encounter identity and configuration snapshot. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("INSTANCE_ENTERED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishInstanceEntered(...)`
+#### Unsubscribe
 
-## `11. INSTANCE_LEFT`
-A karakter elhagyta az instance-t.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishInstanceEntered(
+    eventBus,
+    encounter
+);
+```
+
+## `INSTANCE_LEFT`
+
+Published when instance leaves the relevant social, group, or world context.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `instanceId` | `System.Guid` | `string` | No |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `instanceId` | `System.Guid` | `string` | No | Stable identifier of the active game instance. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("INSTANCE_LEFT", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishInstanceLeft(...)`
+#### Unsubscribe
 
-## `12. RAID_LOOT_LOCKOUT_CHANGED`
-Egy raid boss személyes heti loot-eligibility állapota változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+EncounterEvents.PublishInstanceLeft(
+    eventBus,
+    instanceId,
+    reasonCode
+);
+```
+
+## `RAID_LOOT_LOCKOUT_CHANGED`
+
+Published when the authoritative raid loot lockout state changes. The payload contains the resulting state and identifiers needed by Encounter UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `bossId` | `int` | `number` | No |  |
-| `eligible` | `bool` | `boolean` | No |  |
-| `resetAt` | `System.DateTime?` | `string | null` | Yes |  |
+| `bossId` | `int` | `number` | No | Optional stable content identifier of the primary boss. |
+| `eligible` | `bool` | `boolean` | No | Whether the local player is currently eligible for the operation or reward. |
+| `resetAt` | `System.DateTime?` | `string | null` | Yes | Authoritative timestamp at which the lockout or state resets. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("RAID_LOOT_LOCKOUT_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `EncounterEvents.PublishRaidLootLockoutChanged(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+EncounterEvents.PublishRaidLootLockoutChanged(
+    eventBus,
+    bossId,
+    eligible,
+    resetAt
+);
+```
 

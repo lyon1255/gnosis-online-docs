@@ -1,42 +1,95 @@
 # Movement Events
 
+Authoritative movement events for the local player, including movement-speed changes and server reconciliation corrections.
 
-Lokális mozgási paraméterek és reconciliation. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `PLAYER_MOVEMENT_SPEED_CHANGED` | Published when the authoritative player movement speed state changes. The payload contains the resulting state and identifiers needed by Movement UI or AddOns to update without polling. |
+| `PLAYER_POSITION_CORRECTED` | Published when server reconciliation corrects the local player's predicted position. The payload contains the authoritative position and the correction distance. |
 
-Events: **2**
+## Subscription lifecycle
 
-## `1. PLAYER_MOVEMENT_SPEED_CHANGED`
-A lokális játékos authoritative move speed értéke módosult.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `PLAYER_MOVEMENT_SPEED_CHANGED`
+
+Published when the authoritative player movement speed state changes. The payload contains the resulting state and identifiers needed by Movement UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `current` | `float` | `number` | No | aktuális move speed |
-| `previous` | `float` | `number` | No | előző move speed |
+| `current` | `float` | `number` | No | Authoritative current value after the change. |
+| `previous` | `float` | `number` | No | Authoritative value before the change. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("PLAYER_MOVEMENT_SPEED_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `MovementEvents.PublishMoveSpeedChanged(...)`
+#### Unsubscribe
 
-## `2. PLAYER_POSITION_CORRECTED`
-A szerver reconciliation korrigálta a lokálisan prediktált pozíciót.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+MovementEvents.PublishMoveSpeedChanged(
+    eventBus,
+    current,
+    previous
+);
+```
+
+## `PLAYER_POSITION_CORRECTED`
+
+Published when server reconciliation corrects the local player's predicted position. The payload contains the authoritative position and the correction distance.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `position` | `UnityEngine.Vector3` | `{ x: number; y: number; z: number }` | No | authoritative pozíció |
-| `correctionDistance` | `float` | `number` | No | alkalmazott korrekció nagysága |
+| `position` | `UnityEngine.Vector3` | `{ x: number; y: number; z: number }` | No | Authoritative world-space position. |
+| `correctionDistance` | `float` | `number` | No | Distance between the predicted and authoritative positions before reconciliation. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("PLAYER_POSITION_CORRECTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `MovementEvents.PublishPositionCorrected(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+MovementEvents.PublishPositionCorrected(
+    eventBus,
+    position,
+    correctionDistance
+);
+```
 

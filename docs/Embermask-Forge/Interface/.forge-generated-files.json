@@ -1,0 +1,187 @@
+{
+    "schemaVersion": 1,
+    "generator": "Embermask.Forge.EventDocumentation",
+    "legacyMigrationCompleted": true,
+    "files": [
+        {
+            "path": "AchievementEvents.md",
+            "kind": "markdown",
+            "sha256": "172094b20e87cf5612ddbe0f16c3f5309ae79db1e49426d57a27440e72214cf2"
+        },
+        {
+            "path": "AppearanceEvents.md",
+            "kind": "markdown",
+            "sha256": "7aed62c34ea82fa08fc0ee34d33f2be503cc60bbe0a483d79379d3378dcc0fd5"
+        },
+        {
+            "path": "AuctionEvents.md",
+            "kind": "markdown",
+            "sha256": "2fe3c29dff6badb3e089e06338db5eeacffa715a7e7e9d5a8edc141e48088078"
+        },
+        {
+            "path": "AuraEvents.md",
+            "kind": "markdown",
+            "sha256": "b3ad24f58850787e9abd6ad5cbb31746b1c5e8e8ceb7ca52402f28f14a69139c"
+        },
+        {
+            "path": "CharacterEvents.md",
+            "kind": "markdown",
+            "sha256": "c59aaa60fa7e66abc91ed5a641458e03c5e27ac9c4148d1efd47336bcefc2563"
+        },
+        {
+            "path": "ChatEvents.md",
+            "kind": "markdown",
+            "sha256": "d7a0b772ed87d75735e3d6afe0b720c5cfec378574913bf16531d4a648f2d04a"
+        },
+        {
+            "path": "CombatEvents.md",
+            "kind": "markdown",
+            "sha256": "44ebd34da439304b856f789a26a8cc2c0602c00cbc10b9f0838f75dc10fb1449"
+        },
+        {
+            "path": "ContractEvents.md",
+            "kind": "markdown",
+            "sha256": "d1dd5860a18aadda190e71d5ef64414bc3a047ebbd7b65b6176fb84e1ac9af0d"
+        },
+        {
+            "path": "CurrencyEvents.md",
+            "kind": "markdown",
+            "sha256": "b22f2ed6d4c207c87da2cfbacc59646043a369a4b8f84fa3b9111743015db52a"
+        },
+        {
+            "path": "DeathEvents.md",
+            "kind": "markdown",
+            "sha256": "357371b24d9ddea87dad720e9f66a977d38b1b7a2a927a350c8e6be894001367"
+        },
+        {
+            "path": "EncounterEvents.md",
+            "kind": "markdown",
+            "sha256": "a16fa907898630d27a5f807bfa8a9f73c51fa4ebd2803b8a34e6eeabbed52a8f"
+        },
+        {
+            "path": "EquipmentEvents.md",
+            "kind": "markdown",
+            "sha256": "55f5aa6a08d6789055e58bd0e0dd9881c216edc2122b99cb36e8f707209e3cb1"
+        },
+        {
+            "path": "Forge.d.ts",
+            "kind": "typescriptDeclaration",
+            "sha256": "d71be9915b0f470023e47f3f8b66f5905a171e4e6df20103eda0d9aadd64b49e"
+        },
+        {
+            "path": "GroupEvents.md",
+            "kind": "markdown",
+            "sha256": "087aaaf26c7f508c9600460b2dafcf2851be5ff8b91b501abda5dc54573af6b9"
+        },
+        {
+            "path": "GuildEvents.md",
+            "kind": "markdown",
+            "sha256": "2c8f7d228d0c93721597224f464a8a0eada20882a342ea5e12c30aa308ca6399"
+        },
+        {
+            "path": "InteractionEvents.md",
+            "kind": "markdown",
+            "sha256": "bc1817c80604eb15abc74c0721785c6ce462a1a46d075cc715f9ae34be3276d3"
+        },
+        {
+            "path": "InventoryEvents.md",
+            "kind": "markdown",
+            "sha256": "b67cbd9b2b260e68d1acb02e3b2794a8d2a4b6afa217e4edee5c4e49679a225a"
+        },
+        {
+            "path": "ItemEvents.md",
+            "kind": "markdown",
+            "sha256": "b4b0d2936f48eda40adebb1717bcfddee834f253265225b378e2e608869a6001"
+        },
+        {
+            "path": "LootEvents.md",
+            "kind": "markdown",
+            "sha256": "0ae045dd3f3c9eb117e0e393714f569cd4e1f7b828a844715b79a87392b6e712"
+        },
+        {
+            "path": "MailEvents.md",
+            "kind": "markdown",
+            "sha256": "12d765b0757963234ef90027f3e7073956da1023bacc6e3d25d8baef72910020"
+        },
+        {
+            "path": "MapEvents.md",
+            "kind": "markdown",
+            "sha256": "86a24162033043593ddab75fe5975fb09006315a00376adc5be0d164b84364cc"
+        },
+        {
+            "path": "MountEvents.md",
+            "kind": "markdown",
+            "sha256": "196fa4980bd629e623e13045703e6439d528d91c83c7a58d9560e8f196d2a26d"
+        },
+        {
+            "path": "MovementEvents.md",
+            "kind": "markdown",
+            "sha256": "ae92a90394a42e98a88f5b8edfabc61131c192d6519f440413f65817d7a3f0e2"
+        },
+        {
+            "path": "PlatformEvents.md",
+            "kind": "markdown",
+            "sha256": "e9bcb4be3b93bab95ed109b62c29dc6049ba9afac75e0ccda5ae6ffcd59afcf4"
+        },
+        {
+            "path": "PvPEvents.md",
+            "kind": "markdown",
+            "sha256": "37d8ebc9e7c149fe0981014bad99a1659c75196ad5afcea7569fe88d87701ada"
+        },
+        {
+            "path": "QuestEvents.md",
+            "kind": "markdown",
+            "sha256": "8e748fe083ea13d52b7aa9e88d2de1d2f70226a64ded8eef13a803ae25eed2dd"
+        },
+        {
+            "path": "ReputationEvents.md",
+            "kind": "markdown",
+            "sha256": "8c3c04c62b6260c76c652e35190bba14c939b898d00a085f34ec0cf1e76d1fa5"
+        },
+        {
+            "path": "SettingsEvents.md",
+            "kind": "markdown",
+            "sha256": "af873da97a8f58062dc76194ce91df849203879562c813e5efdc48f978b70419"
+        },
+        {
+            "path": "SocialEvents.md",
+            "kind": "markdown",
+            "sha256": "f56ebc64e04587daf44cf35b7607a91ee572e8a60f673566a9321ab5a540bc1f"
+        },
+        {
+            "path": "SpellEvents.md",
+            "kind": "markdown",
+            "sha256": "6eb8405c5a7155ffbfd3bb79a80e60374437c81ae7fd7299c91085c87fa9967f"
+        },
+        {
+            "path": "StatsEvents.md",
+            "kind": "markdown",
+            "sha256": "680f926953a1c8c6801707734a26531acde07a43dca17fc0ce81a0df213cbfc5"
+        },
+        {
+            "path": "SystemEvents.md",
+            "kind": "markdown",
+            "sha256": "adddd49aea8c150e10d6c9d526302afd4da8c85ae41c3defb323bf44d54550ae"
+        },
+        {
+            "path": "TradeEvents.md",
+            "kind": "markdown",
+            "sha256": "3e35f86602c12c7cf6c1e234f92aaa1c87bf4a6d3eb1be986f9e5043602e5ce8"
+        },
+        {
+            "path": "UnitEvents.md",
+            "kind": "markdown",
+            "sha256": "5e3da9d6a58a0925be67081dccceac6423998b28b1f2dc446e1a282335842d69"
+        },
+        {
+            "path": "VendorEvents.md",
+            "kind": "markdown",
+            "sha256": "da15a90a7c272f6528ac190ff232c8cf38651c644dedf7ba17829872b60054b6"
+        },
+        {
+            "path": "WorldEvents.md",
+            "kind": "markdown",
+            "sha256": "663d90e0b724771d2baa81f102208a6b0198abcabbc069bdc00fa9c9b7dfff17"
+        }
+    ]
+}

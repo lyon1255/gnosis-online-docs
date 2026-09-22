@@ -1,44 +1,99 @@
 # Achievement Events
 
+Achievement progress and completion events visible to the local player.
 
-Achievement progress/completion. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `ACHIEVEMENT_COMPLETED` | Published when achievement completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume. |
+| `ACHIEVEMENT_PROGRESS_CHANGED` | Published when the authoritative achievement progress state changes. The payload contains the resulting state and identifiers needed by Achievement UI or AddOns to update without polling. |
 
-Events: **2**
+## Subscription lifecycle
 
-## `1. ACHIEVEMENT_COMPLETED`
-Achievement először completed állapotba vált.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `ACHIEVEMENT_COMPLETED`
+
+Published when achievement completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `achievementId` | `int` | `number` | No |  |
-| `completedAt` | `System.DateTime` | `string` | No |  |
-| `reward` | `RewardInfo` | `RewardInfo | null` | Yes |  |
+| `achievementId` | `int` | `number` | No | Stable identifier of the achievement referenced by this payload. |
+| `completedAt` | `System.DateTime` | `string` | No | Authoritative timestamp associated with completed. |
+| `reward` | `RewardInfo` | `RewardInfo | null` | Yes | Reward package associated with this choice. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ACHIEVEMENT_COMPLETED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AchievementEvents.PublishCompleted(...)`
+#### Unsubscribe
 
-## `2. ACHIEVEMENT_PROGRESS_CHANGED`
-Achievement kritérium progressze változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AchievementEvents.PublishCompleted(
+    eventBus,
+    achievementId,
+    completedAt,
+    reward
+);
+```
+
+## `ACHIEVEMENT_PROGRESS_CHANGED`
+
+Published when the authoritative achievement progress state changes. The payload contains the resulting state and identifiers needed by Achievement UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `achievementId` | `int` | `number` | No |  |
-| `current` | `long` | `number` | No |  |
-| `required` | `long` | `number` | No |  |
+| `achievementId` | `int` | `number` | No | Stable identifier of the achievement referenced by this payload. |
+| `current` | `int` | `number` | No | Authoritative current value after the change. |
+| `required` | `int` | `number` | No | Value required to complete the tracked progress. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("ACHIEVEMENT_PROGRESS_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AchievementEvents.PublishProgressChanged(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+AchievementEvents.PublishProgressChanged(
+    eventBus,
+    achievementId,
+    current,
+    required
+);
+```
 

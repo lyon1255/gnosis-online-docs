@@ -1,91 +1,205 @@
 # Social Events
 
+Friend, block-list, and presence events for social identities visible to the local player.
 
-Friends/block/presence. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `BLOCK_ADDED` | Published when block is added to the local client's authoritative public state. The payload identifies the newly available object or entity. |
+| `BLOCK_REMOVED` | Published when block is removed from the local client's authoritative public state. Consumers should discard matching cached or UI state. |
+| `FRIEND_ADDED` | Published when friend is added to the local client's authoritative public state. The payload identifies the newly available object or entity. |
+| `FRIEND_PRESENCE_CHANGED` | Published when the authoritative friend presence state changes. The payload contains the resulting state and identifiers needed by Social UI or AddOns to update without polling. |
+| `FRIEND_REMOVED` | Published when friend is removed from the local client's authoritative public state. Consumers should discard matching cached or UI state. |
 
-Events: **5**
+## Subscription lifecycle
 
-## `1. BLOCK_ADDED`
-Block kapcsolat létrejött.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `BLOCK_ADDED`
+
+Published when block is added to the local client's authoritative public state. The payload identifies the newly available object or entity.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `socialIdentityId` | `string` | `string` | No | identity scope GAP-032 |
+| `socialIdentityId` | `string` | `string` | No | Stable identifier of the social identity or account-level relationship. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("BLOCK_ADDED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SocialEvents.PublishBlockAdded(...)`
+#### Unsubscribe
 
-## `2. BLOCK_REMOVED`
-Block kapcsolat megszűnt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SocialEvents.PublishBlockAdded(
+    eventBus,
+    socialIdentityId
+);
+```
+
+## `BLOCK_REMOVED`
+
+Published when block is removed from the local client's authoritative public state. Consumers should discard matching cached or UI state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `socialIdentityId` | `string` | `string` | No | identity scope GAP-032 |
+| `socialIdentityId` | `string` | `string` | No | Stable identifier of the social identity or account-level relationship. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("BLOCK_REMOVED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SocialEvents.PublishBlockRemoved(...)`
+#### Unsubscribe
 
-## `3. FRIEND_ADDED`
-Új friend kapcsolat létrejött.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SocialEvents.PublishBlockRemoved(
+    eventBus,
+    socialIdentityId
+);
+```
+
+## `FRIEND_ADDED`
+
+Published when friend is added to the local client's authoritative public state. The payload identifies the newly available object or entity.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `socialIdentityId` | `string` | `string` | No | **DESIGN DECISION REQUIRED: account vagy character identity** |
-| `displayName` | `string` | `string` | No |  |
+| `socialIdentityId` | `string` | `string` | No | Stable identifier of the social identity or account-level relationship. |
+| `displayName` | `string` | `string` | No | Display name safe for presentation to the local player. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("FRIEND_ADDED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SocialEvents.PublishFriendAdded(...)`
+#### Unsubscribe
 
-## `4. FRIEND_PRESENCE_CHANGED`
-Engedélyezett friend presence információ változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SocialEvents.PublishFriendAdded(
+    eventBus,
+    socialIdentityId,
+    displayName
+);
+```
+
+## `FRIEND_PRESENCE_CHANGED`
+
+Published when the authoritative friend presence state changes. The payload contains the resulting state and identifiers needed by Social UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `socialIdentityId` | `string` | `string` | No |  |
-| `online` | `bool` | `boolean` | No |  |
-| `locationId` | `int?` | `number | null` | Yes | csak ha privacy policy megengedi |
+| `socialIdentityId` | `string` | `string` | No | Stable identifier of the social identity or account-level relationship. |
+| `online` | `bool` | `boolean` | No | Whether the member is currently online. |
+| `locationId` | `int?` | `number | null` | Yes | Stable identifier of the relevant location. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("FRIEND_PRESENCE_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SocialEvents.PublishFriendPresenceChanged(...)`
+#### Unsubscribe
 
-## `5. FRIEND_REMOVED`
-Friend kapcsolat megszűnt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+SocialEvents.PublishFriendPresenceChanged(
+    eventBus,
+    socialIdentityId,
+    online,
+    locationId
+);
+```
+
+## `FRIEND_REMOVED`
+
+Published when friend is removed from the local client's authoritative public state. Consumers should discard matching cached or UI state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `socialIdentityId` | `string` | `string` | No | identity scope GAP-032 |
+| `socialIdentityId` | `string` | `string` | No | Stable identifier of the social identity or account-level relationship. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("FRIEND_REMOVED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `SocialEvents.PublishFriendRemoved(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+SocialEvents.PublishFriendRemoved(
+    eventBus,
+    socialIdentityId
+);
+```
 

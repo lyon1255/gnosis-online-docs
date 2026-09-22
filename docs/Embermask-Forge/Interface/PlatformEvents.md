@@ -1,108 +1,243 @@
 # Platform Events
 
+Platform integration events for availability, authentication, commerce state, and verified cosmetic entitlements without exposing provider secrets.
 
-Steam/platform auth, purchase, entitlement. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `COSMETIC_ENTITLEMENTS_SYNCED` | Published when the authoritative 'COSMETIC_ENTITLEMENTS_SYNCED' gameplay event occurs. The payload contains only client-visible state intended for Platform UI and AddOns. |
+| `COSMETIC_ENTITLEMENT_GRANTED` | Published after cosmetic entitlement has been authoritatively granted to the local player. |
+| `COSMETIC_ENTITLEMENT_REVOKED` | Published when cosmetic entitlement is authoritatively revoked and should no longer be treated as active or owned. |
+| `PLATFORM_AUTH_STATE_CHANGED` | Published when the authoritative platform auth state state changes. The payload contains the resulting state and identifiers needed by Platform UI or AddOns to update without polling. |
+| `PLATFORM_AVAILABILITY_CHANGED` | Published when the authoritative platform availability state changes. The payload contains the resulting state and identifiers needed by Platform UI or AddOns to update without polling. |
+| `PURCHASE_STATE_CHANGED` | Published when the authoritative purchase state state changes. The payload contains the resulting state and identifiers needed by Platform UI or AddOns to update without polling. |
 
-Events: **6**
+## Subscription lifecycle
 
-## `1. COSMETIC_ENTITLEMENTS_SYNCED`
-Teljes entitlement reconciliation befejeződött.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `COSMETIC_ENTITLEMENTS_SYNCED`
+
+Published when the authoritative 'COSMETIC_ENTITLEMENTS_SYNCED' gameplay event occurs. The payload contains only client-visible state intended for Platform UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `revision` | `long` | `number` | No | Non-negative revision/identifier; represented as Long in the public Forge schema. |
-| `verifiedAt` | `System.DateTime` | `string` | No |  |
+| `revision` | `int` | `number` | No | Monotonically increasing revision number used to detect stale cached state. |
+| `verifiedAt` | `System.DateTime` | `string` | No | Timestamp at which ownership was last authoritatively verified. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COSMETIC_ENTITLEMENTS_SYNCED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `PlatformEvents.PublishCosmeticEntitlementsSynced(...)`
+#### Unsubscribe
 
-## `2. COSMETIC_ENTITLEMENT_GRANTED`
-Hiteles platformállapot alapján új cosmetic entitlement vált érvényessé.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+PlatformEvents.PublishCosmeticEntitlementsSynced(
+    eventBus,
+    revision,
+    verifiedAt
+);
+```
+
+## `COSMETIC_ENTITLEMENT_GRANTED`
+
+Published after cosmetic entitlement has been authoritatively granted to the local player.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `entitlement` | `CosmeticEntitlementInfo` | `CosmeticEntitlementInfo` | No |  |
+| `entitlement` | `CosmeticEntitlementInfo` | `CosmeticEntitlementInfo` | No | Verified cosmetic-entitlement snapshot. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COSMETIC_ENTITLEMENT_GRANTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `PlatformEvents.PublishCosmeticEntitlementGranted(...)`
+#### Unsubscribe
 
-## `3. COSMETIC_ENTITLEMENT_REVOKED`
-Hiteles refund/chargeback/fraud/platform revocation miatt entitlement megszűnt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+PlatformEvents.PublishCosmeticEntitlementGranted(
+    eventBus,
+    entitlement
+);
+```
+
+## `COSMETIC_ENTITLEMENT_REVOKED`
+
+Published when cosmetic entitlement is authoritatively revoked and should no longer be treated as active or owned.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `entitlement` | `CosmeticEntitlementInfo` | `CosmeticEntitlementInfo` | No |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `entitlement` | `CosmeticEntitlementInfo` | `CosmeticEntitlementInfo` | No | Verified cosmetic-entitlement snapshot. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COSMETIC_ENTITLEMENT_REVOKED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `PlatformEvents.PublishCosmeticEntitlementRevoked(...)`
+#### Unsubscribe
 
-## `4. PLATFORM_AUTH_STATE_CHANGED`
-A platform identity bridge auth-state-je változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+PlatformEvents.PublishCosmeticEntitlementRevoked(
+    eventBus,
+    entitlement,
+    reasonCode
+);
+```
+
+## `PLATFORM_AUTH_STATE_CHANGED`
+
+Published when the authoritative platform auth state state changes. The payload contains the resulting state and identifiers needed by Platform UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `state` | `PlatformAuthState` | `string` | No |  |
-| `reasonCode` | `string` | `string | null` | Yes |  |
+| `state` | `PlatformAuthState` | `PlatformAuthState` | No | Current lifecycle state represented by this payload. |
+| `reasonCode` | `string` | `string | null` | Yes | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("PLATFORM_AUTH_STATE_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `PlatformEvents.PublishAuthStateChanged(...)`
+#### Unsubscribe
 
-## `5. PLATFORM_AVAILABILITY_CHANGED`
-A Steam/platform runtime elérhetősége változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+PlatformEvents.PublishAuthStateChanged(
+    eventBus,
+    state,
+    reasonCode
+);
+```
+
+## `PLATFORM_AVAILABILITY_CHANGED`
+
+Published when the authoritative platform availability state changes. The payload contains the resulting state and identifiers needed by Platform UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `available` | `bool` | `boolean` | No |  |
-| `reasonCode` | `string` | `string | null` | Yes |  |
+| `available` | `bool` | `boolean` | No | Whether the feature or action is currently available. |
+| `reasonCode` | `string` | `string | null` | Yes | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("PLATFORM_AVAILABILITY_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `PlatformEvents.PublishAvailabilityChanged(...)`
+#### Unsubscribe
 
-## `6. PURCHASE_STATE_CHANGED`
-Saját kozmetikai purchase order UI-releváns állapota megváltozott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+PlatformEvents.PublishAvailabilityChanged(
+    eventBus,
+    available,
+    reasonCode
+);
+```
+
+## `PURCHASE_STATE_CHANGED`
+
+Published when the authoritative purchase state state changes. The payload contains the resulting state and identifiers needed by Platform UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `purchase` | `PurchaseInfo` | `PurchaseInfo` | No |  |
+| `purchase` | `PurchaseInfo` | `PurchaseInfo` | No | Provider-secret-free purchase snapshot. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("PURCHASE_STATE_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `PlatformEvents.PublishPurchaseStateChanged(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+PlatformEvents.PublishPurchaseStateChanged(
+    eventBus,
+    purchase
+);
+```
 

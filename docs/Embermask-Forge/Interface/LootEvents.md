@@ -1,25 +1,57 @@
 # Loot Events
 
+Semantic reward events for loot that has already been granted to the player. This domain never exposes unrevealed drop tables.
 
-Szemantikus loot-jutalmazás. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `LOOT_GRANTED` | Published after loot or a semantic reward package has actually been granted to the player. It never exposes unrevealed drop-table information. |
 
-Events: **1**
+## Subscription lifecycle
 
-## `1. LOOT_GRANTED`
-A szerver személyes lootként vagy más loot-source-ból jutalmat osztott a lokális karakternek.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `LOOT_GRANTED`
+
+Published after loot or a semantic reward package has actually been granted to the player. It never exposes unrevealed drop-table information.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `source` | `EntityRef` | `EntityRef | null` | Yes | loot forrása, ha publikus |
-| `reward` | `RewardInfo` | `RewardInfo` | No | ténylegesen kiosztott jutalom |
+| `source` | `EntityRef` | `EntityRef | null` | Yes | Optional entity responsible for creating the effect or state change. |
+| `reward` | `RewardInfo` | `RewardInfo` | No | Reward package associated with this choice. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("LOOT_GRANTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `LootEvents.PublishGranted(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+LootEvents.PublishGranted(
+    eventBus,
+    source,
+    reward
+);
+```
 

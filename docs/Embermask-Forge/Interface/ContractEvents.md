@@ -1,91 +1,205 @@
 # Contract Events
 
+Adventurer Contract lifecycle events covering acquisition, progress, suspension, revocation, and expiration.
 
-Adventurer Contract lifecycle. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `CONTRACT_ACQUIRED` | Published when the authoritative 'CONTRACT_ACQUIRED' gameplay event occurs. The payload contains only client-visible state intended for Contract UI and AddOns. |
+| `CONTRACT_EXPIRED` | Published when contract expires according to authoritative game state. |
+| `CONTRACT_PROGRESS_CHANGED` | Published when the authoritative contract progress state changes. The payload contains the resulting state and identifiers needed by Contract UI or AddOns to update without polling. |
+| `CONTRACT_REVOKED` | Published when contract is authoritatively revoked and should no longer be treated as active or owned. |
+| `CONTRACT_SUSPENDED` | Published when contract is suspended and temporarily stops progressing while remaining part of authoritative state. |
 
-Events: **5**
+## Subscription lifecycle
 
-## `1. CONTRACT_ACQUIRED`
-Guild vagy szervezett party érvényes Adventurer Contractot kapott.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `CONTRACT_ACQUIRED`
+
+Published when the authoritative 'CONTRACT_ACQUIRED' gameplay event occurs. The payload contains only client-visible state intended for Contract UI and AddOns.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `contract` | `ContractInfo` | `ContractInfo` | No |  |
+| `contract` | `ContractInfo` | `ContractInfo` | No | Current public snapshot of the Adventurer Contract. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("CONTRACT_ACQUIRED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ContractEvents.PublishAcquired(...)`
+#### Unsubscribe
 
-## `2. CONTRACT_EXPIRED`
-Contract normál időbeli lifecycle miatt lejárt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ContractEvents.PublishAcquired(
+    eventBus,
+    contract
+);
+```
+
+## `CONTRACT_EXPIRED`
+
+Published when contract expires according to authoritative game state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `contractId` | `System.Guid` | `string` | No |  |
-| `expiredAt` | `System.DateTime` | `string` | No |  |
+| `contractId` | `System.Guid` | `string` | No | Stable identifier of the Adventurer Contract. |
+| `expiredAt` | `System.DateTime` | `string` | No | Authoritative timestamp at which the object expired. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("CONTRACT_EXPIRED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ContractEvents.PublishExpired(...)`
+#### Unsubscribe
 
-## `3. CONTRACT_PROGRESS_CHANGED`
-Fenntartási patrol/tisztítás kötelezettség progressze változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ContractEvents.PublishExpired(
+    eventBus,
+    contractId,
+    expiredAt
+);
+```
+
+## `CONTRACT_PROGRESS_CHANGED`
+
+Published when the authoritative contract progress state changes. The payload contains the resulting state and identifiers needed by Contract UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `contract` | `ContractInfo` | `ContractInfo` | No |  |
+| `contract` | `ContractInfo` | `ContractInfo` | No | Current public snapshot of the Adventurer Contract. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("CONTRACT_PROGRESS_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ContractEvents.PublishProgressChanged(...)`
+#### Unsubscribe
 
-## `4. CONTRACT_REVOKED`
-Council által jóváhagyott végleges jogvesztés megtörtént.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ContractEvents.PublishProgressChanged(
+    eventBus,
+    contract
+);
+```
+
+## `CONTRACT_REVOKED`
+
+Published when contract is authoritatively revoked and should no longer be treated as active or owned.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `contractId` | `System.Guid` | `string` | No |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `contractId` | `System.Guid` | `string` | No | Stable identifier of the Adventurer Contract. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("CONTRACT_REVOKED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ContractEvents.PublishRevoked(...)`
+#### Unsubscribe
 
-## `5. CONTRACT_SUSPENDED`
-Gameplay trigger review-t nyitott és az ideiglenes benefit felfüggesztődött.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+ContractEvents.PublishRevoked(
+    eventBus,
+    contractId,
+    reasonCode
+);
+```
+
+## `CONTRACT_SUSPENDED`
+
+Published when contract is suspended and temporarily stops progressing while remaining part of authoritative state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `contractId` | `System.Guid` | `string` | No |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `contractId` | `System.Guid` | `string` | No | Stable identifier of the Adventurer Contract. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("CONTRACT_SUSPENDED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `ContractEvents.PublishSuspended(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+ContractEvents.PublishSuspended(
+    eventBus,
+    contractId,
+    reasonCode
+);
+```
 

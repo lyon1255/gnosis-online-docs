@@ -1,76 +1,171 @@
 # Appearance Events
 
+Character appearance, cosmetic equipment, and transmog events exposed to appearance-related UI.
 
-Appearance/cosmetic/transmog. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `CHARACTER_APPEARANCE_CHANGED` | Published when the authoritative character appearance state changes. The payload contains the resulting state and identifiers needed by Appearance UI or AddOns to update without polling. |
+| `COSMETIC_EQUIPPED` | Published when cosmetic is authoritatively equipped and the resulting equipment state becomes active. |
+| `COSMETIC_UNEQUIPPED` | Published when cosmetic is authoritatively unequipped and removed from its active equipment slot. |
+| `TRANSMOG_CHANGED` | Published when the authoritative transmog state changes. The payload contains the resulting state and identifiers needed by Appearance UI or AddOns to update without polling. |
 
-Events: **4**
+## Subscription lifecycle
 
-## `1. CHARACTER_APPEARANCE_CHANGED`
-Egy látható karakter megjelenési snapshotja változott.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `CHARACTER_APPEARANCE_CHANGED`
+
+Published when the authoritative character appearance state changes. The payload contains the resulting state and identifiers needed by Appearance UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `characterGuid` | `System.Guid` | `string` | No |  |
-| `appearanceRevision` | `long` | `number` | No | Non-negative revision/identifier; represented as Long in the public Forge schema. |
+| `characterGuid` | `System.Guid` | `string` | No | Stable identifier of the character. |
+| `appearanceRevision` | `int` | `number` | No | Revision number of the character's appearance state. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("CHARACTER_APPEARANCE_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AppearanceEvents.PublishCharacterAppearanceChanged(...)`
+#### Unsubscribe
 
-## `2. COSMETIC_EQUIPPED`
-A szerver/platform entitlement alapján jóváhagyott cosmetic aktív lett.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AppearanceEvents.PublishCharacterAppearanceChanged(
+    eventBus,
+    characterGuid,
+    appearanceRevision
+);
+```
+
+## `COSMETIC_EQUIPPED`
+
+Published when cosmetic is authoritatively equipped and the resulting equipment state becomes active.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `cosmeticDefinitionId` | `string` | `string` | No |  |
-| `slotId` | `string` | `string` | No |  |
+| `cosmeticDefinitionId` | `string` | `string` | No | Stable content identifier of the cosmetic definition. |
+| `slotId` | `string` | `string` | No | Stable identifier of the affected loadout or equipment slot. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COSMETIC_EQUIPPED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AppearanceEvents.PublishCosmeticEquipped(...)`
+#### Unsubscribe
 
-## `3. COSMETIC_UNEQUIPPED`
-Cosmetic eltávolításra került az appearance slotból.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AppearanceEvents.PublishCosmeticEquipped(
+    eventBus,
+    cosmeticDefinitionId,
+    slotId
+);
+```
+
+## `COSMETIC_UNEQUIPPED`
+
+Published when cosmetic is authoritatively unequipped and removed from its active equipment slot.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `cosmeticDefinitionId` | `string` | `string` | No |  |
-| `slotId` | `string` | `string` | No |  |
+| `cosmeticDefinitionId` | `string` | `string` | No | Stable content identifier of the cosmetic definition. |
+| `slotId` | `string` | `string` | No | Stable identifier of the affected loadout or equipment slot. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("COSMETIC_UNEQUIPPED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AppearanceEvents.PublishCosmeticUnequipped(...)`
+#### Unsubscribe
 
-## `4. TRANSMOG_CHANGED`
-Egy gameplay equipment item megjelenési override-ja változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+AppearanceEvents.PublishCosmeticUnequipped(
+    eventBus,
+    cosmeticDefinitionId,
+    slotId
+);
+```
+
+## `TRANSMOG_CHANGED`
+
+Published when the authoritative transmog state changes. The payload contains the resulting state and identifiers needed by Appearance UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `itemInstanceGuid` | `System.Guid` | `string` | No |  |
-| `appearanceId` | `string` | `string | null` | Yes | null/üres override eltávolítást jelent a végleges schema szabálya szerint |
+| `itemInstanceGuid` | `System.Guid` | `string` | No | Stable identifier of the concrete item instance. |
+| `appearanceId` | `string` | `string | null` | Yes | Stable content identifier of the appearance or cosmetic configuration. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("TRANSMOG_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `AppearanceEvents.PublishTransmogChanged(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+AppearanceEvents.PublishTransmogChanged(
+    eventBus,
+    itemInstanceGuid,
+    appearanceId
+);
+```
 

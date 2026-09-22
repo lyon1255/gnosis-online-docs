@@ -1,217 +1,485 @@
 # World Events
 
+World-navigation events for floor access, area changes, bind points, fast travel, temporary portals, and public world-event state.
 
-Floor, area, travel, timed portal, world event. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `AREA_CHANGED` | Published when the authoritative area state changes. The payload contains the resulting state and identifiers needed by World UI or AddOns to update without polling. |
+| `BIND_POINT_CHANGED` | Published when the authoritative bind point state changes. The payload contains the resulting state and identifiers needed by World UI or AddOns to update without polling. |
+| `FAST_TRAVEL_COMPLETED` | Published when fast travel completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume. |
+| `FAST_TRAVEL_FAILED` | Published when fast travel fails before reaching a successful final state. The payload includes stable context or reason information when available. |
+| `FAST_TRAVEL_STARTED` | Published when fast travel starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state. |
+| `FLOOR_ACCESS_CHANGED` | Published when the authoritative floor access state changes. The payload contains the resulting state and identifiers needed by World UI or AddOns to update without polling. |
+| `FLOOR_CHANGED` | Published when the authoritative floor state changes. The payload contains the resulting state and identifiers needed by World UI or AddOns to update without polling. |
+| `WORLD_EVENT_ENDED` | Published when world event reaches its final end state. The payload identifies the affected lifecycle instance and its final public result when applicable. |
+| `WORLD_EVENT_STARTED` | Published when world event starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state. |
+| `WORLD_EVENT_UPDATED` | Published when the public state of world event is updated. The payload contains the latest authoritative snapshot or delta required by consumers. |
+| `WORLD_PORTAL_CLOSED` | Published when world portal closes or is no longer available to the local player. |
+| `WORLD_PORTAL_OPENED` | Published when world portal becomes open and available to the local player. |
 
-Events: **12**
+## Subscription lifecycle
 
-## `1. AREA_CHANGED`
-A player egy másik publikus area/subzone területre lépett.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `AREA_CHANGED`
+
+Published when the authoritative area state changes. The payload contains the resulting state and identifiers needed by World UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `floorId` | `int` | `number` | No |  |
-| `areaId` | `int` | `number` | No |  |
-| `subzoneId` | `int?` | `number | null` | Yes |  |
+| `floorId` | `int` | `number` | No | Stable content identifier of the relevant floor. |
+| `areaId` | `int` | `number` | No | Stable content identifier of the associated world area. |
+| `subzoneId` | `int?` | `number | null` | Yes | Stable identifier of the subzone referenced by this payload. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("AREA_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishAreaChanged(...)`
+#### Unsubscribe
 
-## `2. BIND_POINT_CHANGED`
-Az authoritative respawn/bind point módosult.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishAreaChanged(
+    eventBus,
+    floorId,
+    areaId,
+    subzoneId
+);
+```
+
+## `BIND_POINT_CHANGED`
+
+Published when the authoritative bind point state changes. The payload contains the resulting state and identifiers needed by World UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `bindPointId` | `int` | `number` | No |  |
-| `floorId` | `int` | `number` | No |  |
-| `mapId` | `int` | `number` | No |  |
+| `bindPointId` | `int` | `number` | No | Stable identifier of the current bind point. |
+| `floorId` | `int` | `number` | No | Stable content identifier of the relevant floor. |
+| `mapId` | `int` | `number` | No | Stable content identifier of the relevant map. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("BIND_POINT_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishBindPointChanged(...)`
+#### Unsubscribe
 
-## `3. FAST_TRAVEL_COMPLETED`
-A gyorsutazás befejeződött az authoritative célon.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishBindPointChanged(
+    eventBus,
+    bindPointId,
+    floorId,
+    mapId
+);
+```
+
+## `FAST_TRAVEL_COMPLETED`
+
+Published when fast travel completes successfully in the authoritative game state. The payload describes the final result that is safe for the local client to consume.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `travelId` | `System.Guid` | `string` | No |  |
-| `floorId` | `int` | `number` | No |  |
-| `mapId` | `int` | `number` | No |  |
-| `position` | `UnityEngine.Vector3` | `{ x: number; y: number; z: number }` | No |  |
+| `travelId` | `System.Guid` | `string` | No | Stable identifier of the fast-travel operation. |
+| `floorId` | `int` | `number` | No | Stable content identifier of the relevant floor. |
+| `mapId` | `int` | `number` | No | Stable content identifier of the relevant map. |
+| `position` | `UnityEngine.Vector3` | `{ x: number; y: number; z: number }` | No | Authoritative world-space position. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("FAST_TRAVEL_COMPLETED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishFastTravelCompleted(...)`
+#### Unsubscribe
 
-## `4. FAST_TRAVEL_FAILED`
-Elfogadási vagy végrehajtási ok miatt nem történt meg a travel.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishFastTravelCompleted(
+    eventBus,
+    travelId,
+    floorId,
+    mapId,
+    position
+);
+```
+
+## `FAST_TRAVEL_FAILED`
+
+Published when fast travel fails before reaching a successful final state. The payload includes stable context or reason information when available.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `travelId` | `System.Guid?` | `string | null` | Yes |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `travelId` | `System.Guid?` | `string | null` | Yes | Stable identifier of the fast-travel operation. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("FAST_TRAVEL_FAILED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishFastTravelFailed(...)`
+#### Unsubscribe
 
-## `5. FAST_TRAVEL_STARTED`
-A szerver elfogadta a fizetős gyorsutazást.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishFastTravelFailed(
+    eventBus,
+    travelId,
+    reasonCode
+);
+```
+
+## `FAST_TRAVEL_STARTED`
+
+Published when fast travel starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `travelId` | `System.Guid` | `string` | No |  |
-| `destinationId` | `int` | `number` | No |  |
-| `cost` | `long` | `number` | No | Canonical import default: Long, pending GAP-005 end-to-end numeric-width finalization. |
+| `travelId` | `System.Guid` | `string` | No | Stable identifier of the fast-travel operation. |
+| `destinationId` | `int` | `number` | No | Stable identifier of the travel destination. |
+| `cost` | `int` | `number` | No | Currency cost paid for the operation. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("FAST_TRAVEL_STARTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishFastTravelStarted(...)`
+#### Unsubscribe
 
-## `6. FLOOR_ACCESS_CHANGED`
-A karakter személyes Floor-hozzáférése feloldódott vagy invalidálódott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishFastTravelStarted(
+    eventBus,
+    travelId,
+    destinationId,
+    cost
+);
+```
+
+## `FLOOR_ACCESS_CHANGED`
+
+Published when the authoritative floor access state changes. The payload contains the resulting state and identifiers needed by World UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `floorId` | `int` | `number` | No |  |
-| `unlocked` | `bool` | `boolean` | No |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `floorId` | `int` | `number` | No | Stable content identifier of the relevant floor. |
+| `unlocked` | `bool` | `boolean` | No | Whether the referenced feature is currently unlocked. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("FLOOR_ACCESS_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishFloorAccessChanged(...)`
+#### Unsubscribe
 
-## `7. FLOOR_CHANGED`
-A lokális karakter aktív Floorja megváltozott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishFloorAccessChanged(
+    eventBus,
+    floorId,
+    unlocked,
+    reasonCode
+);
+```
+
+## `FLOOR_CHANGED`
+
+Published when the authoritative floor state changes. The payload contains the resulting state and identifiers needed by World UI or AddOns to update without polling.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `previousFloorId` | `int?` | `number | null` | Yes |  |
-| `currentFloorId` | `int` | `number` | No |  |
-| `mapId` | `int` | `number` | No |  |
+| `previousFloorId` | `int?` | `number | null` | Yes | Previous floor identifier before the transition. |
+| `currentFloorId` | `int` | `number` | No | Current floor identifier after the transition. |
+| `mapId` | `int` | `number` | No | Stable content identifier of the relevant map. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("FLOOR_CHANGED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishFloorChanged(...)`
+#### Unsubscribe
 
-## `8. WORLD_EVENT_ENDED`
-A world event véget ért.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishFloorChanged(
+    eventBus,
+    previousFloorId,
+    currentFloorId,
+    mapId
+);
+```
+
+## `WORLD_EVENT_ENDED`
+
+Published when world event reaches its final end state. The payload identifies the affected lifecycle instance and its final public result when applicable.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `worldEventId` | `System.Guid` | `string` | No |  |
-| `resultCode` | `string` | `string` | No |  |
+| `worldEventId` | `System.Guid` | `string` | No | Stable identifier of the runtime world-event instance. |
+| `resultCode` | `string` | `string` | No | Stable non-localized result code for the operation. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("WORLD_EVENT_ENDED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishWorldEventEnded(...)`
+#### Unsubscribe
 
-## `9. WORLD_EVENT_STARTED`
-Egy player-visible world event aktív lett.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishWorldEventEnded(
+    eventBus,
+    worldEventId,
+    resultCode
+);
+```
+
+## `WORLD_EVENT_STARTED`
+
+Published when world event starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `worldEvent` | `WorldEventInfo` | `WorldEventInfo` | No | Player-visible world event snapshot. |
+| `worldEvent` | `WorldEventInfo` | `WorldEventInfo` | No | Public snapshot of the world event. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("WORLD_EVENT_STARTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishWorldEventStarted(...)`
+#### Unsubscribe
 
-## `10. WORLD_EVENT_UPDATED`
-Egy már látható world event publikus progress/state-je változott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishWorldEventStarted(
+    eventBus,
+    worldEvent
+);
+```
+
+## `WORLD_EVENT_UPDATED`
+
+Published when the public state of world event is updated. The payload contains the latest authoritative snapshot or delta required by consumers.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `worldEvent` | `WorldEventInfo` | `WorldEventInfo` | No | Player-visible world event snapshot. |
+| `worldEvent` | `WorldEventInfo` | `WorldEventInfo` | No | Public snapshot of the world event. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("WORLD_EVENT_UPDATED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishWorldEventUpdated(...)`
+#### Unsubscribe
 
-## `11. WORLD_PORTAL_CLOSED`
-A korábban publikus portal bezárult.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishWorldEventUpdated(
+    eventBus,
+    worldEvent
+);
+```
+
+## `WORLD_PORTAL_CLOSED`
+
+Published when world portal closes or is no longer available to the local player.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `portalId` | `int` | `number` | No |  |
+| `portalId` | `int` | `number` | No | Stable identifier of the temporary world portal. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("WORLD_PORTAL_CLOSED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishWorldPortalClosed(...)`
+#### Unsubscribe
 
-## `12. WORLD_PORTAL_OPENED`
-Egy player-visible timed/world portal aktívvá vált.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+WorldEvents.PublishWorldPortalClosed(
+    eventBus,
+    portalId
+);
+```
+
+## `WORLD_PORTAL_OPENED`
+
+Published when world portal becomes open and available to the local player.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `portalId` | `int` | `number` | No |  |
-| `floorId` | `int` | `number` | No |  |
-| `closesAt` | `System.DateTime?` | `string | null` | Yes |  |
+| `portalId` | `int` | `number` | No | Stable identifier of the temporary world portal. |
+| `floorId` | `int` | `number` | No | Stable content identifier of the relevant floor. |
+| `closesAt` | `System.DateTime?` | `string | null` | Yes | Authoritative timestamp at which the portal is scheduled to close. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("WORLD_PORTAL_OPENED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `WorldEvents.PublishWorldPortalOpened(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+WorldEvents.PublishWorldPortalOpened(
+    eventBus,
+    portalId,
+    floorId,
+    closesAt
+);
+```
 

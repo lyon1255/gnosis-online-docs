@@ -1,77 +1,173 @@
 # Interaction Events
 
+Client-visible interaction lifecycle events for NPCs, world objects, and dialogue sessions.
 
-NPC/world interaction és dialogue. 
+## Event index
 
+| Event | Description |
+|---|---|
+| `INTERACTION_ENDED` | Published when interaction reaches its final end state. The payload identifies the affected lifecycle instance and its final public result when applicable. |
+| `INTERACTION_STARTED` | Published when interaction starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state. |
+| `NPC_DIALOGUE_CLOSED` | Published when npc dialogue closes or is no longer available to the local player. |
+| `NPC_DIALOGUE_OPENED` | Published when npc dialogue becomes open and available to the local player. |
 
-Events: **4**
+## Subscription lifecycle
 
-## `1. INTERACTION_ENDED`
-Az aktív interaction session lezárult vagy érvényét vesztette.
+`Forge.Events.on(...)` returns an unsubscribe callback. Keep that callback when the subscription has a bounded lifecycle, then invoke it when the listener is no longer needed.
 
-| Field | C# Type | JS Type | Nullable | Description |
+```javascript
+const unsubscribe = Forge.Events.on("EVENT_NAME", callback);
+// later
+unsubscribe();
+```
+
+## `INTERACTION_ENDED`
+
+Published when interaction reaches its final end state. The payload identifies the affected lifecycle instance and its final public result when applicable.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `interactionId` | `System.Guid` | `string` | No |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `interactionId` | `System.Guid` | `string` | No | Stable identifier of the interaction referenced by this payload. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("INTERACTION_ENDED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `InteractionEvents.PublishEnded(...)`
+#### Unsubscribe
 
-## `2. INTERACTION_STARTED`
-A lokális karakter szerver által elfogadott NPC/world-object interakciót kezdett.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+InteractionEvents.PublishEnded(
+    eventBus,
+    interactionId,
+    reasonCode
+);
+```
+
+## `INTERACTION_STARTED`
+
+Published when interaction starts in the authoritative game state. Consumers may use this event to initialize related UI, timers, or temporary state.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `interactionId` | `System.Guid` | `string` | No |  |
-| `target` | `EntityRef` | `EntityRef` | No |  |
+| `interactionId` | `System.Guid` | `string` | No | Stable identifier of the interaction referenced by this payload. |
+| `target` | `EntityRef` | `EntityRef` | No | Optional entity targeted by the action or cast. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("INTERACTION_STARTED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `InteractionEvents.PublishStarted(...)`
+#### Unsubscribe
 
-## `3. NPC_DIALOGUE_CLOSED`
-Az aktuális NPC dialogue bezárult vagy invalidálódott.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+InteractionEvents.PublishStarted(
+    eventBus,
+    interactionId,
+    target
+);
+```
+
+## `NPC_DIALOGUE_CLOSED`
+
+Published when npc dialogue closes or is no longer available to the local player.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `npc` | `EntityRef` | `EntityRef` | No |  |
-| `dialogueId` | `int` | `number` | No |  |
-| `reasonCode` | `string` | `string` | No |  |
+| `npc` | `EntityRef` | `EntityRef` | No | Authoritative npc value associated with this payload. |
+| `dialogueId` | `int` | `number` | No | Stable identifier of the dialogue referenced by this payload. |
+| `reasonCode` | `string` | `string` | No | Stable, non-localized reason or error code when additional context is available. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("NPC_DIALOGUE_CLOSED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `InteractionEvents.PublishDialogueClosed(...)`
+#### Unsubscribe
 
-## `4. NPC_DIALOGUE_OPENED`
-Egy NPC engedélyezett dialogue state-je megnyílt.
+```javascript
+unsubscribe();
+```
 
-| Field | C# Type | JS Type | Nullable | Description |
+### C#
+
+```csharp
+InteractionEvents.PublishDialogueClosed(
+    eventBus,
+    npc,
+    dialogueId,
+    reasonCode
+);
+```
+
+## `NPC_DIALOGUE_OPENED`
+
+Published when npc dialogue becomes open and available to the local player.
+
+### Payload
+
+| Field | C# Type | JavaScript Type | Nullable | Description |
 |---|---|---|:---:|---|
-| `npc` | `EntityRef` | `EntityRef` | No |  |
-| `dialogueId` | `int` | `number` | No |  |
+| `npc` | `EntityRef` | `EntityRef` | No | Authoritative npc value associated with this payload. |
+| `dialogueId` | `int` | `number` | No | Stable identifier of the dialogue referenced by this payload. |
 
-JavaScript:
+### JavaScript
+
+#### Subscribe
+
 ```javascript
 const unsubscribe = Forge.Events.on("NPC_DIALOGUE_OPENED", payload => {
-    // payload.<field>
+    // Read payload fields here.
 });
 ```
 
-C# publisher: `InteractionEvents.PublishDialogueOpened(...)`
+#### Unsubscribe
+
+```javascript
+unsubscribe();
+```
+
+### C#
+
+```csharp
+InteractionEvents.PublishDialogueOpened(
+    eventBus,
+    npc,
+    dialogueId
+);
+```
 

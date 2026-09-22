@@ -1,8 +1,8 @@
-# Embermask Forge — Unit Events
+Unit Events
+
 
 Public events related to addressable units such as player, target, focus, pet, party members and bosses. Unit tokens are aliases; GUID identifies the actual entity.
 
-C# domain class: `UnitEvents`
 
 Events: **2**
 

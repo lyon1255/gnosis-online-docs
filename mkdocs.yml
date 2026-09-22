@@ -44,6 +44,7 @@ nav:
 
   - Embermask Forge:
       - Interface:
+          - SDK: Embermask-Forge/Interface/Forge.d.ts
           - Level Design: Embermask-Forge/Interface/UnitEvents.md
 
 plugins:

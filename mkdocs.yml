@@ -44,8 +44,8 @@ nav:
 
   - Embermask Forge:
       - Interface:
-          - SDK: Embermask-Forge/Interface/Forge.d.ts
-          - Level Design: Embermask-Forge/Interface/UnitEvents.md
+          - Overview: Embermask-Forge/Interface/overview.md
+          - Unit Events: Embermask-Forge/Interface/UnitEvents.md
 
 plugins:
   - search

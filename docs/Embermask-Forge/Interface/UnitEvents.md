@@ -6,7 +6,7 @@ Public events related to addressable units such as player, target, focus, pet, p
 
 Events: **2**
 
-## `TARGET_CHANGED`
+## `1. TARGET_CHANGED`
 Published when the local target token is bound to an entity or cleared.
 
 | Field | C# Type | JS Type | Nullable | Description |
@@ -24,7 +24,7 @@ const unsubscribe = Forge.Events.on("TARGET_CHANGED", payload => {
 
 C# publisher: `UnitEvents.PublishTargetChanged(...)`
 
-## `UNIT_HEALTH_CHANGED`
+## `2. UNIT_HEALTH_CHANGED`
 Published when the health of an addressable unit entity changes. Every active unit token alias for that entity can receive the update.
 
 | Field | C# Type | JS Type | Nullable | Description |
